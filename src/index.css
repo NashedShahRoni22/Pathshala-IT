@@ -1,0 +1,14 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+* {
+  font-family: "Clash Grotesk", sans-serif;
+  font-weight: 500;
+}
+.landingImage {
+  transform-style: preserve-3d;
+  transition: all 0.1s;
+}
+h1 {
+  font-weight: 600;
+}
