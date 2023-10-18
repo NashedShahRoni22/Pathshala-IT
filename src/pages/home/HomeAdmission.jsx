@@ -1,15 +1,15 @@
 import React from "react";
-import book from "../../assets/icons/Book.png";
-import calendar from "../../assets/icons/Calendar.png";
-import frame from "../../assets/icons/Frame.png";
-import hour from "../../assets/icons/hour-glass.png";
-import cube from "../../assets/icons/Cube.png";
+import book from "../../assets/admissionTimeIcons/Book.png";
+import calendar from "../../assets/admissionTimeIcons/Calendar.png";
+import frame from "../../assets/admissionTimeIcons/Frame.png";
+import hour from "../../assets/admissionTimeIcons/hour-glass.png";
+import cube from "../../assets/admissionTimeIcons/Cube.png";
 import { BsBook } from "react-icons/bs";
 
 export default function HomeAdmission() {
   return (
     <section className="relative min-h-[80vh] flex items-center">
-      <div className="mx-5 md:container md:mx-auto bg-lightOrange p-10 rounded-xl my-10">
+      <div className="mx-5 md:container md:mx-auto z-10 bg-lightOrange p-10 rounded-xl my-10">
         <h1 className="text-[60px] text-center">Admission Time Left</h1>
         <div className="flex justify-center gap-5 my-16">
           <div className="bg-orange px-5 py-2.5 rounded-xl">

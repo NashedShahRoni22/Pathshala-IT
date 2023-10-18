@@ -1,8 +1,8 @@
 import React from "react";
-import img from "../../assets/coursesServicesIcons/noun-megaphone-5060368 1.png";
-import img2 from "../../assets/coursesServicesIcons/noun-graphic-design-3867413 1.png";
-import img3 from "../../assets/coursesServicesIcons/noun-seo-2894617 1.png";
-import img4 from "../../assets/coursesServicesIcons/noun-social-media-6163564 1.png";
+import img from "../../assets/coursesBarIcons/noun-megaphone-5060368 1.png";
+import img2 from "../../assets/coursesBarIcons/noun-graphic-design-3867413 1.png";
+import img3 from "../../assets/coursesBarIcons/noun-seo-2894617 1.png";
+import img4 from "../../assets/coursesBarIcons/noun-social-media-6163564 1.png";
 
 export default function HomeCourseBar() {
   const services = [

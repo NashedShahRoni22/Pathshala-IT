@@ -4,6 +4,8 @@ import HomeCourseBar from './HomeCourseBar'
 import HomeSeminar from './HomeSeminar'
 import HomeAdmission from './HomeAdmission'
 import HomeCourses from './HomeCourses'
+import HomeServices from './HomeServices'
+import HomeChoseUs from './HomeChoseUs'
 
 export default function Home() {
   return (
@@ -13,6 +15,8 @@ export default function Home() {
         <HomeSeminar/>
         <HomeAdmission/>
         <HomeCourses/>
+        <HomeServices/>
+        <HomeChoseUs/>
     </section>
   )
 }
