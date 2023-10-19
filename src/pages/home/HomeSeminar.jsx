@@ -51,7 +51,7 @@ export default function HomeSeminar() {
               className="grid grid-cols-4 my-2.5 py-2.5 place-items-center border-b-2 hover:border-orange hover:shadow-xl duration-300 ease-linear"
             >
               <div>
-                <p className="text-[32px]">{d.day}</p>
+                <h1 className="text-[32px]">{d.day}</h1>
                 <p className="text-[20px]">
                   {d.month} / {d.year}
                 </p>
@@ -64,7 +64,7 @@ export default function HomeSeminar() {
                 <p>{d.time}</p>
               </div>
               <div>
-                <button className="py-2 px-4 bg-blue rounded flex items-center gap-2.5">
+                <button className="font-semibold py-2 px-4 bg-blue rounded flex items-center gap-2.5">
                   Join Now
                 </button>
               </div>

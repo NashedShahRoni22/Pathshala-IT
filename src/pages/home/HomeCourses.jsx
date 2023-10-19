@@ -54,7 +54,7 @@ export default function HomeCourses() {
   };
 
   return (
-    <section className="mx-5 md:container md:mx-auto">
+    <section className="mx-5 md:container md:mx-auto my-20">
       <h1 className="text-[60px] text-center">Popular Courses</h1>
       <p className="text-[16px] text-center">
         We have designed our courses with the most demanding professional
@@ -73,7 +73,7 @@ export default function HomeCourses() {
         ))}
       </div>
 
-      <div className="grid md:grid-cols-2 lg:grid-cols-4 my-10 gap-8">
+      <div className="grid md:grid-cols-2 lg:grid-cols-4 mt-10 gap-8">
         {data.cards.map((c, i) => (
           <div key={i} className="bg-white shadow rounded-b-xl">
             <img src={c.img} alt="" />

@@ -1,4 +1,5 @@
 import Home from "./pages/home/Home"
+import BottomBar from "./shared/bottombar/BottomBar"
 import TopBar from "./shared/topbar/TopBar"
 
 function App() {
@@ -7,6 +8,7 @@ function App() {
     <main>
       <TopBar/>
       <Home/>
+      <BottomBar/>
     </main>
   )
 }

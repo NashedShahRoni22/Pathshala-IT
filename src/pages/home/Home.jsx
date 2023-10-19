@@ -6,17 +6,19 @@ import HomeAdmission from './HomeAdmission'
 import HomeCourses from './HomeCourses'
 import HomeServices from './HomeServices'
 import HomeChoseUs from './HomeChoseUs'
+import HomeStories from './HomeStories'
 
 export default function Home() {
   return (
     <section>
         <HomeLanding/>
         <HomeCourseBar/>
-        <HomeSeminar/>
         <HomeAdmission/>
         <HomeCourses/>
         <HomeServices/>
+        <HomeSeminar/>
         <HomeChoseUs/>
+        <HomeStories/>
     </section>
   )
 }
