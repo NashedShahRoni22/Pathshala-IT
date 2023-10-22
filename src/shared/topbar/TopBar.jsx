@@ -1,8 +1,22 @@
-import React from "react";
-import { BsBook } from "react-icons/bs"
-import logo from "../../assets/logo/Pathshala IT Logo.png"
+import React, { useEffect, useState } from "react";
+import { BsBook } from "react-icons/bs";
+import { FaBars } from "react-icons/fa";
+import { AiOutlineClose } from "react-icons/ai";
+import logo from "../../assets/logo/Pathshala IT Logo.png";
 
 export default function TopBar() {
+  const [open, setOpen] = useState(false);
+  // Function to handle scroll event
+  const handleScroll = () => {
+    setOpen(false);
+  };
+
+  useEffect(() => {
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
   const menuItems = [
     {
       name: "Home",
@@ -22,21 +36,46 @@ export default function TopBar() {
     },
   ];
   return (
-    <nav className="mx-5 md:container md:mx-auto">
-      <section className="flex justify-between items-center py-5">
-        <div className="logo">
-          <img src={logo} alt="" className="h-[60px] w-[180px]" />
+    <nav className="sticky top-0 bg-white z-50">
+      <section className="mx-5 md:container md:mx-auto">
+        <div className="flex justify-between items-center py-5">
+          <div className="logo">
+            <img src={logo} alt="" className="h-[60px] w-[180px]" />
+          </div>
+          {/* default view nav */}
+          <ul className="hidden md:flex gap-6 font-semibold">
+            {menuItems.map((mi, i) => (
+              <li key={i} className="text-[16px] text-[#222222]">
+                {mi.name}
+              </li>
+            ))}
+          </ul>
+          <button className="py-2 px-4 bg-orange rounded hidden md:flex items-center gap-2.5">
+            Enroll Now <BsBook className="text-xl" />
+          </button>
+          {/* navbar jsx */}
+          <button className="md:hidden" onClick={() => setOpen(!open)}>
+            {open ? (
+              <AiOutlineClose className="text-2xl text-orange" />
+            ) : (
+              <FaBars className="text-2xl text-blue" />
+            )}
+          </button>
         </div>
-        <ul className="flex gap-6 font-semibold">
-          {menuItems.map((mi, i) => (
-            <li key={i} className="text-[16px] text-[#222222]">
-              {mi.name}
-            </li>
-          ))}
-        </ul>
-        <button className="py-2 px-4 bg-blue rounded flex items-center gap-2.5">
-          Enroll Now <BsBook className="text-xl"/>
-        </button>
+
+        {/* mobile view nav */}
+        {open && (
+          <ul className="bg-white min-w-full fixed top-20 left-0 flex flex-col md:hidden gap-2.5 font-semibold py-6 px-5">
+            {menuItems.map((mi, i) => (
+              <li
+                key={i}
+                className="text-[18px] text-[#222222] font-semibold border-b-2 border-b-lightOrange"
+              >
+                {mi.name}
+              </li>
+            ))}
+          </ul>
+        )}
       </section>
     </nav>
   );

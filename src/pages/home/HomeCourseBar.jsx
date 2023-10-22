@@ -24,7 +24,7 @@ export default function HomeCourseBar() {
     },
   ];
   return (
-    <div className="flex justify-center gap-5 py-5 -mt-16 mx-5 md:container md:mx-auto">
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 py-5 -mt-16 mx-5 md:container md:mx-auto">
       {services.map((s, i) => (
         <div
           key={i}

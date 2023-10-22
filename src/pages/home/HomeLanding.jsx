@@ -23,12 +23,12 @@ export default function HomeLanding() {
   };
   return (
     <section className="bg-lightBlue py-20">
-      <div className="mx-5 md:container md:mx-auto lg:flex items-center gap-8">
-        <div className="lg:w-1/2">
-          <h1 className="text-[64px] capitalize">
+      <div className="mx-5 md:container md:mx-auto md:flex items-center gap-8">
+        <div className="md:w-1/2">
+          <h1 className="text-[40px] lg:text-[64px] capitalize">
             Learn with industry leading experts
           </h1>
-          <p className="text-[20px] my-5 capitalize">
+          <p className="text-[16px] lg:text-[20px] my-5 capitalize">
             We provide the best IT training around the world and we help young
             entrepreneurs, startups and established businesses grow.
           </p>
@@ -36,7 +36,7 @@ export default function HomeLanding() {
             Enroll Now <BsBook className="text-xl" />
           </button>
         </div>
-        <div className="lg:w-1/2">
+        <div className="md:w-1/2">
           <div className="flex gap-4 my-4 justify-center items-end">
             <img
               src={img2}
@@ -44,7 +44,7 @@ export default function HomeLanding() {
               style={imageStyle}
               onMouseEnter={handleMouseEnter}
               onMouseLeave={handleMouseLeave}
-              className="landingImage"
+              className="landingImage h-[100px] w-[150px] lg:h-full lg:w-full"
             />
             <img
               src={img}
@@ -52,7 +52,7 @@ export default function HomeLanding() {
               style={imageStyle}
               onMouseEnter={handleMouseEnter}
               onMouseLeave={handleMouseLeave}
-              className="landingImage"
+              className="landingImage h-[200px] w-[140px] lg:h-full lg:w-full"
             />
           </div>
           <div className="flex gap-4 my-4 justify-center items-start">
@@ -62,7 +62,7 @@ export default function HomeLanding() {
               style={imageStyle}
               onMouseEnter={handleMouseEnter}
               onMouseLeave={handleMouseLeave}
-              className="landingImage"
+              className="landingImage h-[80px] w-[115px] lg:h-full lg:w-full"
             />
             <img
               src={img4}
@@ -70,7 +70,7 @@ export default function HomeLanding() {
               style={imageStyle}
               onMouseEnter={handleMouseEnter}
               onMouseLeave={handleMouseLeave}
-              className="landingImage"
+              className="landingImage h-[160px] w-[220px] lg:h-full lg:w-full"
             />
           </div>
         </div>
