@@ -8,7 +8,7 @@ import { BsBook } from "react-icons/bs";
 
 export default function HomeAdmission() {
   return (
-    <section className="relative lg:min-h-[80vh] flex items-center">
+    <section className="relative lg:min-h-[80vh] lg:flex lg:items-center">
       <div className="mx-5 md:container md:mx-auto z-10 bg-lightOrange p-5 lg:p-10 rounded-xl my-10">
         <h1 className="text-[40px] lg:text-[60px] text-center">
           Admission Time Left
@@ -76,7 +76,7 @@ export default function HomeAdmission() {
           </button>
         </div>
       </div>
-      <img src={cube} className="absolute top-0 left-0" alt="" />
+      <img src={cube} className="absolute top-0 left-0 hidden lg:block" alt="" />
     </section>
   );
 }
