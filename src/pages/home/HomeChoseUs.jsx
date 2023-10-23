@@ -28,7 +28,7 @@ export default function HomeChoseUs() {
       <div className="z-10">
         <div className="mx-5 md:container md:mx-auto my-5 lg:my-10 py-5 lg:py-10">
           <h1 className="text-[40px] lg:text-[60px] text-center">Why Chose Us</h1>
-          <div className="grid md:grid-cols-3 gap-4 lg:gap-8 my-5 lg:my-10 py-5 lg:py-10">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-8 my-5 lg:my-10 py-5 lg:py-10">
             {data.map((d, i) => (
               <div className="bg-lightOrange p-4 rounded-xl" key={i}>
                 <img src={d.img} alt="" />
@@ -39,7 +39,7 @@ export default function HomeChoseUs() {
           </div>
         </div>
       </div>
-      <img src={vector} className="absolute top-0 right-0" alt="" />
+      <img src={vector} className="absolute top-0 right-0 hidden lg:block" alt="" />
     </section>
   );
 }

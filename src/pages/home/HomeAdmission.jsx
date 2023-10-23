@@ -13,7 +13,7 @@ export default function HomeAdmission() {
         <h1 className="text-[40px] lg:text-[60px] text-center">
           Admission Time Left
         </h1>
-        <div className="flex justify-center gap-2.5 lg:gap-5 my-5 lg:my-10">
+        <div className="grid grid-cols-4 gap-2.5 lg:gap-5 my-5 lg:my-10">
           <div className="bg-orange px-2.5 lg:px-5 py-1 lg:py-2 rounded-xl">
             <p className="text-[24px] lg:text-[60px] text-center">30</p>
             <p className="text-[16px] lg:text-[20px] text-center">Days</p>
