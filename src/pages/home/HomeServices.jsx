@@ -25,10 +25,10 @@ export default function HomeServices() {
     },
   ];
   return (
-    <section className="bg-lightBlue min-h-[80vh] flex items-center">
-      <div className="mx-5 md:container md:mx-auto my-10 py-10">
-        <h1 className="text-[60px] text-center">Popular Services</h1>
-        <div className="grid md:grid-cols-3 gap-8 my-10 py-10">
+    <section className="bg-lightBlue lg:min-h-[80vh] flex items-center">
+      <div className="mx-5 md:container md:mx-auto my-5 lg:my-10 py-5 lg:py-10">
+        <h1 className="text-[40px] lg:text-[60px] text-center">Popular Services</h1>
+        <div className="grid md:grid-cols-3 gap-4 lg:gap-8 my-5 lg:my-10 py-5 lg:py-10">
           {data.map((d, i) => (
             <div className="bg-white p-4 rounded-xl" key={i}>
               <img src={d.img} alt="" />

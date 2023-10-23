@@ -119,17 +119,6 @@ export default function HomeCourses() {
         The knowledge, experience, and expertise gained through the program will
         ensure your desired job in the global market.
       </p>
-      {/* <div className="flex justify-center gap-4 mt-10"> */}
-      <Slider {...settings} className="my-10">
-        {data.categories.map((c, i) => (
-          <div key={i} className="mx-1 lg:mx-2">
-            <button className="text-[16px] px-2 lg:px-4 py-1 lg:py-2 rounded-full border border-black">
-              {c.name}
-            </button>
-          </div>
-        ))}
-      </Slider>
-      {/* </div> */}
 
       <div className="grid md:grid-cols-2 lg:grid-cols-4 mt-10 gap-8">
         {data.cards.map((c, i) => (

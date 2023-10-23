@@ -23,8 +23,8 @@ export default function HomeStories() {
   ];
   return (
     <div>
-      <h1 className="text-[60px] text-center">Success Stories</h1>
-      <div className="mx-5 md:container md:mx-auto my-10 grid gap-8 md:grid-cols-2 lg:grid-cols-3 place-items-center">
+      <h1 className="text-[40px] lg:text-[60px] text-center">Success Stories</h1>
+      <div className="mx-5 md:container md:mx-auto my-5 lg:my-10 grid gap-4 lg:gap-8 md:grid-cols-2 lg:grid-cols-3 place-items-center">
         {data.map((d) => (
           <div className="relative">
             <img src={d.img} alt="" />

@@ -65,7 +65,7 @@ export default function TopBar() {
 
         {/* mobile view nav */}
         {open && (
-          <ul className="bg-white min-w-full fixed top-20 left-0 flex flex-col md:hidden gap-2.5 font-semibold py-6 px-5">
+          <ul className="bg-white min-w-full fixed top-20 left-0 flex flex-col md:hidden gap-2.5 font-semibold py-2.5 px-5">
             {menuItems.map((mi, i) => (
               <li
                 key={i}

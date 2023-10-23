@@ -34,18 +34,18 @@ export default function BottomBar() {
     },
   ];
   return (
-    <footer className="bg-lightBlue">
-      <section className="mx-5 md:container md:mx-auto py-20">
-        <div className="flex flex-col justify-center items-center p-16 gap-5 bg-white rounded-xl">
-          <h1 className="text-[60px] text-center">
+    <footer className="bg-blue">
+      <section className="mx-5 md:container md:mx-auto py-10 lg:py-20">
+        <div className="flex flex-col justify-center items-center p-8 lg:p-16 gap-5 bg-white rounded-xl">
+          <h1 className="text-[40px] lg:text-[60px] text-center">
             Ready to Begin <br /> Your Journey With Us?
           </h1>
           <button className="py-2 px-4 bg-orange rounded flex items-center gap-2.5">
             Enroll Now <BsBook className="text-xl" />
           </button>
         </div>
-        <div className="grid gap-5 md:grid-cols-4 text-[16px] mt-20">
-          <div>
+        <div className="grid gap-5 grid-cols-2 md:grid-cols-4 text-[16px] mt-20">
+          <div className="hidden md:block">
             <img src={logo} alt="" />
           </div>
           <ul>
@@ -73,7 +73,7 @@ export default function BottomBar() {
         <img src={line} className="my-10 w-full" alt="" />
         <div>
           <h1 className="text-[16px] text-center">Our Payment Merchant</h1>
-          <div className="grid gap-5 grid-cols-4 mt-5">
+          <div className="grid gap-5 gird-cols-1 md:grid-cols-2 lg:grid-cols-4 mt-5">
             {data.map((d, i) => (
               <div
                 key={i}
@@ -86,20 +86,21 @@ export default function BottomBar() {
           </div>
         </div>
         <img src={line} className="my-10 w-full" alt="" />
-        <div className="grid grid-cols-3">
+        <div className="grid grid-cols-1 md:grid-cols-3 place-items-center gap-4">
           <div className="flex gap-4">
-            <BsYoutube className="text-xl text-[#FF0000]" />
-            <BsFacebook className="text-xl text-[#3b5998]" />
-            <BsInstagram className="text-xl text-orange" />
-            <BsLinkedin className="text-xl text-[#0072b1]" />
+            <BsYoutube className="text-xl" />
+            <BsFacebook className="text-xl" />
+            <BsInstagram className="text-xl" />
+            <BsLinkedin className="text-xl" />
           </div>
-          <p>© Copyright reserved by Pathshala IT 2023</p>
+          <p className="hidden md:block">© Copyright reserved by Pathshala IT 2023</p>
           <div>
             <form className="flex">
               <input className="px-4 py-2 rounded-l-xl focus:outline-none" placeholder="Subscribe our newsletter" type="email" />
               <button className="px-4 py-2 bg-orange rounded-r-xl">Submit</button>
             </form>
           </div>
+          <p className="md:block">© Copyright reserved by Pathshala IT 2023</p>
         </div>
       </section>
     </footer>
