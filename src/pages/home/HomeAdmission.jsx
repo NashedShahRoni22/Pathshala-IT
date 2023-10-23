@@ -24,11 +24,11 @@ export default function HomeAdmission() {
           </div>
           <div className="bg-orange px-2.5 lg:px-5 py-1 lg:py-2 rounded-xl">
             <p className="text-[24px] lg:text-[60px] text-center">58</p>
-            <p className="text-[16px] lg:text-[20px] text-center">Minutes</p>
+            <p className="text-[16px] lg:text-[20px] text-center flex justify-center">Min<span className="hidden md:block">ute</span>s</p>
           </div>
           <div className="bg-orange px-2.5 lg:px-5 py-1 lg:py-2 rounded-xl">
             <p className="text-[24px] lg:text-[60px] text-center">59</p>
-            <p className="text-[16px] lg:text-[20px] text-center">Seconds</p>
+            <p className="text-[16px] lg:text-[20px] text-center flex justify-center">Sec<span className="hidden md:block">ond</span>s </p>
           </div>
         </div>
         <div className="flex flex-col gap-2.5 md:flex-row md:justify-between">

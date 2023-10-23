@@ -56,20 +56,20 @@ export default function TopBar() {
           {/* navbar jsx */}
           <button className="md:hidden" onClick={() => setOpen(!open)}>
             {open ? (
-              <AiOutlineClose className="text-3xl text-orange rounded-full" />
+              <AiOutlineClose className="text-2xl text-orange rounded-full" />
             ) : (
-              <FaBars className="text-3xl text-blue" />
+              <FaBars className="text-2xl text-blue" />
             )}
           </button>
         </div>
 
         {/* mobile view nav */}
         {open && (
-          <ul className="bg-white/90 min-w-full min-h-full fixed top-20 left-0 flex flex-col md:hidden gap-2.5 font-semibold py-2.5 px-5">
+          <ul className="bg-white/90 min-w-full min-h-full fixed top-20 left-0 flex flex-col md:hidden font-semibold">
             {menuItems.map((mi, i) => (
               <li
                 key={i}
-                className="text-[18px] text-[#222222] font-semibold border-b-2 border-b-orange"
+                className="text-[18px] text-[#222222] font-semibold border-b-2 border-b-lightOrange text-end py-2.5 px-5 bg-white"
               >
                 {mi.name}
               </li>

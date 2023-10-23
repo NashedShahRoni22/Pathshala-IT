@@ -12,3 +12,10 @@
 h1 {
   font-weight: 600;
 }
+
+
+.swiper-button-prev:after, .swiper-button-next:after{
+  font-size: 24px;
+  font-weight: 700;
+  color: white;
+}
