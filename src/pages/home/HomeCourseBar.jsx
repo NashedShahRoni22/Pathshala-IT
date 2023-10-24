@@ -63,18 +63,18 @@ export default function HomeCourseBar() {
           <SwiperSlide>
             <div
               key={i}
-              className="bg-white shadow flex items-center gap-4 p-5 rounded-xl"
+              className="bg-white shadow flex items-center justify-center gap-4 p-2.5 md:p-5 rounded-xl"
             >
               <img src={s.img} alt="" className="h-[60px] w-[60px]" />
-              <p className="text-[20px]">{s.name}</p>
+              <p className="text-[18px]">{s.name}</p>
             </div>
           </SwiperSlide>
         ))}
       </Swiper>
 
       {/* Custom Navigation Buttons */}
-      <div className="absolute top-4/5 h-10 w-10  p-4 bg-blue rounded-full -left-2 swiper-button-prev"></div>
-      <div className="absolute top-4/5 h-10 w-10  p-4 bg-blue rounded-full -right-2 swiper-button-next"></div>
+      <div className="absolute top-4/5 h-10 w-10  p-4 bg-blue rounded-full -left-5 swiper-button-prev"></div>
+      <div className="absolute top-4/5 h-10 w-10  p-4 bg-blue rounded-full -right-5 swiper-button-next"></div>
     </div>
   );
 }

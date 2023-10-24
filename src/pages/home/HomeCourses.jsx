@@ -1,13 +1,22 @@
-import React, { useState } from "react";
+import React from "react";
 import img from "../../assets/coursesBarIcons/CourseImage.png";
 import { BsStarFill, BsStarHalf } from "react-icons/bs";
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
-import Slider from "react-slick";
+// Import Swiper React components
+import { Swiper, SwiperSlide } from "swiper/react";
+
+// Import Swiper styles
+import "swiper/css";
+import "swiper/css/navigation";
+
+// import required modules
+import { Navigation } from "swiper/modules";
 
 export default function HomeCourses() {
   const data = {
     categories: [
+      {
+        name: "All Courses",
+      },
       {
         name: "Graphic & Multimedia",
       },
@@ -56,58 +65,6 @@ export default function HomeCourses() {
     ],
   };
 
-  const CustomNextArrow = (props) => (
-    <button className="slick-arrow slick-next" onClick={props.onClick}>
-      Next
-    </button>
-  );
-
-  const CustomPrevArrow = (props) => (
-    <button className="slick-arrow slick-prev" onClick={props.onClick}>
-      Prev
-    </button>
-  );
-
-  const settings = {
-    dots: false,
-    infinite: false,
-    speed: 500,
-    slidesToShow: 1, // Show 1 item on small screens
-    slidesToScroll: 1, // Scroll 1 item at a time
-    initialSlide: 0,
-    // centerMode: true,
-    nextArrow: <CustomNextArrow />, // Custom next button
-    prevArrow: <CustomPrevArrow />, // Custom previous button
-    responsive: [
-      {
-        breakpoint: 640, // For small screens
-        settings: {
-          slidesToShow: 1,
-          slidesToScroll: 1,
-          centerMode: true,
-        },
-      },
-      {
-        breakpoint: 768, // For medium screens
-        settings: {
-          slidesToShow: 4, // Show 4 items for medium screens
-          slidesToScroll: 4,
-          initialSlide: 0,
-          centerMode: false,
-        },
-      },
-      {
-        breakpoint: 1024, // For large screens
-        settings: {
-          slidesToShow: 6, // Show 6 items for large screens
-          slidesToScroll: 6,
-          infinite: false,
-          centerMode: false,
-        },
-      },
-    ],
-  };
-
   return (
     <section className="mx-5 md:container md:mx-auto my-10 lg:my-20">
       <h1 className="text-[40px] lg:text-[60px] text-center">
@@ -119,6 +76,48 @@ export default function HomeCourses() {
         The knowledge, experience, and expertise gained through the program will
         ensure your desired job in the global market.
       </p>
+
+      <div className="py-5 my-10 mx-5 md:container md:mx-auto relative">
+        <Swiper
+          slidesPerView={1}
+          spaceBetween={10}
+          navigation={{
+            nextEl: ".swiper-button-next",
+            prevEl: ".swiper-button-prev",
+          }}
+          breakpoints={{
+            640: {
+              slidesPerView: 1,
+              spaceBetween: 20,
+            },
+            768: {
+              slidesPerView: 2,
+              spaceBetween: 40,
+            },
+            1024: {
+              slidesPerView: 4,
+              spaceBetween: 50,
+            },
+          }}
+          modules={[Navigation]}
+          className="mySwiper p-5"
+        >
+          {data.categories.map((s, i) => (
+            <SwiperSlide>
+              <div
+                key={i}
+                className="bg-white shadow p-2 md:p-4 rounded-full border border-blue"
+              >
+                <p className="text-[18px] text-center">{s.name}</p>
+              </div>
+            </SwiperSlide>
+          ))}
+        </Swiper>
+
+        {/* Custom Navigation Buttons */}
+        <div className="absolute top-4/5 h-10 w-10  p-2.5 md:p-5 bg-blue rounded-full -left-5 swiper-button-prev"></div>
+        <div className="absolute top-4/5 h-10 w-10  p-2.5 md:p-5 bg-blue rounded-full -right-5 swiper-button-next"></div>
+      </div>
 
       <div className="grid md:grid-cols-2 lg:grid-cols-4 mt-10 gap-8">
         {data.cards.map((c, i) => (
