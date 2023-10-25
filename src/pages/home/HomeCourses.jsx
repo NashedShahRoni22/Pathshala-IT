@@ -11,6 +11,13 @@ import "swiper/css/navigation";
 // import required modules
 import { Navigation } from "swiper/modules";
 
+import {
+  BsFillArrowRightCircleFill,
+  BsFillArrowLeftCircleFill,
+} from "react-icons/bs";
+
+import {PiStudentFill} from "react-icons/pi"
+
 export default function HomeCourses() {
   const categories = [
     {
@@ -75,7 +82,12 @@ export default function HomeCourses() {
         ensure your desired job in the global market.
       </p>
 
-      <div className="py-5 my-5 mx-5 md:container md:mx-auto relative">
+      <div className="mt-5 md:container md:mx-auto relative flex items-center gap-2">
+        {/* Custom prev Buttons */}
+        <div id="categorySwiper-prev">
+          <BsFillArrowLeftCircleFill className="text-3xl" />
+        </div>
+
         <Swiper
           id="categorySwiper"
           slidesPerView={1}
@@ -99,36 +111,38 @@ export default function HomeCourses() {
             },
           }}
           modules={[Navigation]}
-          className="mySwiper"
+          className="mySwiper py-5"
         >
           {categories.map((s, i) => (
-            <SwiperSlide key={i} className="flex justify-center">
-              <p className="text-[18px] w-fit text-center py-2 px-4 shadow border border-blue rounded-full">
-                {s.name}
-              </p>
+            <SwiperSlide key={i}>
+              <div className="flex justify-center items-center">
+                <p className="text-[18px] w-fit text-center py-2 px-4 shadow border border-black rounded-full">
+                  {s.name}
+                </p>
+              </div>
             </SwiperSlide>
           ))}
         </Swiper>
 
-        {/* Custom Navigation Buttons */}
-        <div
-          id="categorySwiper-prev"
-          className="absolute top-1/2 -left-5 md:-left-10 swiper-button-prev"
-        ></div>
-        <div
-          id="categorySwiper-next"
-          className="absolute top-1/2 -right-5 md:-right-10 swiper-button-next"
-        ></div>
+        {/* Custom next Buttons */}
+        <div id="categorySwiper-next">
+          <BsFillArrowRightCircleFill className="text-3xl" />
+        </div>
       </div>
 
-      <div className="py-5 my-5 mx-5 md:container md:mx-auto relative">
+      <div className="mb-5 md:container md:mx-auto relative flex items-center gap-2">
+        {/* Custom prev Buttons */}
+        <div id="cardSwiper-prev">
+          <BsFillArrowLeftCircleFill className="text-3xl" />
+        </div>
+
         <Swiper
-        id="cardSwiper"
+          id="cardSwiper"
           slidesPerView={1}
           spaceBetween={10}
           navigation={{
             nextEl: "#cardSwiper-next",
-          prevEl: "#cardSwiper-prev",
+            prevEl: "#cardSwiper-prev",
           }}
           breakpoints={{
             640: {
@@ -145,7 +159,7 @@ export default function HomeCourses() {
             },
           }}
           modules={[Navigation]}
-          className="mySwiper"
+          className="mySwiper py-5"
         >
           {cards.map((c, i) => (
             <SwiperSlide key={i}>
@@ -153,17 +167,17 @@ export default function HomeCourses() {
                 <img src={c.img} alt="" className="w-full" />
                 <div className="p-4 flex flex-col gap-2.5">
                   <p className="text-[16px]">{c.categorey}</p>
-                  <p className="text-[24px]">{c.name}</p>
+                  <p className="text-[20px] md:text-[24px]">{c.name}</p>
                   <hr />
-                  <div className="flex justify-between">
+                  <div className="flex justify-between items-center">
                     <div className="flex gap-2">
-                      <BsStarFill className="text-xl md:text-2xl text-orange" />
-                      <BsStarFill className="text-xl md:text-2xl text-orange" />
-                      <BsStarFill className="text-xl md:text-2xl text-orange" />
-                      <BsStarFill className="text-xl md:text-2xl text-orange" />
-                      <BsStarHalf className="text-xl md:text-2xl text-orange" />
+                      <BsStarFill className="md:text-2xl text-orange" />
+                      <BsStarFill className="md:text-2xl text-orange" />
+                      <BsStarFill className="md:text-2xl text-orange" />
+                      <BsStarFill className="md:text-2xl text-orange" />
+                      <BsStarHalf className="md:text-2xl text-orange" />
                     </div>
-                    <p className="text-[16px]">{c.students}+ Students</p>
+                    <p className="text-[16px] flex gap-1 items-center"> <PiStudentFill className="text-xl md:text-2xl"/> {c.students}+</p>
                   </div>
                   <hr />
                   <div className="flex justify-between items-center">
@@ -178,15 +192,11 @@ export default function HomeCourses() {
           ))}
         </Swiper>
 
-        {/* Custom Navigation Buttons */}
-        <div
-          id="cardSwiper-prev"
-          className="absolute top-1/2 -left-5 md:-left-10 swiper-button-prev"
-        ></div>
-        <div
-          id="cardSwiper-next"
-          className="absolute top-1/2 -right-5 md:-right-10 swiper-button-next"
-        ></div>
+        {/* Custom next Buttons */}
+
+        <div id="cardSwiper-next">
+          <BsFillArrowRightCircleFill className="text-3xl" />
+        </div>
       </div>
     </section>
   );
