@@ -39,8 +39,8 @@ export default function HomeCourseBar() {
         slidesPerView={1}
         spaceBetween={10}
         navigation={{
-          nextEl: ".swiper-button-next",
-          prevEl: ".swiper-button-prev",
+          nextEl: ".swiper-button-next-coursebar",
+          prevEl: ".swiper-button-prev-coursebar",
         }}
         breakpoints={{
           640: {
@@ -57,7 +57,7 @@ export default function HomeCourseBar() {
           },
         }}
         modules={[Navigation]}
-        className="mySwiper p-10"
+        className="mySwiper p-5 md:p-10"
       >
         {services.map((s, i) => (
           <SwiperSlide>
@@ -73,8 +73,8 @@ export default function HomeCourseBar() {
       </Swiper>
 
       {/* Custom Navigation Buttons */}
-      <div className="absolute top-4/5 h-10 w-10  p-4 bg-blue rounded-full -left-5 swiper-button-prev"></div>
-      <div className="absolute top-4/5 h-10 w-10  p-4 bg-blue rounded-full -right-5 swiper-button-next"></div>
+      <div className="absolute top-1/2 -left-0 swiper-button-prev"></div>
+      <div className="absolute top-1/2 -right-0 swiper-button-next"></div>
     </div>
   );
 }

@@ -88,6 +88,45 @@ export default function HomeCourses() {
           breakpoints={{
             640: {
               slidesPerView: 1,
+              spaceBetween: 10,
+            },
+            768: {
+              slidesPerView: 2,
+              spaceBetween: 20,
+            },
+            1024: {
+              slidesPerView: 4,
+              spaceBetween: 30,
+            },
+          }}
+          modules={[Navigation]}
+          className="mySwiper"
+        >
+          {data.categories.map((s, i) => (
+            <SwiperSlide key={i} className="flex justify-center">
+              <p className="text-[18px] w-fit text-center py-2 px-4 shadow border border-black rounded-full">
+                {s.name}
+              </p>
+            </SwiperSlide>
+          ))}
+        </Swiper>
+
+        {/* Custom Navigation Buttons */}
+        <div className="absolute top-1/2 -left-5 md:-left-10 swiper-button-prev"></div>
+        <div className="absolute top-1/2 -right-5 md:-right-10 swiper-button-next"></div>
+      </div>
+      
+      <div className="py-5 my-10 mx-5 md:container md:mx-auto relative">
+        <Swiper
+          slidesPerView={1}
+          spaceBetween={10}
+          navigation={{
+            nextEl: ".swiper-button-next",
+            prevEl: ".swiper-button-prev",
+          }}
+          breakpoints={{
+            640: {
+              slidesPerView: 1,
               spaceBetween: 20,
             },
             768: {
@@ -95,58 +134,47 @@ export default function HomeCourses() {
               spaceBetween: 40,
             },
             1024: {
-              slidesPerView: 4,
+              slidesPerView: 3,
               spaceBetween: 50,
             },
           }}
           modules={[Navigation]}
-          className="mySwiper p-5"
+          className="mySwiper"
         >
-          {data.categories.map((s, i) => (
-            <SwiperSlide>
-              <div
-                key={i}
-                className="bg-white shadow p-2 md:p-4 rounded-full border border-blue"
-              >
-                <p className="text-[18px] text-center">{s.name}</p>
+          {data.cards.map((c, i) => (
+            <SwiperSlide key={i}>
+              <div className="bg-white shadow rounded-b-xl">
+                <img src={c.img} alt="" className="w-full" />
+                <div className="p-4 flex flex-col gap-2.5">
+                  <p className="text-[16px]">{c.categorey}</p>
+                  <p className="text-[24px]">{c.name}</p>
+                  <hr />
+                  <div className="flex justify-between">
+                    <div className="flex gap-2">
+                      <BsStarFill className="text-2xl text-orange" />
+                      <BsStarFill className="text-2xl text-orange" />
+                      <BsStarFill className="text-2xl text-orange" />
+                      <BsStarFill className="text-2xl text-orange" />
+                      <BsStarHalf className="text-2xl text-orange" />
+                    </div>
+                    <p className="text-[16px]">{c.students}+ Students</p>
+                  </div>
+                  <hr />
+                  <div className="flex justify-between items-center">
+                    <p className="text-[16px]">Fee: {c.fee} BDT</p>
+                    <button className="text-[16px] px-4 py-2 rounded-xl border border-black">
+                      Click For Discount
+                    </button>
+                  </div>
+                </div>
               </div>
             </SwiperSlide>
           ))}
         </Swiper>
 
         {/* Custom Navigation Buttons */}
-        <div className="absolute top-4/5 h-10 w-10  p-2.5 md:p-5 bg-blue rounded-full -left-5 swiper-button-prev"></div>
-        <div className="absolute top-4/5 h-10 w-10  p-2.5 md:p-5 bg-blue rounded-full -right-5 swiper-button-next"></div>
-      </div>
-
-      <div className="grid md:grid-cols-2 lg:grid-cols-4 mt-10 gap-8">
-        {data.cards.map((c, i) => (
-          <div key={i} className="bg-white shadow rounded-b-xl">
-            <img src={c.img} alt="" />
-            <div className="p-4 flex flex-col gap-2.5">
-              <p className="text-[16px]">{c.categorey}</p>
-              <p className="text-[24px]">{c.name}</p>
-              <hr />
-              <div className="flex justify-between">
-                <div className="flex gap-2">
-                  <BsStarFill className="text-2xl text-orange" />
-                  <BsStarFill className="text-2xl text-orange" />
-                  <BsStarFill className="text-2xl text-orange" />
-                  <BsStarFill className="text-2xl text-orange" />
-                  <BsStarHalf className="text-2xl text-orange" />
-                </div>
-                <p className="text-[16px]">{c.students}+ Students</p>
-              </div>
-              <hr />
-              <div className="flex justify-between items-center">
-                <p className="text-[16px]">Fee: {c.fee} BDT</p>
-                <button className="text-[16px] px-4 py-2 rounded-xl border border-black">
-                  Click For Discount
-                </button>
-              </div>
-            </div>
-          </div>
-        ))}
+        <div className="absolute top-1/2 -left-5 md:-left-10 swiper-button-prev"></div>
+        <div className="absolute top-1/2 -right-5 md:-right-10 swiper-button-next"></div>
       </div>
     </section>
   );
