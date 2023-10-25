@@ -24,10 +24,10 @@ export default function HomeCourses() {
       name: "All Courses",
     },
     {
-      name: "Graphic & Multimedia",
+      name: "Graphics Design & Multimedia",
     },
     {
-      name: "Web & Software",
+      name: "Web Design & Developemnt",
     },
     {
       name: "Digital Marketing",
@@ -84,9 +84,9 @@ export default function HomeCourses() {
 
       <div className="mt-5 md:container md:mx-auto relative flex items-center gap-2">
         {/* Custom prev Buttons */}
-        <div id="categorySwiper-prev">
+        <button id="categorySwiper-prev">
           <BsFillArrowLeftCircleFill className="text-3xl" />
-        </div>
+        </button>
 
         <Swiper
           id="categorySwiper"
@@ -125,16 +125,16 @@ export default function HomeCourses() {
         </Swiper>
 
         {/* Custom next Buttons */}
-        <div id="categorySwiper-next">
+        <button id="categorySwiper-next">
           <BsFillArrowRightCircleFill className="text-3xl" />
-        </div>
+        </button>
       </div>
 
       <div className="mb-5 md:container md:mx-auto relative flex items-center gap-2">
         {/* Custom prev Buttons */}
-        <div id="cardSwiper-prev">
+        <button id="cardSwiper-prev">
           <BsFillArrowLeftCircleFill className="text-3xl" />
-        </div>
+        </button>
 
         <Swiper
           id="cardSwiper"
@@ -147,15 +147,15 @@ export default function HomeCourses() {
           breakpoints={{
             640: {
               slidesPerView: 1,
-              spaceBetween: 20,
+              spaceBetween: 10,
             },
             768: {
               slidesPerView: 2,
-              spaceBetween: 40,
+              spaceBetween: 20,
             },
             1024: {
               slidesPerView: 3,
-              spaceBetween: 50,
+              spaceBetween: 30,
             },
           }}
           modules={[Navigation]}
@@ -193,10 +193,9 @@ export default function HomeCourses() {
         </Swiper>
 
         {/* Custom next Buttons */}
-
-        <div id="cardSwiper-next">
+        <button id="cardSwiper-next">
           <BsFillArrowRightCircleFill className="text-3xl" />
-        </div>
+        </button>
       </div>
     </section>
   );
