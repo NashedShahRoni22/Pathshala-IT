@@ -3,6 +3,7 @@ import { BsBook } from "react-icons/bs";
 import { FaBars } from "react-icons/fa";
 import { AiOutlineClose } from "react-icons/ai";
 import logo from "../../assets/logo/Pathshala IT Logo.png";
+import { Link } from "react-router-dom";
 
 export default function TopBar() {
   const [open, setOpen] = useState(false);
@@ -39,20 +40,23 @@ export default function TopBar() {
     <nav className="sticky top-0 bg-white z-50">
       <section className="mx-5 md:container md:mx-auto">
         <div className="flex justify-between items-center py-2.5 lg:py-5">
-          <div className="logo">
+          <Link to={'/'} className="logo">
             <img src={logo} alt="" className="h-[60px] w-[180px]" />
-          </div>
+          </Link>
           {/* default view nav */}
           <ul className="hidden md:flex gap-6 font-semibold">
             {menuItems.map((mi, i) => (
               <li key={i} className="text-[16px] text-[#222222]">
-                {mi.name}
+                <Link to={mi.link}>{mi.name}</Link>
               </li>
             ))}
           </ul>
-          <button className="py-2 px-4 bg-orange rounded hidden md:flex items-center gap-2.5">
+          <Link
+            to={"/register"}
+            className="py-2 px-4 bg-orange rounded hidden md:flex items-center gap-2.5"
+          >
             Enroll Now <BsBook className="text-xl" />
-          </button>
+          </Link>
           {/* navbar jsx */}
           <button className="md:hidden" onClick={() => setOpen(!open)}>
             {open ? (
@@ -71,7 +75,7 @@ export default function TopBar() {
                 key={i}
                 className="text-[18px] text-[#222222] font-semibold border-b-2 border-b-lightOrange text-end py-2.5 px-5 bg-white"
               >
-                {mi.name}
+                <Link to={mi.link}>{mi.name}</Link>
               </li>
             ))}
           </ul>
