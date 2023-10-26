@@ -100,7 +100,7 @@ export default function BottomBar() {
               <button className="px-4 py-2 bg-orange rounded-r-xl">Submit</button>
             </form>
           </div>
-          <p className="md:hidden">© Copyright reserved by Pathshala IT 2023</p>
+          <p className="md:hidden pb-[20px] md:pb-0">© Copyright reserved by Pathshala IT 2023</p>
         </div>
       </section>
     </footer>

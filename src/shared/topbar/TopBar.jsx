@@ -25,10 +25,14 @@ export default function TopBar() {
     },
     {
       name: "About Us",
-      link: "/",
+      link: "/about",
     },
     {
       name: "Success Stories",
+      link: "/",
+    },
+    {
+      name: "Courses",
       link: "/",
     },
     {

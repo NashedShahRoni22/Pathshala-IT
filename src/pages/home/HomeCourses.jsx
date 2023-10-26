@@ -181,8 +181,8 @@ export default function HomeCourses() {
                   </div>
                   <hr />
                   <div className="flex justify-between items-center">
-                    <p className="text-[16px]">Fee: {c.fee} &#2547; </p>
-                    <button className="flex gap-0.5 text-[16px] px-4 py-2 rounded-xl text-orange border border-orange hover:bg-orange hover:text-white duration-300 ease-linear">
+                    <p className="text-[16px] text-orange">&#2547; {c.fee}</p>
+                    <button className="flex gap-0.5 text-[16px] px-4 py-2 rounded-xl text-black border border-black hover:bg-orange hover:border-orange hover:text-white duration-300 ease-linear">
                       <span className="hidden md:block">Click For</span>Discount
                     </button>
                   </div>

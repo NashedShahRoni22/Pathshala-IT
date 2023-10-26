@@ -1,5 +1,5 @@
-import React from "react";
-import { Outlet } from "react-router-dom";
+import React, { useEffect } from "react";
+import { Outlet, useLocation } from "react-router-dom";
 import TopBar from "../shared/topbar/TopBar";
 import BottomBar from "../shared/bottombar/BottomBar";
 import MiddleBar from "../shared/fixedbar/MiddleBar";
@@ -7,10 +7,14 @@ import JoinSeminar from "../shared/fixedbar/JoinSeminar";
 import GetDiscount from "../shared/fixedbar/GetDiscount";
 
 export default function Main() {
+  const location = useLocation();
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [location]);
   return (
     <main>
       <TopBar />
-      <Outlet/>
+      <Outlet />
       <BottomBar />
       <div className="md:hidden fixed flex justify-center w-full bottom-2 z-20">
         <MiddleBar />
