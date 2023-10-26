@@ -139,7 +139,7 @@ export default function About() {
           <TabsHeader className="md:my-[80px]">
             {data.map(({ label, value, icon }) => (
               <Tab key={value} value={value}>
-                <div className="flex items-center gap-2">
+                <div className="flex flex-col md:flex-row items-center gap-2">
                   {React.createElement(icon, { className: "w-5 h-5" })}
                   {label}
                 </div>
