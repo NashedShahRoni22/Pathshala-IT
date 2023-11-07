@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { BsBook } from "react-icons/bs";
 import { FaBars } from "react-icons/fa";
 import { AiOutlineClose, AiOutlineLogin } from "react-icons/ai";
-import logo from "../../assets/logo/Pathshala IT Logo.png";
+import logo from "../../assets/logo/pathshala-IT.png";
 import { Link } from "react-router-dom";
 
 export default function TopBar() {
@@ -60,9 +60,9 @@ export default function TopBar() {
           {/* default view nav */}
           <ul className="hidden lg:flex gap-6 font-semibold">
             {menuItems.map((mi, i) => (
-              <div>
+              <div key={i}>
                 <Link to={mi.link}>
-                  <li className="text-[16px] text-[#222222]">
+                  <li className="text-[18px] text-[#222222]">
                     {mi.name}
                   </li>
                 </Link>

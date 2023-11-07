@@ -24,10 +24,10 @@ export default function HomeStories() {
   return (
     <div>
       <h1 className="text-[40px] lg:text-[60px] text-center">Success Stories</h1>
-      <div className="mx-5 md:container md:mx-auto my-5 lg:my-10 grid gap-4 lg:gap-8 md:grid-cols-2 place-items-center">
-        {data.map((d) => (
-          <div className="relative">
-            <img src={d.img} alt="" />
+      <div className="mx-5 md:container md:mx-auto my-5 lg:my-10 md:flex md:flex-wrap justify-center gap-[30px]">
+        {data.map((d,i) => (
+          <div key={i} className="relative my-[12px] md:my-0">
+            <img src={d.img} alt="" className=""/>
             <div className="absolute top-0 h-full w-full flex justify-center items-center">
                 <img src={videoIcon} alt="" className="h-[60px]" />
             </div>

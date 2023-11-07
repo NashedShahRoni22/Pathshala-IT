@@ -60,11 +60,8 @@ export default function HomeCourseBar() {
         className="mySwiper py-10"
       >
         {services.map((s, i) => (
-          <SwiperSlide>
-            <div
-              key={i}
-              className="bg-white shadow flex items-center justify-center gap-4 p-2.5 md:p-5 rounded-xl"
-            >
+          <SwiperSlide key={i}>
+            <div className="bg-white shadow flex items-center justify-center gap-4 p-2.5 md:p-5 rounded-xl">
               <img src={s.img} alt="" className="h-[60px] w-[60px]" />
               <p className="text-[18px]">{s.name}</p>
             </div>

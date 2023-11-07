@@ -50,7 +50,7 @@ export default function HomeSeminar() {
           {data.map((d, i) => (
             <div
               key={i}
-              className={`grid grid-cols-3 md:grid-cols-4 my-2.5 py-2.5 place-items-center border-b-2 hover:border-orange hover:shadow-xl duration-300 ease-linear ${i === 0 && 'border-t-2'} `}
+              className={`grid grid-cols-3 md:grid-cols-4 my-2.5 py-2.5 place-items-center border-b-2 hover:border-blue hover:shadow-xl duration-300 ease-linear`}
             >
               <div>
                 <h1 className="text-[24px] lg:text-[32px]">{d.day}</h1>

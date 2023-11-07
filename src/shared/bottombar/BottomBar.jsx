@@ -88,9 +88,9 @@ export default function BottomBar() {
         <img src={line} className="my-10 w-full" alt="" />
         <div className="grid grid-cols-1 md:grid-cols-3 place-items-center gap-4">
           <div className="flex gap-4">
-            <BsYoutube className="text-xl" />
             <BsFacebook className="text-xl" />
             <BsInstagram className="text-xl" />
+            <BsYoutube className="text-xl" />
             <BsLinkedin className="text-xl" />
           </div>
           <p className="hidden md:block">© Copyright reserved by Pathshala IT 2023</p>
