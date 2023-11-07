@@ -67,7 +67,7 @@ export default function HomeSeminar() {
                 <p className="text-[16px] lg:text-[20px]">{d.time}</p>
               </div>
               <div>
-                <button className="py-2 px-4 bg-blue rounded flex items-center gap-2.5">
+                <button className="py-2 px-4 text-white bg-blue rounded flex items-center gap-2.5">
                   Join Now
                 </button>
               </div>

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { BsBook } from "react-icons/bs";
 import { FaBars } from "react-icons/fa";
-import { AiOutlineClose } from "react-icons/ai";
+import { AiOutlineClose, AiOutlineLogin } from "react-icons/ai";
 import logo from "../../assets/logo/Pathshala IT Logo.png";
 import { Link } from "react-router-dom";
 
@@ -51,7 +51,7 @@ export default function TopBar() {
     },
   ];
   return (
-    <nav className="sticky top-0 bg-white z-50">
+    <nav className="sticky top-0 bg-lightBlue z-50">
       <section className="mx-5 md:container md:mx-auto">
         <div className="flex justify-between items-center py-2.5 lg:py-5">
           <Link to={"/"} className="logo">
@@ -72,14 +72,14 @@ export default function TopBar() {
           <div className="flex items-center gap-2.5">
             <Link
               to={"/register"}
-              className="py-2 px-4 bg-orange rounded hidden md:flex items-center gap-2.5"
+              className="py-2 px-4 bg-blue text-white rounded hidden md:flex items-center gap-2.5"
             >
-              Enroll Now <BsBook className="text-xl" />
+              Sign Up <AiOutlineLogin className="text-xl" />
             </Link>
             {/* navbar jsx */}
             <button className="lg:hidden" onClick={() => setOpen(!open)}>
               {open ? (
-                <AiOutlineClose className="text-2xl text-orange rounded-full" />
+                <AiOutlineClose className="text-2xl text-blue rounded-full" />
               ) : (
                 <FaBars className="text-2xl text-blue" />
               )}
@@ -92,7 +92,7 @@ export default function TopBar() {
           <ul className="bg-white/90 min-w-full min-h-full fixed top-20 left-0 flex flex-col lg:hidden font-semibold">
             {menuItems.map((mi, i) => (
               <Link key={i} to={mi.link}>
-                <li className="text-[18px] md:text-[24px] text-[#222222] font-semibold border-b-2 border-b-lightOrange hover:bg-lightOrange duration-300 ease-linear text-end md:text-center py-2.5 px-5 bg-white">
+                <li className="text-[18px] md:text-[24px] text-[#222222] font-semibold border-b-2 border-b-lightBlue hover:bg-lightBlue duration-300 ease-linear text-end md:text-center py-2.5 px-5 bg-white">
                   {mi.name}
                 </li>
               </Link>

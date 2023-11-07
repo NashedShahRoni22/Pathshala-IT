@@ -32,7 +32,7 @@ export default function HomeLanding() {
             We provide the best IT training around the world and we help young
             entrepreneurs, startups and established businesses grow.
           </p>
-          <button className="py-2 px-4 bg-orange rounded flex items-center gap-2.5">
+          <button className="py-2 px-4 bg-blue text-white rounded flex items-center gap-2.5">
             Enroll Now <BsBook className="text-xl" />
           </button>
         </div>

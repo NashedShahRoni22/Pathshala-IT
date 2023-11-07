@@ -1,6 +1,6 @@
 import React from "react";
 import { BsBook } from "react-icons/bs";
-import logo from "../../assets/logo/Pathshala IT Black.png";
+import logo from "../../assets/logo/Pathshala IT White.png";
 import line from "../../assets/footer/Line.png";
 import bkash from "../../assets/footer/bKash logo.png";
 import nagad from "../../assets/footer/g1438.png";
@@ -34,13 +34,13 @@ export default function BottomBar() {
     },
   ];
   return (
-    <footer className="bg-blue">
+    <footer className="bg-blue text-white">
       <section className="mx-5 md:container md:mx-auto py-10 lg:py-20">
-        <div className="flex flex-col justify-center items-center p-8 lg:p-16 gap-5 bg-white rounded-xl">
+        <div className="text-black flex flex-col justify-center items-center p-8 lg:p-16 gap-5 bg-white rounded-xl">
           <h1 className="text-[40px] lg:text-[60px] text-center">
             Ready to Begin <br /> Your Journey With Us?
           </h1>
-          <button className="py-2 px-4 bg-orange rounded flex items-center gap-2.5">
+          <button className="py-2 px-4 bg-blue text-white rounded flex items-center gap-2.5">
             Enroll Now <BsBook className="text-xl" />
           </button>
         </div>

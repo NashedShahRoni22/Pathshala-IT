@@ -14,20 +14,20 @@ export default function HomeAdmission() {
           Admission Time Left
         </h1>
         <div className="grid grid-cols-4 gap-2.5 lg:gap-5 my-5 lg:my-10">
-          <div className="bg-orange px-2.5 lg:px-5 py-1 lg:py-2 rounded-xl">
-            <p className="text-[24px] lg:text-[60px] text-center">30</p>
+          <div className="bg-white  px-2.5 lg:px-5 py-1 lg:py-2 rounded-xl">
+            <p className="text-[24px] font-semibold lg:text-[60px] text-center">30</p>
             <p className="text-[16px] lg:text-[20px] text-center">Days</p>
           </div>
-          <div className="bg-orange px-2.5 lg:px-5 py-1 lg:py-2 rounded-xl">
-            <p className="text-[24px] lg:text-[60px] text-center">30</p>
+          <div className="bg-white  px-2.5 lg:px-5 py-1 lg:py-2 rounded-xl">
+            <p className="text-[24px] font-semibold lg:text-[60px] text-center">30</p>
             <p className="text-[16px] lg:text-[20px] text-center">Hours</p>
           </div>
-          <div className="bg-orange px-2.5 lg:px-5 py-1 lg:py-2 rounded-xl">
-            <p className="text-[24px] lg:text-[60px] text-center">58</p>
+          <div className="bg-white  px-2.5 lg:px-5 py-1 lg:py-2 rounded-xl">
+            <p className="text-[24px] font-semibold lg:text-[60px] text-center">58</p>
             <p className="text-[16px] lg:text-[20px] text-center flex justify-center">Min<span className="hidden md:block">ute</span>s</p>
           </div>
-          <div className="bg-orange px-2.5 lg:px-5 py-1 lg:py-2 rounded-xl">
-            <p className="text-[24px] lg:text-[60px] text-center">59</p>
+          <div className="bg-white  px-2.5 lg:px-5 py-1 lg:py-2 rounded-xl">
+            <p className="text-[24px] font-semibold lg:text-[60px] text-center">59</p>
             <p className="text-[16px] lg:text-[20px] text-center flex justify-center">Sec<span className="hidden md:block">ond</span>s </p>
           </div>
         </div>
@@ -63,7 +63,7 @@ export default function HomeAdmission() {
           </div>
         </div>
         <div className="hidden mt-10 lg:flex justify-between items-center bg-blue p-5 rounded-xl">
-          <p className="text-[16px] lg:text-[20px]">
+          <p className="text-[16px] lg:text-[20px] text-white">
             If interested to take admission in Digital Marketing
           </p>
           <button className="py-2 px-4 bg-white rounded flex items-center gap-2.5">
@@ -71,7 +71,7 @@ export default function HomeAdmission() {
           </button>
         </div>
         <div className="mt-5 lg:hidden flex justify-center">
-          <button className="py-2 px-4 bg-blue rounded flex items-center gap-2.5">
+          <button className="py-2 px-4 bg-white rounded flex items-center gap-2.5">
             Enroll Now <BsBook className="text-xl" />
           </button>
         </div>

@@ -5,7 +5,7 @@ module.exports = withMT({
   content: ["./index.html", "./src/**/*.{vue,js,ts,jsx,tsx}"],
   theme: {
     colors: {
-      blue: '#1FABF4',
+      blue: '#1573FF',
       lightBlue: '#E3F5FE',
       orange: '#FB8640',
       lightOrange: '#FFEADE',

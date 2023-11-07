@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import img from "../../assets/coursesBarIcons/CourseImage.png";
 import { BsStarFill, BsStarHalf } from "react-icons/bs";
 // Import Swiper React components
@@ -16,9 +16,11 @@ import {
   BsFillArrowLeftCircleFill,
 } from "react-icons/bs";
 
-import {PiStudentFill} from "react-icons/pi"
+import { PiStudentFill } from "react-icons/pi";
 
 export default function HomeCourses() {
+  const [courses, setCourses] = useState();
+  console.log(courses);
   const categories = [
     {
       name: "All Courses",
@@ -70,6 +72,18 @@ export default function HomeCourses() {
     },
   ];
 
+  useEffect(() => {
+    fetch("https://api.pathshalait.com/api/v1/course/list")
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.status_code === 200) {
+          setCourses(data?.data);
+        } else {
+          console.log(data);
+        }
+      });
+  }, []);
+
   return (
     <section className="mx-5 md:container md:mx-auto my-10 lg:my-20">
       <h1 className="text-[40px] lg:text-[60px] text-center">
@@ -116,9 +130,9 @@ export default function HomeCourses() {
           {categories.map((s, i) => (
             <SwiperSlide key={i}>
               <div className="flex justify-center items-center">
-                <p className="text-[18px] w-fit text-center py-2 px-4 shadow border border-black rounded-full">
+                <button className="text-[18px] w-fit text-center py-2 px-4 shadow border border-black rounded-full">
                   {s.name}
-                </p>
+                </button>
               </div>
             </SwiperSlide>
           ))}
@@ -161,13 +175,13 @@ export default function HomeCourses() {
           modules={[Navigation]}
           className="mySwiper py-5"
         >
-          {cards.map((c, i) => (
+          {courses?.map((c, i) => (
             <SwiperSlide key={i}>
               <div className="bg-white shadow rounded-b-xl">
-                <img src={c.img} alt="" className="w-full" />
+                <img src={c?.course_image} alt="" className="w-full" />
                 <div className="p-4 flex flex-col gap-2.5">
-                  <p className="text-[16px]">{c.categorey}</p>
-                  <p className="text-[20px] md:text-[24px]">{c.name}</p>
+                  {/* <p className="text-[16px]">{c.categorey}</p> */}
+                  <p className="text-[20px] md:text-[24px]">{c?.name}</p>
                   <hr />
                   <div className="flex justify-between items-center">
                     <div className="flex gap-2">
@@ -177,11 +191,15 @@ export default function HomeCourses() {
                       <BsStarFill className="md:text-2xl text-orange" />
                       <BsStarHalf className="md:text-2xl text-orange" />
                     </div>
-                    <p className="text-[16px] flex gap-1 items-center"> <PiStudentFill className="text-xl md:text-2xl"/> {c.students}+</p>
+                    <p className="text-[16px] flex gap-1 items-center">
+                      {" "}
+                      <PiStudentFill className="text-xl md:text-2xl" />{" "}
+                      500+
+                    </p>
                   </div>
                   <hr />
                   <div className="flex justify-between items-center">
-                    <p className="text-[16px] text-orange">&#2547; {c.fee}</p>
+                    <p className="text-[16px] text-orange">&#2547; {c?.online_amount}</p>
                     <button className="flex gap-0.5 text-[16px] px-4 py-2 rounded-xl text-black border border-black hover:bg-orange hover:border-orange hover:text-white duration-300 ease-linear">
                       <span className="hidden md:block">Click For</span>Discount
                     </button>
