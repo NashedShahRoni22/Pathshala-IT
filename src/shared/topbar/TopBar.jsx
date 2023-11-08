@@ -60,12 +60,26 @@ export default function TopBar() {
           {/* default view nav */}
           <ul className="hidden lg:flex gap-6 font-semibold">
             {menuItems.map((mi, i) => (
-              <div key={i}>
-                <Link to={mi.link}>
-                  <li className="text-[18px] text-[#222222]">
+              <div key={i} className="relative group">
+                <Link to={mi.link} className="relative">
+                  <li className="text-[18px] text-[#222222] border-b-2 border-transparent hover:border-blue">
                     {mi.name}
                   </li>
+                  {mi.child && (
+                    <div className="h-2.5 w-2.5 bg-blue rounded-full absolute -top-1 -right-1"></div>
+                  )}
                 </Link>
+                {mi.child && (
+                  <ul className="absolute hidden group-hover:block top-6 left-4 min-w-max bg-white rounded shadow">
+                    {mi.child.map((mc, i) => (
+                      <Link key={i}>
+                        <li className="p-2 text-[18px] text-[#222222] border-b-2 border-b-lightBlue hover:border-b-blue duration-300 ease-linear">
+                          {mc.name}
+                        </li>
+                      </Link>
+                    ))}
+                  </ul>
+                )}
               </div>
             ))}
           </ul>
@@ -91,16 +105,33 @@ export default function TopBar() {
         {open && (
           <ul className="bg-white/90 min-w-full min-h-full fixed top-20 left-0 flex flex-col lg:hidden font-semibold">
             {menuItems.map((mi, i) => (
-              <Link key={i} to={mi.link}>
-                <li className="text-[18px] md:text-[24px] text-[#222222] font-semibold border-b-2 border-b-lightBlue hover:bg-lightBlue duration-300 ease-linear text-end md:text-center py-2.5 px-5 bg-white">
-                  {mi.name}
-                </li>
-              </Link>
+              <div key={i} className="group">
+                <Link to={mi.link} className="relative">
+                  <li className="text-[18px] md:text-[24px] text-[#222222] font-semibold border-b-2 border-b-lightBlue hover:bg-lightBlue duration-300 ease-linear text-end py-2.5 px-5 md:px-10 bg-white">
+                    {mi.name}
+                  </li>
+                  {mi.child && (
+                    <div className="h-2.5 w-2.5 bg-blue rounded-full absolute top-2 right-2"></div>
+                  )}
+                </Link>
+
+                {mi.child && (
+                  <ul className="hidden group-hover:block mr-5">
+                    {mi.child.map((mc, i) => (
+                      <Link key={i}>
+                        <li className="text-[16px] md:text-[18px] text-[#222222] font-semibold border-b-2 border-b-lightBlue hover:bg-lightBlue duration-300 ease-linear text-end py-2.5 px-5 md:px-10 bg-white">
+                          {mc.name}
+                        </li>
+                      </Link>
+                    ))}
+                  </ul>
+                )}
+              </div>
             ))}
             <li className="flex justify-end mr-5 mt-2.5">
               <Link
                 to={"/register"}
-                className="py-2 px-4 w-fit bg-orange rounded md:hidden flex items-center gap-2.5"
+                className="py-2 px-4 w-fit bg-blue text-white rounded md:hidden flex items-center gap-2.5"
               >
                 Enroll Now <BsBook className="text-xl" />
               </Link>

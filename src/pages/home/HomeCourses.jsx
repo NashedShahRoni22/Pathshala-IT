@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import img from "../../assets/coursesBarIcons/CourseImage.png";
 import { BsStarFill, BsStarHalf } from "react-icons/bs";
 // Import Swiper React components
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -20,28 +19,29 @@ import { PiStudentFill } from "react-icons/pi";
 
 export default function HomeCourses() {
   const [loader, setLoader] = useState(false);
+  const [catLoader, setCatLoader] = useState(false);
   const [courses, setCourses] = useState();
   const [categories, setCategories] = useState();
   console.log(courses, categories);
   const [activeCourseId, setActiveCourseId] = useState("");
-
+  console.log(activeCourseId);
   //get categories
   useEffect(() => {
-    setLoader(true);
+    setCatLoader(true);
     fetch("https://api.pathshalait.com/api/v1/category/list")
       .then((res) => res.json())
       .then((data) => {
         if (data.status_code === 200) {
           setCategories(data?.data);
-          setLoader(false);
+          setCatLoader(false);
         } else {
           console.log(data);
-          setLoader(false);
+          setCatLoader(false);
         }
       });
   }, []);
 
-  //get cooures
+  //get courses
   useEffect(() => {
     setLoader(true);
     fetch("https://api.pathshalait.com/api/v1/course/list")
@@ -74,7 +74,7 @@ export default function HomeCourses() {
         <button id="categorySwiper-prev">
           <BsFillArrowLeftCircleFill className="text-3xl" />
         </button>
-        {loader ? (
+        {catLoader ? (
           "Loading..."
         ) : (
           <Swiper
@@ -105,7 +105,7 @@ export default function HomeCourses() {
             {categories?.map((s, i) => (
               <SwiperSlide key={i}>
                 <div className="flex justify-center items-center">
-                  <button className="text-[18px] w-fit text-center py-2 px-4 shadow border border-black rounded-full">
+                  <button onClick={()=> setActiveCourseId(s?.id)} className="text-[18px] w-fit text-center py-2 px-4 shadow border border-black rounded-full">
                     {s.name}
                   </button>
                 </div>
@@ -154,12 +154,12 @@ export default function HomeCourses() {
             modules={[Navigation]}
             className="mySwiper py-5"
           >
-            {courses?.map((c, i) => (
+            {courses?.filter( c => c?.category_id === activeCourseId).map((c, i) => (
               <SwiperSlide key={i}>
                 <div className="bg-white shadow rounded-b-xl">
-                  <img src={c?.course_image} alt="" className="w-full" />
+                  <img src={c?.course_image} alt="" className="min-w-full" />
                   <div className="p-4 flex flex-col gap-2.5">
-                    {/* <p className="text-[16px]">{c.categorey}</p> */}
+                    <p className="text-[16px]">{c?.category_name}</p>
                     <p className="text-[20px] md:text-[24px]">{c?.name}</p>
                     <hr />
                     <div className="flex justify-between items-center">
