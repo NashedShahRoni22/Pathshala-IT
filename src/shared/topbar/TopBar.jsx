@@ -85,10 +85,10 @@ export default function TopBar() {
           </ul>
           <div className="flex items-center gap-2.5">
             <Link
-              to={"/register"}
+              to={"/login"}
               className="py-2 px-4 bg-blue text-white rounded hidden md:flex items-center gap-2.5"
             >
-              Sign Up <AiOutlineLogin className="text-xl" />
+              Login <AiOutlineLogin className="text-xl" />
             </Link>
             {/* navbar jsx */}
             <button className="lg:hidden" onClick={() => setOpen(!open)}>
@@ -130,10 +130,10 @@ export default function TopBar() {
             ))}
             <li className="flex justify-end mr-5 mt-2.5">
               <Link
-                to={"/register"}
+                to={"/login"}
                 className="py-2 px-4 w-fit bg-blue text-white rounded md:hidden flex items-center gap-2.5"
               >
-                Enroll Now <BsBook className="text-xl" />
+                Login <AiOutlineLogin className="text-xl" />
               </Link>
             </li>
           </ul>

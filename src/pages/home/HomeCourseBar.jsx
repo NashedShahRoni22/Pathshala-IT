@@ -34,7 +34,7 @@ export default function HomeCourseBar() {
     },
   ];
   return (
-    <div className="py-5 mx-5 md:container md:mx-auto relative">
+    <div className="py-5 mx-5 md:container md:mx-auto">
       <Swiper
         slidesPerView={1}
         spaceBetween={10}
