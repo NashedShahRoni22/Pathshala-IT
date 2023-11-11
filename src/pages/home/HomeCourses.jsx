@@ -19,6 +19,7 @@ import {
 import { PiStudentFill } from "react-icons/pi";
 import Loader from "../../shared/loader/Loader";
 import { Link } from "react-router-dom";
+import { BeatLoader } from "react-spinners";
 
 export default function HomeCourses() {
   const [loader, setLoader] = useState(false);
@@ -80,7 +81,14 @@ export default function HomeCourses() {
           <BsFillArrowLeftCircleFill className="text-3xl text-blue" />
         </button>
         {catLoader ? (
-          "Loading..."
+          <div className="min-w-full flex justify-center">
+            <BeatLoader
+              color={"#1573FF"}
+              size={15}
+              aria-label="Loading Spinner"
+              data-testid="loader"
+            />
+          </div>
         ) : (
           <Swiper
             id="categorySwiper"
@@ -105,7 +113,7 @@ export default function HomeCourses() {
               },
             }}
             modules={[Navigation]}
-            className="mySwiper py-5"
+            className="mySwiper py-5 md:py-10"
           >
             <SwiperSlide>
               <div className="flex justify-center items-center">
@@ -162,15 +170,15 @@ export default function HomeCourses() {
               },
               768: {
                 slidesPerView: 2,
-                spaceBetween: 20,
+                spaceBetween: 15,
               },
               1024: {
                 slidesPerView: 3,
-                spaceBetween: 30,
+                spaceBetween: 20,
               },
             }}
             modules={[Pagination]}
-            className="mySwiper py-10"
+            className="mySwiper pb-20"
           >
             {courses?.map((c, i) => (
               <SwiperSlide key={i}>
@@ -179,7 +187,7 @@ export default function HomeCourses() {
                     <img
                       src={c?.course_image}
                       alt=""
-                      className="min-w-full h-[240px] rounded-t-xl"
+                      className="min-w-full h-[180px] md:h-[240px] rounded-t-xl"
                     />
                     <div className="p-4 flex flex-col gap-2.5">
                       <p className="text-[16px]">{c?.category_name}</p>

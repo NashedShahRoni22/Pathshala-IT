@@ -6,7 +6,6 @@ export default function CourseView() {
   const [loader, setLoader] = useState(false);
   const { id } = useParams();
   const [courseDetails, setCourseDetails] = useState({});
-  console.log(courseDetails);
 
   useEffect(() => {
     setLoader(true);
