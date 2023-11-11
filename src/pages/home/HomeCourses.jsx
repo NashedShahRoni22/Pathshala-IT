@@ -18,6 +18,7 @@ import {
 
 import { PiStudentFill } from "react-icons/pi";
 import Loader from "../../shared/loader/Loader";
+import { Link } from "react-router-dom";
 
 export default function HomeCourses() {
   const [loader, setLoader] = useState(false);
@@ -144,7 +145,7 @@ export default function HomeCourses() {
       {/* courses cards  */}
       <div className={`md:container md:mx-auto relative`}>
         {loader ? (
-          <Loader/>
+          <Loader />
         ) : (
           <Swiper
             id="cardSwiper"
@@ -173,37 +174,43 @@ export default function HomeCourses() {
           >
             {courses?.map((c, i) => (
               <SwiperSlide key={i}>
-                <div className="bg-white shadow rounded-xl">
-                  <img src={c?.course_image} alt="" className="min-w-full h-[240px] rounded-t-xl" />
-                  <div className="p-4 flex flex-col gap-2.5">
-                    <p className="text-[16px]">{c?.category_name}</p>
-                    <p className="text-[20px] md:text-[24px]">{c?.name}</p>
-                    <hr />
-                    <div className="flex justify-between items-center">
-                      <div className="flex gap-2">
-                        <BsStarFill className="md:text-xl text-orange" />
-                        <BsStarFill className="md:text-xl text-orange" />
-                        <BsStarFill className="md:text-xl text-orange" />
-                        <BsStarFill className="md:text-xl text-orange" />
-                        <BsStarHalf className="md:text-xl text-orange" />
+                <div className="bg-white shadow-xl rounded-xl">
+                  <Link to={`/course_details/${c?.course_slug}`}>
+                    <img
+                      src={c?.course_image}
+                      alt=""
+                      className="min-w-full h-[240px] rounded-t-xl"
+                    />
+                    <div className="p-4 flex flex-col gap-2.5">
+                      <p className="text-[16px]">{c?.category_name}</p>
+                      <p className="text-[20px] md:text-[24px]">{c?.name}</p>
+                      <hr />
+                      <div className="flex justify-between items-center">
+                        <div className="flex gap-2">
+                          <BsStarFill className="md:text-xl text-orange" />
+                          <BsStarFill className="md:text-xl text-orange" />
+                          <BsStarFill className="md:text-xl text-orange" />
+                          <BsStarFill className="md:text-xl text-orange" />
+                          <BsStarHalf className="md:text-xl text-orange" />
+                        </div>
+                        <p className="text-[16px] flex gap-1 items-center">
+                          {" "}
+                          <PiStudentFill className="text-xl md:text-2xl text-blue" />{" "}
+                          500+
+                        </p>
                       </div>
-                      <p className="text-[16px] flex gap-1 items-center">
-                        {" "}
-                        <PiStudentFill className="text-xl md:text-2xl text-blue" />{" "}
-                        500+
-                      </p>
+                      <hr />
+                      <div className="flex justify-between items-center">
+                        <p className="text-[16px] text-blue">
+                          &#2547; {c?.online_amount}
+                        </p>
+                        <button className="flex gap-0.5 text-[16px] px-4 py-2 rounded-xl text-black border border-blue hover:bg-blue hover:text-white duration-300 ease-linear">
+                          <span className="hidden md:block">Click For</span>
+                          Discount
+                        </button>
+                      </div>
                     </div>
-                    <hr />
-                    <div className="flex justify-between items-center">
-                      <p className="text-[16px] text-blue">
-                        &#2547; {c?.online_amount}
-                      </p>
-                      <button className="flex gap-0.5 text-[16px] px-4 py-2 rounded-xl text-black border border-blue hover:bg-blue hover:text-white duration-300 ease-linear">
-                        <span className="hidden md:block">Click For</span>
-                        Discount
-                      </button>
-                    </div>
-                  </div>
+                  </Link>
                 </div>
               </SwiperSlide>
             ))}

@@ -119,7 +119,7 @@ export default function TopBar() {
                   <ul className="hidden group-hover:block mr-5">
                     {mi.child.map((mc, i) => (
                       <Link key={i}>
-                        <li className="text-[16px] md:text-[18px] text-[#222222] font-semibold border-b-2 border-b-lightBlue hover:bg-lightBlue duration-300 ease-linear text-end py-2.5 px-5 md:px-10 bg-white">
+                        <li className="text-[16px] md:text-[22px] text-[#222222] font-semibold border-b-2 border-b-lightBlue hover:bg-lightBlue duration-300 ease-linear text-end py-2.5 px-5 md:px-10 bg-white">
                           {mc.name}
                         </li>
                       </Link>
