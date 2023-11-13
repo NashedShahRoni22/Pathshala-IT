@@ -5,33 +5,42 @@ import Register from "../pages/auth/Register";
 import About from "../pages/about/About";
 import Login from "../pages/auth/Login";
 import CourseView from "../pages/courses/CourseView";
+import PaymentPage from "../pages/payment/PaymentPage";
+import PrivateRoute from "./PrivateRoute";
 
 export const router = createBrowserRouter([
-
-    {
-        path:"/",
-        element: <Main/>,
-        children:[
-            {
-                path:"/",
-                element:<Home/>
-            },
-            {
-                path:"/about",
-                element:<About/>
-            },
-            {
-                path:"/register",
-                element:<Register/>
-            },
-            {
-                path:"/login",
-                element:<Login/>
-            },
-            {
-                path:"/course_details/:id",
-                element:<CourseView/>
-            },
-        ]
-    }
-])
+  {
+    path: "/",
+    element: <Main />,
+    children: [
+      {
+        path: "/",
+        element: <Home />,
+      },
+      {
+        path: "/about",
+        element: <About />,
+      },
+      {
+        path: "/register",
+        element: <Register />,
+      },
+      {
+        path: "/login",
+        element: <Login />,
+      },
+      {
+        path: "/course_details/:id",
+        element: <CourseView />,
+      },
+      {
+        path: "/payment",
+        element: (
+          <PrivateRoute>
+            <PaymentPage />
+          </PrivateRoute>
+        ),
+      },
+    ],
+  },
+]);

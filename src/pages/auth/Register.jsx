@@ -31,7 +31,7 @@ export default function Register() {
       setLoader(false);
     } 
     else if( number.length !== 11 ){
-      toast.error("Enter a valid number");
+      toast.error("Enter a valid BD number");
       setLoader(false);
     }
     else {

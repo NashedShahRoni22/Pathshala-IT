@@ -121,10 +121,10 @@ export default function About() {
   ];
   return (
     <section>
-      <div className="bg-lightBlue py-10">
+      <div className="bg-lightBlue py-20 md:py-40">
         <div className="mx-5 md:container md:mx-auto">
           <h1 className="text-[40px] md:text-[60px]">About Us</h1>
-          <p className="text-[16px] md:w-2/3">
+          <p className="text-[16px] md:text-[20px] md:w-2/3">
             Pathshala IT is an institution where empowering the community with
             an excellent standard of learning is what we desire. We endeavor for
             the continuous improvement of our leaders who will work to construct

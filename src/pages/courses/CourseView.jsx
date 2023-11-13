@@ -1,12 +1,14 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import Loader from "../../shared/loader/Loader";
+import { BsBook } from "react-icons/bs";
 
 export default function CourseView() {
   const [loader, setLoader] = useState(false);
   const { id } = useParams();
   const [courseDetails, setCourseDetails] = useState({});
 
+  // get courses data
   useEffect(() => {
     setLoader(true);
     fetch(`https://api.pathshalait.com/api/v1/course/view/${id}`)
@@ -28,10 +30,14 @@ export default function CourseView() {
       ) : (
         <section>
           <div className="bg-lightBlue py-10 lg:py-20">
-            <div className="flex flex-col-reverse md:flex-row gap-[30px] mx-5 md:container md:mx-auto">
-              <div className="md:w-1/2 flex flex-col gap-6">
-                <p className="text-[18px] md:text-[24px]">{courseDetails?.slogan}</p>
-                <h1 className="text-[24px] md:text-[40px]">{courseDetails?.name}</h1>
+            <div className="flex flex-col-reverse lg:flex-row gap-[30px] mx-5 md:container md:mx-auto">
+              <div className="lg:w-1/2 flex flex-col gap-6">
+                <p className="text-[18px] md:text-[24px]">
+                  {courseDetails?.slogan}
+                </p>
+                <h1 className="text-[24px] md:text-[40px]">
+                  {courseDetails?.name}
+                </h1>
                 <div className="grid grid-cols-3 gap-x-[15px] md:gap-x-[30px]">
                   <div className="bg-lightOrange py-[12px] px-[16px] flex flex-col items-center justify-center rounded-xl">
                     <h1 className="text-[24px] md:text-[32px] flex">
@@ -53,9 +59,16 @@ export default function CourseView() {
                   </div>
                 </div>
                 <p className="text-[18px]">{courseDetails?.course_overview}</p>
+                <Link to="/payment" className="py-2 px-4 w-fit bg-blue text-white rounded flex items-center gap-2.5">
+                  Enroll Now <BsBook className="text-xl" />
+                </Link>
               </div>
-              <div className="md:w-1/2">
-                <img src={courseDetails?.course_image} className="rounded-xl" alt="" />
+              <div className="lg:w-1/2">
+                <img
+                  src={courseDetails?.course_image}
+                  className="rounded-xl"
+                  alt=""
+                />
               </div>
             </div>
           </div>
@@ -78,11 +91,20 @@ export default function CourseView() {
               </ul>
             </div>
             <div className="bg-lightOrange pl-[20px] py-[40px]  my-[30px] md:mt-[60px] rounded-xl">
-              <h1 className="text-[24px] md:text-[40px]">Softwares You'll Learn</h1>
+              <h1 className="text-[24px] md:text-[40px]">
+                Softwares You'll Learn
+              </h1>
               <ul className="mt-[24px] md:mt-[48px] grid grid-cols-2">
                 {courseDetails?.all_tools?.software?.map((ts, i) => (
-                  <li className="text-[16px] flex items-center gap-[8px]" key={i}>
-                    <img className="h-[24px] md:h-[48px] w-[24px] md:w-[48px]" src={ts?.icon} alt="" />
+                  <li
+                    className="text-[16px] flex items-center gap-[8px]"
+                    key={i}
+                  >
+                    <img
+                      className="h-[24px] md:h-[48px] w-[24px] md:w-[48px]"
+                      src={ts?.icon}
+                      alt=""
+                    />
                     <p className="text-[14px] md:text-[18px]">{ts?.name}</p>
                   </li>
                 ))}
@@ -90,17 +112,25 @@ export default function CourseView() {
             </div>
 
             <div className="bg-lightOrange pl-[20px] py-[40px]  my-[30px] md:my-[60px] rounded-xl">
-              <h1 className="text-[24px] md:text-[40px]">This Course is Designed for</h1>
+              <h1 className="text-[24px] md:text-[40px]">
+                This Course is Designed for
+              </h1>
               <ul className="mt-[24px] md:mt-[48px] grid grid-cols-2">
                 {courseDetails?.all_tools?.profession?.map((ts, i) => (
-                  <li className="text-[16px] flex items-center gap-[8px]" key={i}>
-                    <img className="h-[24px] md:h-[48px] w-[24px] md:w-[48px]" src={ts?.icon} alt="" />
+                  <li
+                    className="text-[16px] flex items-center gap-[8px]"
+                    key={i}
+                  >
+                    <img
+                      className="h-[24px] md:h-[48px] w-[24px] md:w-[48px]"
+                      src={ts?.icon}
+                      alt=""
+                    />
                     <p className="text-[14px] md:text-[18px]">{ts?.name}</p>
                   </li>
                 ))}
               </ul>
             </div>
-
           </div>
         </section>
       )}

@@ -24,8 +24,8 @@ import { BeatLoader } from "react-spinners";
 export default function HomeCourses() {
   const [loader, setLoader] = useState(false);
   const [catLoader, setCatLoader] = useState(false);
-  const [courses, setCourses] = useState();
-  const [categories, setCategories] = useState();
+  const [courses, setCourses] = useState([]);
+  const [categories, setCategories] = useState([]);
   const [activeCourseId, setActiveCourseId] = useState("");
   //get categories
   useEffect(() => {
@@ -155,74 +155,82 @@ export default function HomeCourses() {
         {loader ? (
           <Loader />
         ) : (
-          <Swiper
-            id="cardSwiper"
-            slidesPerView={1}
-            spaceBetween={10}
-            pagination={{
-              clickable: true,
-            }}
-            grabCursor={true}
-            breakpoints={{
-              640: {
-                slidesPerView: 1,
-                spaceBetween: 10,
-              },
-              768: {
-                slidesPerView: 2,
-                spaceBetween: 15,
-              },
-              1024: {
-                slidesPerView: 3,
-                spaceBetween: 20,
-              },
-            }}
-            modules={[Pagination]}
-            className="mySwiper pb-20"
-          >
-            {courses?.map((c, i) => (
-              <SwiperSlide key={i}>
-                <div className="bg-white shadow-xl rounded-xl">
-                  <Link to={`/course_details/${c?.course_slug}`}>
-                    <img
-                      src={c?.course_image}
-                      alt=""
-                      className="min-w-full h-[180px] md:h-[240px] rounded-t-xl"
-                    />
-                    <div className="p-4 flex flex-col gap-2.5">
-                      <p className="text-[16px]">{c?.category_name}</p>
-                      <p className="text-[20px] md:text-[24px]">{c?.name}</p>
-                      <hr />
-                      <div className="flex justify-between items-center">
-                        <div className="flex gap-2">
-                          <BsStarFill className="md:text-xl text-orange" />
-                          <BsStarFill className="md:text-xl text-orange" />
-                          <BsStarFill className="md:text-xl text-orange" />
-                          <BsStarFill className="md:text-xl text-orange" />
-                          <BsStarHalf className="md:text-xl text-orange" />
+          <>
+            {courses?.length > 0 ? (
+              <Swiper
+                id="cardSwiper"
+                slidesPerView={1}
+                spaceBetween={10}
+                pagination={{
+                  clickable: true,
+                }}
+                grabCursor={true}
+                breakpoints={{
+                  640: {
+                    slidesPerView: 1,
+                    spaceBetween: 10,
+                  },
+                  768: {
+                    slidesPerView: 2,
+                    spaceBetween: 15,
+                  },
+                  1024: {
+                    slidesPerView: 3,
+                    spaceBetween: 20,
+                  },
+                }}
+                modules={[Pagination]}
+                className="mySwiper pb-20"
+              >
+                {courses?.map((c, i) => (
+                  <SwiperSlide key={i}>
+                    <div className="bg-white shadow-xl rounded-xl">
+                      <Link to={`/course_details/${c?.course_slug}`}>
+                        <img
+                          src={c?.course_image}
+                          alt=""
+                          className="min-w-full h-[180px] md:h-[240px] rounded-t-xl"
+                        />
+                        <div className="p-4 flex flex-col gap-2.5">
+                          <p className="text-[16px]">{c?.category_name}</p>
+                          <p className="text-[20px] md:text-[24px]">
+                            {c?.name}
+                          </p>
+                          <hr />
+                          <div className="flex justify-between items-center">
+                            <div className="flex gap-2">
+                              <BsStarFill className="md:text-xl text-orange" />
+                              <BsStarFill className="md:text-xl text-orange" />
+                              <BsStarFill className="md:text-xl text-orange" />
+                              <BsStarFill className="md:text-xl text-orange" />
+                              <BsStarHalf className="md:text-xl text-orange" />
+                            </div>
+                            <p className="text-[16px] flex gap-1 items-center">
+                              {" "}
+                              <PiStudentFill className="text-xl md:text-2xl text-blue" />{" "}
+                              500+
+                            </p>
+                          </div>
+                          <hr />
+                          <div className="flex justify-between items-center">
+                            <p className="text-[16px] text-blue">
+                              &#2547; {c?.online_amount}
+                            </p>
+                            <button className="flex gap-0.5 text-[16px] px-4 py-2 rounded-xl text-black border border-blue hover:bg-blue hover:text-white duration-300 ease-linear">
+                              <span className="hidden md:block">Click For</span>
+                              Discount
+                            </button>
+                          </div>
                         </div>
-                        <p className="text-[16px] flex gap-1 items-center">
-                          {" "}
-                          <PiStudentFill className="text-xl md:text-2xl text-blue" />{" "}
-                          500+
-                        </p>
-                      </div>
-                      <hr />
-                      <div className="flex justify-between items-center">
-                        <p className="text-[16px] text-blue">
-                          &#2547; {c?.online_amount}
-                        </p>
-                        <button className="flex gap-0.5 text-[16px] px-4 py-2 rounded-xl text-black border border-blue hover:bg-blue hover:text-white duration-300 ease-linear">
-                          <span className="hidden md:block">Click For</span>
-                          Discount
-                        </button>
-                      </div>
+                      </Link>
                     </div>
-                  </Link>
-                </div>
-              </SwiperSlide>
-            ))}
-          </Swiper>
+                  </SwiperSlide>
+                ))}
+              </Swiper>
+            ) : (
+              <p className="text-center text-xl py-16 shadow-xl rounded-xl">No Course Available Now</p>
+            )}
+          </>
         )}
       </div>
     </section>
