@@ -23,6 +23,11 @@ export default function CourseView() {
         }
       });
   }, []);
+
+  const setItemInLs = (data) => {
+    localStorage.setItem("courseDetails", JSON.stringify(data));
+    localStorage.setItem("item_type", "course");
+  };
   return (
     <>
       {loader ? (
@@ -58,8 +63,12 @@ export default function CourseView() {
                     <p className="text-[20px]">Projects</p>
                   </div>
                 </div>
-                <p className="text-[18px]">{courseDetails?.course_overview}</p>
-                <Link to="/payment" className="py-2 px-4 w-fit bg-blue text-white rounded flex items-center gap-2.5">
+                <p className="text-[18px]">{courseDetails?.description}</p>
+                <Link
+                  onClick={() => setItemInLs(courseDetails)}
+                  to="/payment"
+                  className="py-2 px-4 w-fit bg-blue text-white rounded flex items-center gap-2.5"
+                >
                   Enroll Now <BsBook className="text-xl" />
                 </Link>
               </div>

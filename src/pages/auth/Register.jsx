@@ -26,15 +26,13 @@ export default function Register() {
     };
     // console.log(postData);
 
-    if (password !==  confirmpassword) {
+    if (password !== confirmpassword) {
       toast.error("Password & Confirm Password didn't match!");
       setLoader(false);
-    } 
-    else if( number.length !== 11 ){
+    } else if (number.length !== 11) {
       toast.error("Enter a valid BD number");
       setLoader(false);
-    }
-    else {
+    } else {
       const formData = new FormData();
       formData.append("name", name);
       formData.append("email", email);
@@ -50,12 +48,13 @@ export default function Register() {
       fetch("https://api.pathshalait.com/api/v1/students", requestOptions)
         .then((response) => response.json())
         .then((data) => {
-          if (data.status) {
+          if (data.status === true) {
             setLoader(false);
             navigate("/login");
             toast.success("User created successfully!");
           } else {
             setLoader(false);
+            toast.error(data.message);
             console.log(data);
           }
         });
@@ -88,7 +87,7 @@ export default function Register() {
           placeholder="Enter Phone Number"
           type="number"
           name="number"
-          onChange={e => setNumber(e.target.value)}
+          onChange={(e) => setNumber(e.target.value)}
           required
         />
         <input

@@ -1,11 +1,16 @@
 import React, { useEffect, useState } from "react";
 import { BsBook } from "react-icons/bs";
 import { FaBars } from "react-icons/fa";
-import { AiOutlineClose, AiOutlineLogin } from "react-icons/ai";
+import {
+  AiOutlineClose,
+  AiOutlineLogin,
+  AiOutlineLogout,
+} from "react-icons/ai";
 import logo from "../../assets/logo/pathshala-IT.png";
 import { Link } from "react-router-dom";
 
 export default function TopBar() {
+  const accessToken = localStorage.getItem("accessToken");
   const [open, setOpen] = useState(false);
   // Function to handle scroll event
   const handleScroll = () => {
@@ -90,6 +95,22 @@ export default function TopBar() {
             >
               Login <AiOutlineLogin className="text-xl" />
             </Link>
+            {/* {accessToken ? (
+              <Link
+                to={"/login"}
+                className="py-2 px-4 bg-blue text-white rounded hidden md:flex items-center gap-2.5"
+              >
+                Login <AiOutlineLogin className="text-xl" />
+              </Link>
+            ) : (
+              <Link
+                onClick={() => localStorage.clear()}
+                className="py-2 px-4 bg-blue text-white rounded hidden md:flex items-center gap-2.5"
+              >
+                Log Out <AiOutlineLogout className="text-xl" />
+              </Link>
+            )} */}
+
             {/* navbar jsx */}
             <button className="lg:hidden" onClick={() => setOpen(!open)}>
               {open ? (
