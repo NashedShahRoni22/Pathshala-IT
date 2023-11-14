@@ -10,7 +10,7 @@ import logo from "../../assets/logo/pathshala-IT.png";
 import { Link } from "react-router-dom";
 
 export default function TopBar() {
-  const accessToken = localStorage.getItem("accessToken");
+  const accessToken = localStorage.getItem("access_token");
   const [open, setOpen] = useState(false);
   // Function to handle scroll event
   const handleScroll = () => {

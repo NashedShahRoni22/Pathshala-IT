@@ -1,8 +1,17 @@
-import { Button, Input, Option, Select } from "@material-tailwind/react";
+import {
+  Button,
+  Input,
+  Option,
+  Select,
+  Spinner,
+} from "@material-tailwind/react";
 import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 
 export default function PaymentPage() {
-  //   const [loader, setLoader] = useState(false);
+  const [loader, setLoader] = useState(false);
+  const navigate = useNavigate();
   //   const [courses, setCourses] = useState([]);
   //   console.log(courses);
 
@@ -39,10 +48,10 @@ export default function PaymentPage() {
     formData.append("payment_method", paymentMethod);
     formData.append("item_type", itemType);
     try {
-      // setPostLoading(true);
+      setLoader(true);
       // Create headers with the Authorization token
       const headers = new Headers({
-        Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+        Authorization: `Bearer ${localStorage.getItem("access_token")}`,
       });
       // Make a POST request using the fetch method
       const response = await fetch(
@@ -55,19 +64,19 @@ export default function PaymentPage() {
       );
 
       const responseData = await response.json();
-      console.log(responseData);
-      // if (responseData.status === true) {
-      //   window.alert("Course added successfully!");
-      //   window.location.reload();
-      // } else {
-      //   console.log(
-      //     "Error making POST request. Status code: " + response.status
-      //   );
-      // }
+      if (responseData.status === true) {
+        toast.success("Payment done successfully!");
+        localStorage.removeItem("item_type");
+        navigate("/");
+      } else {
+        console.log(
+          "Error making POST request. Status code: " + response.status
+        );
+      }
     } catch (error) {
       console.log("Error making POST request: " + error);
     } finally {
-      // setPostLoading(false);
+      setLoader(false);
     }
   };
 
@@ -117,16 +126,34 @@ export default function PaymentPage() {
           payment information
         </h5>
         <div className="grid md:grid-cols-2 gap-4 mt-5">
-          <Select label="Select Payment Method" color="blue" onChange={value => setPaymentMethod(value)}>
-            <Option value="Bkash">Bkash</Option>
-            <Option value="Nagad">Nagad</Option>
-            <Option value="Rocket">Rocket</Option>
+          <Select
+            label="Select Payment Method"
+            color="blue"
+            onChange={(value) => setPaymentMethod(value)}
+          >
+            <Option value="bkash">Bkash</Option>
+            <Option value="nagad">Nagad</Option>
+            <Option value="rocket">Rocket</Option>
           </Select>
-          <Input type="number" onChange={ e => setamount(e.target.value)} label="Enter Amount" />
-          <Input type="text" onChange={ e => settransectionid(e.target.value)} label="Enter Transection Number" />
-          <Input type="text" onChange={ e => settransectionnumber(e.target.value)} label="Enter Transection ID" />
+          <Input
+            type="number"
+            onChange={(e) => setamount(e.target.value)}
+            label="Enter Amount"
+          />
+          <Input
+            type="text"
+            onChange={(e) => settransectionid(e.target.value)}
+            label="Enter Transection Number"
+          />
+          <Input
+            type="text"
+            onChange={(e) => settransectionnumber(e.target.value)}
+            label="Enter Transection ID"
+          />
         </div>
-        <Button onClick={handleMakePayment} className="mt-4 bg-blue">Pay Now</Button>
+        <Button onClick={handleMakePayment} className="mt-4 bg-blue flex items-center gap-2">
+          Pay Now {loader && <Spinner />}
+        </Button>
       </div>
     </section>
   );

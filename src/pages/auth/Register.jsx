@@ -1,4 +1,4 @@
-import { Spinner } from "@material-tailwind/react";
+import { Button, Spinner } from "@material-tailwind/react";
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
@@ -69,21 +69,21 @@ export default function Register() {
         className="md:w-1/2 flex flex-col gap-2 my-5"
       >
         <input
-          className="px-4 py-2 rounded border border-blue focus:outline-blue"
+          className="px-4 py-2 rounded-lg border border-blue focus:outline-blue"
           placeholder="Enter Name"
           type="text"
           name="name"
           required
         />
         <input
-          className="px-4 py-2 rounded border border-blue focus:outline-blue"
+          className="px-4 py-2 rounded-lg border border-blue focus:outline-blue"
           placeholder="Enter Email"
           type="email"
           name="email"
           required
         />
         <input
-          className="px-4 py-2 rounded border border-blue focus:outline-blue"
+          className="px-4 py-2 rounded-lg border border-blue focus:outline-blue"
           placeholder="Enter Phone Number"
           type="number"
           name="number"
@@ -91,25 +91,25 @@ export default function Register() {
           required
         />
         <input
-          className="px-4 py-2 rounded border border-blue focus:outline-blue"
+          className="px-4 py-2 rounded-lg border border-blue focus:outline-blue"
           placeholder="Enter Password"
           type="password"
           name="password"
           required
         />
         <input
-          className="px-4 py-2 rounded border border-blue focus:outline-blue"
+          className="px-4 py-2 rounded-lg border border-blue focus:outline-blue"
           placeholder="Confirm Password"
           type="password"
           name="confirm_password"
           required
         />
-        <button
+        <Button
           type="submit"
-          className="py-2 flex justify-center bg-blue border border-blue hover:bg-transparent rounded text-white hover:text-blue duration-300 ease-linear font-semibold"
+          className="bg-blue flex justify-center items-center gap-2"
         >
-          {loader ? <Spinner /> : "Register"}
-        </button>
+          Register {loader && <Spinner />}
+        </Button>
       </form>
       <Link to={"/login"}>
         Already have an account?{" "}
