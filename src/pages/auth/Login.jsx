@@ -2,6 +2,7 @@ import { Button, Spinner } from "@material-tailwind/react";
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
+import loginimg from "../../assets/auth/login.png";
 
 export default function Login() {
   const [loader, setLoader] = useState(false);
@@ -45,37 +46,53 @@ export default function Login() {
       });
   };
   return (
-    <section className="mx-5 md:container md:mx-auto my-10 lg:my-20">
-      <h2 className="text-3xl">Login</h2>
-      <form
-        onSubmit={handleLogin}
-        action=""
-        className="md:w-1/2 flex flex-col gap-2 my-5"
-      >
-        <input
-          className="px-4 py-2 rounded-lg border border-blue focus:outline-blue"
-          placeholder="Enter Phone Number"
-          type="number"
-          name="number"
-          required
-        />
-        <input
-          className="px-4 py-2 rounded-lg border border-blue focus:outline-blue"
-          placeholder="Enter Password"
-          type="password"
-          name="password"
-          required
-        />
-        <Button
-          type="submit"
-          className="flex justify-center items-center gap-2 bg-blue"
+    <section className="mx-5 md:container md:mx-auto my-10 lg:my-20 flex justify-center lg:items-center">
+      <div className="lg:w-1/2 shadow lg:shadow-none px-10 py-5 rounded">
+        <h1 className="text-[40px]">Login</h1>
+        <p className="text-[16px]">
+          Please fill your detail to access your account.
+        </p>
+        <form
+          onSubmit={handleLogin}
+          action=""
+          className="lg:w-2/3 flex flex-col gap-2 mt-[36px]"
         >
-          Login {loader && <Spinner />}
-        </Button>
-      </form>
-      <Link to={"/register"}>
-        New Here ? <span className="text-blue">Please create an account.</span>{" "}
-      </Link>
+          <p className="">Phone Number</p>
+          <input
+            className="px-4 py-2 rounded-lg border border-blue focus:outline-blue"
+            placeholder="Enter Phone Number"
+            type="number"
+            name="number"
+            required
+          />
+          <p className="mt-[20px]">Password</p>
+          <input
+            className="px-4 py-2 rounded-lg border border-blue focus:outline-blue"
+            placeholder="Enter Password"
+            type="password"
+            name="password"
+            required
+          />
+          <div className="flex justify-end">
+            <Link className="text-blue">Forgot Password?</Link>
+          </div>
+          <Button
+            type="submit"
+            className="flex justify-center items-center gap-2 bg-blue"
+          >
+            Sign In {loader && <Spinner />}
+          </Button>
+        </form>
+        <div className="mt-[20px]">
+          <Link to={"/register"}>
+            Don’t have an account?{" "}
+            <span className="text-blue">Create an account.</span>{" "}
+          </Link>
+        </div>
+      </div>
+      <div className="hidden lg:block lg:w-1/2 bg-lightBlue rounded-xl">
+        <img src={loginimg} alt="" />
+      </div>
     </section>
   );
 }
