@@ -7,6 +7,7 @@ import Login from "../pages/auth/Login";
 import CourseView from "../pages/courses/CourseView";
 import PaymentPage from "../pages/payment/PaymentPage";
 import PrivateRoute from "./PrivateRoute";
+import Verification from "../pages/auth/Verification";
 
 export const router = createBrowserRouter([
   {
@@ -24,6 +25,10 @@ export const router = createBrowserRouter([
       {
         path: "/register",
         element: <Register />,
+      },
+      {
+        path: "/verification",
+        element: <Verification />,
       },
       {
         path: "/login",

@@ -89,27 +89,27 @@ export default function TopBar() {
             ))}
           </ul>
           <div className="flex items-center gap-2.5">
-            <Link
+            {/* <Link
               to={"/login"}
               className="py-2 px-4 bg-blue text-white rounded hidden md:flex items-center gap-2.5"
             >
               Login <AiOutlineLogin className="text-xl" />
-            </Link>
-            {/* {accessToken ? (
-              <Link
-                to={"/login"}
-                className="py-2 px-4 bg-blue text-white rounded hidden md:flex items-center gap-2.5"
-              >
-                Login <AiOutlineLogin className="text-xl" />
-              </Link>
-            ) : (
+            </Link> */}
+            {accessToken !== null ? (
               <Link
                 onClick={() => localStorage.clear()}
                 className="py-2 px-4 bg-blue text-white rounded hidden md:flex items-center gap-2.5"
               >
                 Log Out <AiOutlineLogout className="text-xl" />
               </Link>
-            )} */}
+            ) : (
+              <Link
+                to={"/login"}
+                className="py-2 px-4 bg-blue text-white rounded hidden md:flex items-center gap-2.5"
+              >
+                Login <AiOutlineLogin className="text-xl" />
+              </Link>
+            )}
 
             {/* navbar jsx */}
             <button className="lg:hidden" onClick={() => setOpen(!open)}>
