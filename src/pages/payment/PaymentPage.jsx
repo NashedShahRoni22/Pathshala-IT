@@ -19,32 +19,18 @@ export default function PaymentPage() {
   const itemType = localStorage.getItem("item_type");
 
   const [paymentMethod, setPaymentMethod] = useState("");
-  const [amount, setamount] = useState("");
   const [transectionid, settransectionid] = useState("");
   const [transectionnumber, settransectionnumber] = useState("");
 
-  //get courses
-  //   useEffect(() => {
-  //     let url = "https://api.pathshalait.com/api/v1/course/list";
-  //     fetch(url)
-  //       .then((res) => res.json())
-  //       .then((data) => {
-  //         if (data.status_code === 200) {
-  //           setCourses(data?.data);
-  //         } else {
-  //           console.log(data);
-  //         }
-  //       });
-  //   }, []);
 
   //handle make payment
   const handleMakePayment = async () => {
-    console.log(paymentMethod, amount, transectionid, transectionnumber);
+    console.log(paymentMethod,courseDetails.amount,  transectionid, transectionnumber);
     const formData = new FormData();
     formData.append("item_id", courseDetails.id);
+    formData.append("amount", courseDetails.amount);
     formData.append("transaction_id", transectionid);
     formData.append("transaction_number", transectionnumber);
-    formData.append("amount", amount);
     formData.append("payment_method", paymentMethod);
     formData.append("item_type", itemType);
     try {
@@ -64,9 +50,11 @@ export default function PaymentPage() {
       );
 
       const responseData = await response.json();
+      console.log(responseData);
       if (responseData.status === true) {
         toast.success("Payment done successfully!");
         localStorage.removeItem("item_type");
+        localStorage.removeItem("courseDetails");
         navigate("/");
       } else {
         console.log(
@@ -81,46 +69,39 @@ export default function PaymentPage() {
   };
 
   return (
-    <section className="mx-5 md:container md:mx-auto my-10 lg:my-20 lg:grid lg:grid-cols-2 lg:gap-8">
+    <section className="mx-5 md:container lg:w-1/3 md:mx-auto my-10 lg:my-20">
       <div className="mt-5 shadow rounded-xl p-5">
         <p className="capitalize text-[20px] mt-2.5">
           {" "}
-          <span className="font-semibold">course name:</span>{" "}
+          <span className="font-semibold">selected course:</span>{" "}
           {courseDetails.name}
         </p>
         <p className="capitalize text-[20px] my-2.5">
           {" "}
-          <span className="font-semibold">course price:</span>{" "}
-          {courseDetails.online_amount} BDT
+          <span className="font-semibold">course fee:</span>{" "}
+          {courseDetails.amount} BDT
         </p>
         <div className="grid grid-cols-3 gap-x-[15px] md:gap-x-[30px]">
           <div className="bg-lightBlue py-[12px] px-[16px] flex flex-col items-center justify-center rounded-xl">
             <h1 className="text-[24px] md:text-[32px] flex">
-              {courseDetails?.duration}
+              {courseDetails.duration}
             </h1>
             <p className="text-[20px]">Month</p>
           </div>
           <div className="bg-lightBlue py-[12px] px-[16px] flex flex-col items-center justify-center rounded-xl">
             <h1 className="text-[24px] md:text-[32px]">
-              {courseDetails?.total_lecture}
+              {courseDetails.total_lecture}
             </h1>
             <p className="text-[20px]">Lectures</p>
           </div>
           <div className="bg-lightBlue py-[12px] px-[16px] flex flex-col items-center justify-center rounded-xl">
             <h1 className="text-[24px] md:text-[32px]">
-              {courseDetails?.total_project}
+              {courseDetails.total_project}
             </h1>
             <p className="text-[20px]">Projects</p>
           </div>
         </div>
       </div>
-      {/* <div className="grid md:grid-cols-2 gap-4 mt-5">
-        <Select label="Select Course" color="blue">
-          {courses?.map((c) => (
-            <Option value={c?.id}>{c?.name}</Option>
-          ))}
-        </Select>
-      </div> */}
       <div className="mt-5 shadow rounded-xl p-5">
         <h5 className="font-semibold text-[24px] capitalize">
           payment information
@@ -132,14 +113,9 @@ export default function PaymentPage() {
             onChange={(value) => setPaymentMethod(value)}
           >
             <Option value="bkash">Bkash</Option>
-            <Option value="nagad">Nagad</Option>
-            <Option value="rocket">Rocket</Option>
+            <Option value="nagod">Nagad</Option>
+            <Option value="roket">Rocket</Option>
           </Select>
-          <Input
-            type="number"
-            onChange={(e) => setamount(e.target.value)}
-            label="Enter Amount"
-          />
           <Input
             type="text"
             onChange={(e) => settransectionid(e.target.value)}
@@ -151,8 +127,16 @@ export default function PaymentPage() {
             label="Enter Transection ID"
           />
         </div>
-        <Button onClick={handleMakePayment} className="mt-4 bg-blue flex items-center gap-2">
-          Pay Now {loader && <Spinner />}
+        <Button
+          onClick={handleMakePayment}
+          disabled={
+            paymentMethod === "" ||
+            transectionnumber === "" ||
+            transectionid === ""
+          }
+          className="mt-4 bg-blue flex items-center gap-2"
+        >
+          Done {loader && <Spinner />}
         </Button>
       </div>
     </section>

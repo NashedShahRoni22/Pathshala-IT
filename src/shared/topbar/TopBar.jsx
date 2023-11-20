@@ -23,6 +23,7 @@ export default function TopBar() {
       window.removeEventListener("scroll", handleScroll);
     };
   }, []);
+
   const menuItems = [
     {
       name: "Home",
@@ -38,7 +39,6 @@ export default function TopBar() {
     },
     {
       name: "Courses",
-      link: "/",
       child: [
         {
           name: "Free Courses",
@@ -46,7 +46,7 @@ export default function TopBar() {
         },
         {
           name: "Paid Courses",
-          link: "/",
+          link: "/courses",
         },
       ],
     },
@@ -77,7 +77,7 @@ export default function TopBar() {
                 {mi.child && (
                   <ul className="absolute hidden group-hover:block top-6 left-4 min-w-max bg-white rounded shadow">
                     {mi.child.map((mc, i) => (
-                      <Link key={i}>
+                      <Link key={i} to={mc.link}>
                         <li className="p-2 text-[18px] text-[#222222] border-b-2 border-b-lightBlue hover:border-b-blue duration-300 ease-linear">
                           {mc.name}
                         </li>
@@ -89,12 +89,6 @@ export default function TopBar() {
             ))}
           </ul>
           <div className="flex items-center gap-2.5">
-            {/* <Link
-              to={"/login"}
-              className="py-2 px-4 bg-blue text-white rounded hidden md:flex items-center gap-2.5"
-            >
-              Login <AiOutlineLogin className="text-xl" />
-            </Link> */}
             {accessToken !== null ? (
               <Link
                 onClick={() => localStorage.clear()}
@@ -127,7 +121,7 @@ export default function TopBar() {
           <ul className="bg-white/90 min-w-full min-h-full fixed top-20 left-0 flex flex-col lg:hidden font-semibold">
             {menuItems.map((mi, i) => (
               <div key={i} className="group">
-                <Link to={mi.link} className="relative">
+                <Link to={mi.link} onClick={()=> setOpen(!open)} className="relative">
                   <li className="text-[18px] md:text-[24px] text-[#222222] font-semibold border-b-2 border-b-lightBlue hover:bg-lightBlue duration-300 ease-linear text-end py-2.5 px-5 md:px-10 bg-white">
                     {mi.name}
                   </li>
@@ -139,7 +133,7 @@ export default function TopBar() {
                 {mi.child && (
                   <ul className="hidden group-hover:block mr-5">
                     {mi.child.map((mc, i) => (
-                      <Link key={i}>
+                      <Link key={i} to={mc.link} onClick={()=> setOpen(!open)}>
                         <li className="text-[16px] md:text-[22px] text-[#222222] font-semibold border-b-2 border-b-lightBlue hover:bg-lightBlue duration-300 ease-linear text-end py-2.5 px-5 md:px-10 bg-white">
                           {mc.name}
                         </li>

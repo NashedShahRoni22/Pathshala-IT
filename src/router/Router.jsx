@@ -8,6 +8,8 @@ import CourseView from "../pages/courses/CourseView";
 import PaymentPage from "../pages/payment/PaymentPage";
 import PrivateRoute from "./PrivateRoute";
 import Verification from "../pages/auth/Verification";
+import HomeCourses from "../pages/home/HomeCourses";
+import Features from "../pages/features/features";
 
 export const router = createBrowserRouter([
   {
@@ -33,6 +35,14 @@ export const router = createBrowserRouter([
       {
         path: "/login",
         element: <Login />,
+      },
+      {
+        path: "/courses",
+        element: <HomeCourses />,
+      },
+      {
+        path: "/features",
+        element: <Features />,
       },
       {
         path: "/course_details/:id",

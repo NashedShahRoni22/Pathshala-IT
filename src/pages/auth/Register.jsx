@@ -43,6 +43,9 @@ export default function Register() {
       formData.append("name", name);
       formData.append("email", email);
       formData.append("phone_number", number);
+      formData.append("guardian_name", gurdianName);
+      formData.append("guardian_number", gurdianNumber);
+      formData.append("dob", dob);
       formData.append("password", password);
       formData.append("password_confirmation", confirmpassword);
 
@@ -57,7 +60,7 @@ export default function Register() {
           if (data.status === true) {
             setLoader(false);
             navigate("/verification");
-            toast.success("User created successfully!");
+            toast.success("Verification code sent!");
           } else {
             setLoader(false);
             toast.error(data.message);

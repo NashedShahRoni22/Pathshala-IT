@@ -25,6 +25,7 @@ export default function HomeCourses() {
   const [loader, setLoader] = useState(false);
   const [catLoader, setCatLoader] = useState(false);
   const [courses, setCourses] = useState([]);
+  console.log(courses);
   const [categories, setCategories] = useState([]);
   const [activeCourseId, setActiveCourseId] = useState("");
   //get categories
@@ -192,7 +193,12 @@ export default function HomeCourses() {
                           className="min-w-full h-[180px] md:h-[240px] rounded-t-xl"
                         />
                         <div className="p-4 flex flex-col gap-2.5">
-                          <p className="text-[16px]">{c?.category_name}</p>
+                          <div className="flex justify-between items-center">
+                            <p className="text-[16px]">{c?.category_name}</p>
+                            <p className="px-2 py-1 bg-blue text-white rounded-xl">
+                              {c?.course_type === 1 ? "Online" : "Offline"}
+                            </p>
+                          </div>
                           <p className="text-[20px] md:text-[24px]">
                             {c?.name}
                           </p>
@@ -214,7 +220,7 @@ export default function HomeCourses() {
                           <hr />
                           <div className="flex justify-between items-center">
                             <p className="text-[16px] text-blue">
-                              &#2547; {c?.online_amount}
+                              &#2547; {c?.amount}
                             </p>
                             <button className="flex gap-0.5 text-[16px] px-4 py-2 rounded-xl text-black border border-blue hover:bg-blue hover:text-white duration-300 ease-linear">
                               <span className="hidden md:block">Click For</span>
@@ -228,7 +234,9 @@ export default function HomeCourses() {
                 ))}
               </Swiper>
             ) : (
-              <p className="text-center text-xl py-16 shadow-xl rounded-xl">No Course Available Now</p>
+              <p className="text-center text-xl py-16 shadow-xl rounded-xl">
+                No Course Available Now
+              </p>
             )}
           </>
         )}

@@ -13,6 +13,7 @@ import {
   BsLinkedin,
   BsYoutube,
 } from "react-icons/bs";
+import { Link } from "react-router-dom";
 
 export default function BottomBar() {
   const data = [
@@ -58,6 +59,8 @@ export default function BottomBar() {
             <h1>Visit</h1>
             <li>Seminars</li>
             <li>Success Stories</li>
+            <li>Contact Us</li>
+            <li> <Link to="/features">Features</Link> </li>
             <li>Contact Us</li>
           </ul>
           <div>
