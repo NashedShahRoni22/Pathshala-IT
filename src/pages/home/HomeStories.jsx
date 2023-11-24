@@ -1,6 +1,7 @@
 import React from "react";
 import img from "../../assets/bannerImages/Rectangle 73.png";
 import videoIcon from "../../assets/logo/video-icon.png";
+import svg from "../../assets/choseUsIcons/Compass.png";
 
 export default function HomeStories() {
   const data = [
@@ -22,7 +23,7 @@ export default function HomeStories() {
     },
   ];
   return (
-    <div>
+    <div className="relative">
       <h1 className="text-[40px] lg:text-[60px] text-center">Success Stories</h1>
       <div className="mx-5 md:container md:mx-auto my-5 lg:my-10 md:flex md:flex-wrap justify-center gap-[30px]">
         {data.map((d,i) => (
@@ -34,6 +35,7 @@ export default function HomeStories() {
           </div>
         ))}
       </div>
+      <img src={svg} alt="" className="absolute left-0 top-0" />
     </div>
   );
 }

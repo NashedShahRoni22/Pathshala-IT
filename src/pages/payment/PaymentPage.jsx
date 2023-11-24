@@ -18,14 +18,56 @@ export default function PaymentPage() {
   const courseDetails = JSON.parse(localStorage.getItem("courseDetails"));
   const itemType = localStorage.getItem("item_type");
 
+  const { amount, discount_amount } = courseDetails;
+  const [discount, setDiscount] = useState(false);
+
   const [paymentMethod, setPaymentMethod] = useState("");
   const [transectionid, settransectionid] = useState("");
   const [transectionnumber, settransectionnumber] = useState("");
 
+  //check eligibilaty
+  useEffect(() => {
+    // setDataLoading(true);
+    const fetchData = async () => {
+      try {
+        const response = await fetch(
+          `https://api.pathshalait.com/api/v1/client/admin/discount/eligible/${courseDetails.id}`,
+          {
+            method: "GET",
+            headers: {
+              Authorization: `Bearer ${localStorage.getItem("access_token")}`,
+            },
+          }
+        );
+
+        const responseData = await response.json();
+
+        if (responseData.status === true) {
+          setDiscount(true);
+          console.log(responseData);
+        } else {
+          console.log(
+            "Error making GET request. Status code: " + response.status
+          );
+        }
+      } catch (error) {
+        console.log("Error making GET request: " + error);
+      } finally {
+        // setDataLoading(false);
+      }
+    };
+
+    fetchData();
+  }, []);
 
   //handle make payment
   const handleMakePayment = async () => {
-    console.log(paymentMethod,courseDetails.amount,  transectionid, transectionnumber);
+    console.log(
+      paymentMethod,
+      courseDetails.amount,
+      transectionid,
+      transectionnumber
+    );
     const formData = new FormData();
     formData.append("item_id", courseDetails.id);
     formData.append("amount", courseDetails.amount);
@@ -52,7 +94,7 @@ export default function PaymentPage() {
       const responseData = await response.json();
       console.log(responseData);
       if (responseData.status === true) {
-        toast.success("Payment done successfully!");
+        toast.success(responseData.message);
         localStorage.removeItem("item_type");
         localStorage.removeItem("courseDetails");
         navigate("/");
@@ -69,17 +111,20 @@ export default function PaymentPage() {
   };
 
   return (
-    <section className="mx-5 md:container lg:w-1/3 md:mx-auto my-10 lg:my-20">
-      <div className="mt-5 shadow rounded-xl p-5">
+    <section className="mx-5 md:container lg:w-1/3 md:mx-auto my-10 lg:my-20 shadow p-8 rounded-xl">
+      <div className="mt-5 rounded-xl">
         <p className="capitalize text-[20px] mt-2.5">
           {" "}
           <span className="font-semibold">selected course:</span>{" "}
           {courseDetails.name}
         </p>
-        <p className="capitalize text-[20px] my-2.5">
+        
+
+        <p className="capitalize text-[20px] my-2.5 flex gap-4">
           {" "}
           <span className="font-semibold">course fee:</span>{" "}
-          {courseDetails.amount} BDT
+          {discount ? discount_amount : amount} BDT
+          {discount && <span className="line text-orange">{amount} BDT</span>} 
         </p>
         <div className="grid grid-cols-3 gap-x-[15px] md:gap-x-[30px]">
           <div className="bg-lightBlue py-[12px] px-[16px] flex flex-col items-center justify-center rounded-xl">
@@ -102,7 +147,7 @@ export default function PaymentPage() {
           </div>
         </div>
       </div>
-      <div className="mt-5 shadow rounded-xl p-5">
+      <div className="mt-5 rounded-xl">
         <h5 className="font-semibold text-[24px] capitalize">
           payment information
         </h5>
@@ -136,7 +181,7 @@ export default function PaymentPage() {
           }
           className="mt-4 bg-blue flex items-center gap-2"
         >
-          Done {loader && <Spinner />}
+          Done {loader && <Spinner className="h-4 w-4" />}
         </Button>
       </div>
     </section>

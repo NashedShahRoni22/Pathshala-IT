@@ -61,7 +61,7 @@ export default function BottomBar() {
             <li>Success Stories</li>
             <li>Contact Us</li>
             <li> <Link to="/features">Features</Link> </li>
-            <li>Contact Us</li>
+            <li> <Link to="/contact_us">Contact Us</Link></li>
           </ul>
           <div>
             <h1>Contact Us</h1>

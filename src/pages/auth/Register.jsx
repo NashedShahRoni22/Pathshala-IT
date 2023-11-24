@@ -166,7 +166,7 @@ export default function Register() {
             type="submit"
             className="bg-blue flex justify-center items-center gap-2"
           >
-            Register {loader && <Spinner />}
+            Register {loader && <Spinner className="h-4 w-4"/>}
           </Button>
         </form>
         <div className="mt-[20px]">

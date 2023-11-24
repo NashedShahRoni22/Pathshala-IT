@@ -10,6 +10,7 @@ import PrivateRoute from "./PrivateRoute";
 import Verification from "../pages/auth/Verification";
 import HomeCourses from "../pages/home/HomeCourses";
 import Features from "../pages/features/features";
+import ContactUs from "../contact/ContactUs";
 
 export const router = createBrowserRouter([
   {
@@ -47,6 +48,10 @@ export const router = createBrowserRouter([
       {
         path: "/course_details/:id",
         element: <CourseView />,
+      },
+      {
+        path: "/contact_us",
+        element: <ContactUs />,
       },
       {
         path: "/payment",

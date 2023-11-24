@@ -80,7 +80,7 @@ export default function Login() {
             type="submit"
             className="flex justify-center items-center gap-2 bg-blue"
           >
-            Sign In {loader && <Spinner />}
+            Sign In {loader && <Spinner className="h-4 w-4" />}
           </Button>
         </form>
         <div className="mt-[20px]">

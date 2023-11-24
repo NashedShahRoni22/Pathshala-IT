@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { BsBook } from "react-icons/bs";
-import { FaBars } from "react-icons/fa";
+import { FaBars, FaUserCircle } from "react-icons/fa";
 import {
   AiOutlineClose,
   AiOutlineLogin,
@@ -8,6 +7,7 @@ import {
 } from "react-icons/ai";
 import logo from "../../assets/logo/pathshala-IT.png";
 import { Link } from "react-router-dom";
+import { Button } from "@material-tailwind/react";
 
 export default function TopBar() {
   const accessToken = localStorage.getItem("access_token");
@@ -52,7 +52,7 @@ export default function TopBar() {
     },
     {
       name: "Contact Us",
-      link: "/",
+      link: "/contact_us",
     },
   ];
   return (
@@ -90,12 +90,15 @@ export default function TopBar() {
           </ul>
           <div className="flex items-center gap-2.5">
             {accessToken !== null ? (
-              <Link
-                onClick={() => localStorage.clear()}
-                className="py-2 px-4 bg-blue text-white rounded hidden md:flex items-center gap-2.5"
-              >
-                Log Out <AiOutlineLogout className="text-xl" />
-              </Link>
+              <div className="flex gap-2.5 items-center">
+                <FaUserCircle className="text-3xl" />
+                <Link
+                  onClick={() => localStorage.clear()}
+                  className="py-2 px-4 bg-blue text-white rounded hidden md:flex items-center gap-2.5"
+                >
+                  Log Out <AiOutlineLogout className="text-xl" />
+                </Link>
+              </div>
             ) : (
               <Link
                 to={"/login"}
@@ -121,7 +124,11 @@ export default function TopBar() {
           <ul className="bg-white/90 min-w-full min-h-full fixed top-20 left-0 flex flex-col lg:hidden font-semibold">
             {menuItems.map((mi, i) => (
               <div key={i} className="group">
-                <Link to={mi.link} onClick={()=> setOpen(!open)} className="relative">
+                <Link
+                  to={mi.link}
+                  onClick={() => setOpen(!open)}
+                  className="relative"
+                >
                   <li className="text-[18px] md:text-[24px] text-[#222222] font-semibold border-b-2 border-b-lightBlue hover:bg-lightBlue duration-300 ease-linear text-end py-2.5 px-5 md:px-10 bg-white">
                     {mi.name}
                   </li>
@@ -133,7 +140,7 @@ export default function TopBar() {
                 {mi.child && (
                   <ul className="hidden group-hover:block mr-5">
                     {mi.child.map((mc, i) => (
-                      <Link key={i} to={mc.link} onClick={()=> setOpen(!open)}>
+                      <Link key={i} to={mc.link} onClick={() => setOpen(!open)}>
                         <li className="text-[16px] md:text-[22px] text-[#222222] font-semibold border-b-2 border-b-lightBlue hover:bg-lightBlue duration-300 ease-linear text-end py-2.5 px-5 md:px-10 bg-white">
                           {mc.name}
                         </li>
@@ -143,13 +150,23 @@ export default function TopBar() {
                 )}
               </div>
             ))}
+
             <li className="flex justify-end mr-5 mt-2.5">
-              <Link
-                to={"/login"}
-                className="py-2 px-4 w-fit bg-blue text-white rounded md:hidden flex items-center gap-2.5"
-              >
-                Login <AiOutlineLogin className="text-xl" />
-              </Link>
+              {accessToken !== null ? (
+                <Link
+                  onClick={() => localStorage.clear()}
+                  className="py-2 px-4 bg-blue text-white rounded md:hidden flex items-center gap-2.5"
+                >
+                  Log Out <AiOutlineLogout className="text-xl" />
+                </Link>
+              ) : (
+                <Link
+                  to={"/login"}
+                  className="py-2 px-4 w-fit bg-blue text-white rounded md:hidden flex items-center gap-2.5"
+                >
+                  Login <AiOutlineLogin className="text-xl" />
+                </Link>
+              )}
             </li>
           </ul>
         )}

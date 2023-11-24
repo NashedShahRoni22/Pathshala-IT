@@ -1,9 +1,10 @@
 import React, { useState } from "react";
-import { BsBook } from "react-icons/bs";
+import { BsArrowClockwise } from "react-icons/bs";
 import img from "../../assets/bannerImages/Rectangle 70.png";
 import img2 from "../../assets/bannerImages/Rectangle 71.png";
 import img3 from "../../assets/bannerImages/Rectangle 72.png";
 import img4 from "../../assets/bannerImages/Rectangle 9.png";
+import { Link } from "react-router-dom";
 
 export default function HomeLanding() {
   const [isHovered, setIsHovered] = useState(false);
@@ -32,9 +33,12 @@ export default function HomeLanding() {
             We provide the best IT training around the world and we help young
             entrepreneurs, startups and established businesses grow.
           </p>
-          <button className="py-2 px-4 bg-blue text-white rounded flex items-center gap-2.5">
-            Enroll Now <BsBook className="text-xl" />
-          </button>
+          <Link
+            to="/courses"
+            className="py-2 px-4 bg-blue text-white rounded flex items-center gap-2.5 w-fit group"
+          >
+            Load Courses <BsArrowClockwise className="text-xl group-hover:animate-spin" />
+          </Link>
         </div>
         <div className="md:w-1/2">
           <div className="flex gap-4 my-4 justify-center items-end">
