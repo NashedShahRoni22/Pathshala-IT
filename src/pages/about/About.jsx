@@ -188,8 +188,8 @@ export default function About() {
                     {d.teamData.map((dt, i) => (
                       <div key={i}>
                         <img src={dt.img} alt="" />
-                        <p className="text-[32px]">{dt.name}</p>
-                        <p className="text-[20px]">{dt.designation}</p>
+                        <p className="text-[24px] mt-2.5">{dt.name}</p>
+                        <p className="text-[18px]">{dt.designation}</p>
                       </div>
                     ))}
                   </div>

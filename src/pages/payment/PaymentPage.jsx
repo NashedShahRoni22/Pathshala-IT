@@ -27,7 +27,6 @@ export default function PaymentPage() {
 
   //check eligibilaty
   useEffect(() => {
-    // setDataLoading(true);
     const fetchData = async () => {
       try {
         const response = await fetch(
@@ -53,7 +52,6 @@ export default function PaymentPage() {
       } catch (error) {
         console.log("Error making GET request: " + error);
       } finally {
-        // setDataLoading(false);
       }
     };
 
@@ -99,6 +97,7 @@ export default function PaymentPage() {
         localStorage.removeItem("courseDetails");
         navigate("/");
       } else {
+        toast.error(responseData.message);
         console.log(
           "Error making POST request. Status code: " + response.status
         );

@@ -94,10 +94,6 @@ export default function TopBar() {
           <div className="flex items-center gap-2.5">
             {accessToken !== null ? (
               <div className="relative ">
-                {/* <FaUserCircle
-                  onClick={() => setUserbar(!userBar)}
-                  className="text-3xl"
-                /> */}
                 <img onClick={() => setUserbar(!userBar)} src={userImg} alt="" className="h-[40px] cursor-pointer" />
                 {userBar && (
                   <div className="absolute top-12 -left-48 md:-left-32 lg:-left-28 min-w-[280px]">

@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { BsArrowClockwise } from "react-icons/bs";
-import img from "../../assets/bannerImages/Rectangle 70.png";
-import img2 from "../../assets/bannerImages/Rectangle 71.png";
-import img3 from "../../assets/bannerImages/Rectangle 72.png";
-import img4 from "../../assets/bannerImages/Rectangle 9.png";
+import img from "../../assets/LandingImages/Pathsala 04.png";
+import img2 from "../../assets/LandingImages/Pathsala 01.png";
+import img3 from "../../assets/LandingImages/Pathsala 02.png";
+import img4 from "../../assets/LandingImages/Pathsala 03.png";
 import { Link } from "react-router-dom";
 
 export default function HomeLanding() {

@@ -3,10 +3,10 @@ import ImageGallery from "react-image-gallery";
 // import stylesheet if you're not already using CSS @import
 import "react-image-gallery/styles/css/image-gallery.css";
 
-import g1 from "../../assets/gallery/g1.jfif";
-import g2 from "../../assets/gallery/g2.jfif";
-import g3 from "../../assets/gallery/g3.jfif";
-import g4 from "../../assets/gallery/g4.jfif";
+import g1 from "../../assets/SliderImages/1.png";
+import g2 from "../../assets/SliderImages/2.png";
+import g3 from "../../assets/SliderImages/3.png";
+import g4 from "../../assets/SliderImages/4.png";
 
 export default function HomeGallery() {
   const images = [
