@@ -11,6 +11,8 @@ import Verification from "../pages/auth/Verification";
 import HomeCourses from "../pages/home/HomeCourses";
 import Features from "../pages/features/features";
 import ContactUs from "../contact/ContactUs";
+import ForgetPassword from "../pages/auth/ForgetPassword";
+import Profile from "../pages/profile/Profile";
 
 export const router = createBrowserRouter([
   {
@@ -38,6 +40,10 @@ export const router = createBrowserRouter([
         element: <Login />,
       },
       {
+        path: "/forget_password",
+        element: <ForgetPassword/>,
+      },
+      {
         path: "/courses",
         element: <HomeCourses />,
       },
@@ -58,6 +64,14 @@ export const router = createBrowserRouter([
         element: (
           <PrivateRoute>
             <PaymentPage />
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "/profile",
+        element: (
+          <PrivateRoute>
+            <Profile />
           </PrivateRoute>
         ),
       },

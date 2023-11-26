@@ -74,7 +74,7 @@ export default function Login() {
             required
           />
           <div className="flex justify-end">
-            <Link className="text-blue">Forgot Password?</Link>
+            <Link to="/forget_password" className="text-blue">Forgot Password?</Link>
           </div>
           <Button
             type="submit"

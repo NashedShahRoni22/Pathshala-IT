@@ -7,10 +7,13 @@ import {
 } from "react-icons/ai";
 import logo from "../../assets/logo/pathshala-IT.png";
 import { Link } from "react-router-dom";
-import { Button } from "@material-tailwind/react";
+import userImg from "../../assets/about/user.png"
+import UserBar from "./UserBar";
+import { MdLogout } from "react-icons/md";
 
 export default function TopBar() {
   const accessToken = localStorage.getItem("access_token");
+  const [userBar, setUserbar] = useState(false);
   const [open, setOpen] = useState(false);
   // Function to handle scroll event
   const handleScroll = () => {
@@ -90,14 +93,17 @@ export default function TopBar() {
           </ul>
           <div className="flex items-center gap-2.5">
             {accessToken !== null ? (
-              <div className="flex gap-2.5 items-center">
-                <FaUserCircle className="text-3xl" />
-                <Link
-                  onClick={() => localStorage.clear()}
-                  className="py-2 px-4 bg-blue text-white rounded hidden md:flex items-center gap-2.5"
-                >
-                  Log Out <AiOutlineLogout className="text-xl" />
-                </Link>
+              <div className="relative ">
+                {/* <FaUserCircle
+                  onClick={() => setUserbar(!userBar)}
+                  className="text-3xl"
+                /> */}
+                <img onClick={() => setUserbar(!userBar)} src={userImg} alt="" className="h-[40px] cursor-pointer" />
+                {userBar && (
+                  <div className="absolute top-12 -left-48 md:-left-32 lg:-left-28 min-w-[280px]">
+                    <UserBar />
+                  </div>
+                )}
               </div>
             ) : (
               <Link
@@ -151,14 +157,9 @@ export default function TopBar() {
               </div>
             ))}
 
-            <li className="flex justify-end mr-5 mt-2.5">
+            <div className="flex justify-end mr-5 mt-2.5">
               {accessToken !== null ? (
-                <Link
-                  onClick={() => localStorage.clear()}
-                  className="py-2 px-4 bg-blue text-white rounded md:hidden flex items-center gap-2.5"
-                >
-                  Log Out <AiOutlineLogout className="text-xl" />
-                </Link>
+                <Link  onClick={()=> localStorage.clear()} className="flex items-center gap-2 text-orange">Log Out <MdLogout className="text-xl" /></Link>
               ) : (
                 <Link
                   to={"/login"}
@@ -167,7 +168,7 @@ export default function TopBar() {
                   Login <AiOutlineLogin className="text-xl" />
                 </Link>
               )}
-            </li>
+            </div>
           </ul>
         )}
       </section>

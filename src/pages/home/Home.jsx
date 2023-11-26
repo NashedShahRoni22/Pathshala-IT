@@ -7,6 +7,7 @@ import HomeCourses from './HomeCourses'
 import HomeServices from './HomeServices'
 import HomeChoseUs from './HomeChoseUs'
 import HomeStories from './HomeStories'
+import HomeGallery from './HomeGallery'
 
 export default function Home() {
   return (
@@ -18,6 +19,7 @@ export default function Home() {
         <HomeServices/>
         <HomeSeminar/>
         <HomeChoseUs/>
+        <HomeGallery/>
         <HomeStories/>
     </section>
   )

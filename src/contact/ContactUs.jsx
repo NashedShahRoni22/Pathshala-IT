@@ -17,18 +17,16 @@ export default function ContactUs() {
       <div className="mx-5 md:container md:mx-auto grid md:grid-cols-3 gap-[15px] md:gap-[30px] my-[40px] md:my-[80px]">
         <div>
           <h1 className="text-[24px] md:text-[32px]">Email & Website</h1>
-          <p className="text-[18px] md:text-[24px]">
-            info@pathshalait.com www.pathshalait.com
-          </p>
+          <p className="text-[18px] md:text-[24px]">pathshalait365@gmail.com</p>
         </div>
         <div>
           <h1 className="text-[24px] md:text-[32px]">Phone Number</h1>
-          <p className="text-[18px] md:text-[24px]">+880 1234 567890</p>
+          <p className="text-[18px] md:text-[24px]">01716561273</p>
         </div>
         <div>
           <h1 className="text-[24px] md:text-[32px]">Address</h1>
           <p className="text-[18px] md:text-[24px]">
-            Building Name, Area, Road, Gazipur, Bangladesh
+            1/G DIT Rd, Dhaka 1219, Bangladesh
           </p>
         </div>
       </div>
@@ -50,22 +48,49 @@ export default function ContactUs() {
           </p>
         </div>
         <form className="md:w-1/2 mt-[40px] md:mt-[0px] flex-1 flex flex-col gap-[24px] mb-[60px] md:mb-[120px]">
-          <Input type="text" required variant="standard" label="First Name" className="" color="blue" />
-          <Input type="text" required variant="standard" label="Last Name" className="" color="blue" />
+          <Input
+            type="text"
+            required
+            variant="standard"
+            label="First Name"
+            className=""
+            color="blue"
+          />
+          <Input
+            type="text"
+            required
+            variant="standard"
+            label="Last Name"
+            className=""
+            color="blue"
+          />
           <Input
             type="email"
             required
             variant="standard"
-            label="Email Address" className="" color="blue"
+            label="Email Address"
+            className=""
+            color="blue"
           />
           <Input
             type="number"
             required
             variant="standard"
-            label="Phone Number" className="" color="blue"
+            label="Phone Number"
+            className=""
+            color="blue"
           />
-          <Textarea label="Enter Message" type="text" required variant="standard" className="" color="blue" />
-          <Button type="submit" className="bg-blue w-fit">Message</Button>
+          <Textarea
+            label="Enter Message"
+            type="text"
+            required
+            variant="standard"
+            className=""
+            color="blue"
+          />
+          <Button type="submit" className="bg-blue w-fit">
+            Message
+          </Button>
         </form>
       </div>
     </section>

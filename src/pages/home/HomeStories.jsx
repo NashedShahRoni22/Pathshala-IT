@@ -35,7 +35,7 @@ export default function HomeStories() {
           </div>
         ))}
       </div>
-      <img src={svg} alt="" className="absolute left-0 top-0" />
+      <img src={svg} alt="" className="hidden md:block absolute left-0 top-0" />
     </div>
   );
 }
