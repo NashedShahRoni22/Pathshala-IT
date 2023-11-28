@@ -3,6 +3,7 @@ import userImg from "../../assets/about/user.png";
 import { FaEdit } from "react-icons/fa";
 import { RxUpdate } from "react-icons/rx";
 import { Button } from "@material-tailwind/react";
+import img from "../../assets/auth/login.png";
 
 export default function Profile() {
   const userInfo = JSON.parse(localStorage.getItem("User_Info"));
@@ -29,8 +30,8 @@ export default function Profile() {
         </div>
         {!edit ? (
           <div>
-            <h1 className="text-[18px] md:text-[22px]">User ID:</h1>
-            <p className="text-[20px] md:text-[24px]">123456</p>
+            <h1 className="text-[18px] md:text-[22px]">Student ID:</h1>
+            <p className="text-[20px] md:text-[24px]">{userInfo.student_id_number}</p>
             <h1 className="text-[18px] md:text-[22px]">Full Name</h1>
             <p className="text-[20px] md:text-[24px]">{userInfo.name}</p>
             <h1 className="text-[18px] md:text-[22px]">Email</h1>
