@@ -25,7 +25,7 @@ export default function HomeStories() {
   return (
     <div className="relative">
       <h1 className="text-[40px] lg:text-[60px] text-center">Success Stories</h1>
-      <div className="mx-5 md:container md:mx-auto my-5 lg:my-10 md:flex md:flex-wrap justify-center gap-[30px]">
+      <div className="z-50 mx-5 md:container md:mx-auto my-5 lg:my-10 md:flex md:flex-wrap justify-center gap-[30px]">
         {data.map((d,i) => (
           <div key={i} className="relative my-[12px] md:my-0">
             <img src={d.img} alt="" className=""/>
@@ -35,7 +35,7 @@ export default function HomeStories() {
           </div>
         ))}
       </div>
-      <img src={svg} alt="" className="hidden md:block absolute left-0 top-0" />
+      <img src={svg} alt="" className="hidden md:block absolute left-0 top-0 -z-10" />
     </div>
   );
 }

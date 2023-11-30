@@ -13,6 +13,8 @@ import Features from "../pages/features/features";
 import ContactUs from "../contact/ContactUs";
 import ForgetPassword from "../pages/auth/ForgetPassword";
 import Profile from "../pages/profile/Profile";
+import DiscountForm from "../shared/discount/DiscountForm";
+import Dashboard from "../pages/profile/Dashboard";
 
 export const router = createBrowserRouter([
   {
@@ -60,6 +62,10 @@ export const router = createBrowserRouter([
         element: <ContactUs />,
       },
       {
+        path: "/discount_form",
+        element: <DiscountForm />,
+      },
+      {
         path: "/payment",
         element: (
           <PrivateRoute>
@@ -72,6 +78,14 @@ export const router = createBrowserRouter([
         element: (
           <PrivateRoute>
             <Profile />
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "/dashboard",
+        element: (
+          <PrivateRoute>
+            <Dashboard />
           </PrivateRoute>
         ),
       },

@@ -48,7 +48,7 @@ export default function HomeLanding() {
               style={imageStyle}
               onMouseEnter={handleMouseEnter}
               onMouseLeave={handleMouseLeave}
-              className="landingImage h-[100px] w-[150px] lg:h-full lg:w-full"
+              className="landingImage rounded h-[100px] w-[150px] lg:h-full lg:w-full"
             />
             <img
               src={img}
@@ -56,7 +56,7 @@ export default function HomeLanding() {
               style={imageStyle}
               onMouseEnter={handleMouseEnter}
               onMouseLeave={handleMouseLeave}
-              className="landingImage h-[200px] w-[140px] lg:h-full lg:w-full"
+              className="landingImage rounded h-[200px] w-[140px] lg:h-full lg:w-full"
             />
           </div>
           <div className="flex gap-4 my-4 justify-center items-start">
@@ -66,7 +66,7 @@ export default function HomeLanding() {
               style={imageStyle}
               onMouseEnter={handleMouseEnter}
               onMouseLeave={handleMouseLeave}
-              className="landingImage h-[80px] w-[115px] lg:h-full lg:w-full"
+              className="landingImage rounded h-[80px] w-[115px] lg:h-full lg:w-full"
             />
             <img
               src={img4}
@@ -74,7 +74,7 @@ export default function HomeLanding() {
               style={imageStyle}
               onMouseEnter={handleMouseEnter}
               onMouseLeave={handleMouseLeave}
-              className="landingImage h-[160px] w-[220px] lg:h-full lg:w-full"
+              className="landingImage rounded h-[160px] w-[220px] lg:h-full lg:w-full"
             />
           </div>
         </div>

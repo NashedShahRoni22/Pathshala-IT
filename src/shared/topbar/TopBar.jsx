@@ -13,7 +13,7 @@ import { MdLogout } from "react-icons/md";
 
 export default function TopBar() {
   const accessToken = localStorage.getItem("access_token");
-  const [userBar, setUserbar] = useState(false);
+  // const [userBar, setUserbar] = useState(false);
   const [open, setOpen] = useState(false);
   // Function to handle scroll event
   const handleScroll = () => {
@@ -93,13 +93,11 @@ export default function TopBar() {
           </ul>
           <div className="flex items-center gap-2.5">
             {accessToken !== null ? (
-              <div className="relative ">
-                <img onClick={() => setUserbar(!userBar)} src={userImg} alt="" className="h-[40px] cursor-pointer" />
-                {userBar && (
-                  <div className="absolute top-12 -left-48 md:-left-32 lg:-left-28 min-w-[280px]">
+              <div className="relative group">
+                <img src={userImg} alt="" className="h-[40px] cursor-pointer" />
+                <div className="hidden group-hover:block absolute top-10 -right-[14px] md:-right-[32px] lg:right-0 min-w-[280px]">
                     <UserBar />
                   </div>
-                )}
               </div>
             ) : (
               <Link

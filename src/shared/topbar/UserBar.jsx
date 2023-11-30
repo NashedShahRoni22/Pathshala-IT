@@ -19,8 +19,7 @@ export default function UserBar() {
         </Link>
       </div>
       <div className="mt-8 flex flex-col gap-2">
-        <Link className="border-b border-b-[#2222221A] py-1">Courses</Link>
-        <Link className="border-b border-b-[#2222221A] py-1">Services</Link>
+        <Link className="border-b border-b-[#2222221A] py-1" to="/dashboard">Dashboard</Link>
         <Link className="border-b border-b-[#2222221A] py-1">Invoices</Link>
         <Link className="border-b border-b-[#2222221A] py-1">Exams</Link>
         <Link
