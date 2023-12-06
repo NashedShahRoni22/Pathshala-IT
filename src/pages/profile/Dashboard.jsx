@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 
 export default function Dashboard() {
   const [courses, setCourses] = useState([]);
-  console.log(courses);
+  
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -33,11 +33,20 @@ export default function Dashboard() {
   }, []);
   return (
     <section className="mx-5 md:container md:mx-auto my-10">
-      <h1 className="text-[18px] md:text-[24px]">Your Courses</h1>
+      {courses?.length > 0 ? (
+        <h1 className="text-[18px] md:text-[24px]">Your Courses</h1>
+      ) : (
+        <h1 className="text-[18px] md:text-[24px]">You didn't buy any courses yet!</h1>
+      )}
+
       <div className="mt-5 grid gap-5 md:grid-cols-2 lg:grid-cols-4">
-        {courses.map((c,i) => (
+        {courses?.map((c, i) => (
           <div key={i} className="shadow rounded">
-            <img className="rounded" src={c?.course_details[0]?.course_image} alt="" />
+            <img
+              className="rounded"
+              src={c?.course_details[0]?.course_image}
+              alt=""
+            />
             <p className="mt-2.5 p-2.5">{c?.course_details[0]?.course_name}</p>
           </div>
         ))}

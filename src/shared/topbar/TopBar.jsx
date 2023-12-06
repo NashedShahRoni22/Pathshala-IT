@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { FaBars, FaUserCircle } from "react-icons/fa";
 import {
   AiOutlineClose,
@@ -10,10 +10,13 @@ import { Link } from "react-router-dom";
 import userImg from "../../assets/about/user.png"
 import UserBar from "./UserBar";
 import { MdLogout } from "react-icons/md";
+import { Button } from "@material-tailwind/react";
+import { toast } from "react-toastify";
+import { AuthContext } from "../../context/AuthProvider";
 
 export default function TopBar() {
   const accessToken = localStorage.getItem("access_token");
-  // const [userBar, setUserbar] = useState(false);
+  const {user} = useContext(AuthContext);
   const [open, setOpen] = useState(false);
   // Function to handle scroll event
   const handleScroll = () => {
@@ -58,6 +61,34 @@ export default function TopBar() {
       link: "/contact_us",
     },
   ];
+  //log out user
+  const handleLogOut = async () => {
+    try {
+      const response = await fetch(
+        `https://api.pathshalait.com/api/v1/client/admin/logout`,
+        {
+          method: "GET",
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("access_token")}`,
+          },
+        }
+      );
+
+      const responseData = await response.json();
+      console.log(responseData);
+
+      if (responseData.status === true) {
+        localStorage.clear();
+        window.location.reload();
+        toast.error(responseData?.message)
+      } else {
+        console.log("Error making GET request. Status code: " + responseData);
+      }
+    } catch (error) {
+      console.log("Error making GET request: " + error);
+    } finally {
+    }
+  };
   return (
     <nav className="sticky top-0 bg-lightBlue z-50">
       <section className="mx-5 md:container md:mx-auto">
@@ -94,10 +125,16 @@ export default function TopBar() {
           <div className="flex items-center gap-2.5">
             {accessToken !== null ? (
               <div className="relative group">
-                <img src={userImg} alt="" className="h-[40px] cursor-pointer" />
+                {
+                  user?.profile_image === null ?
+                  <img src={userImg} alt="" className="h-[40px] w-[40px] rounded-full cursor-pointer" /> 
+                  :
+                  <img src={user?.profile_image} alt="" className="h-[40px] w-[40px] rounded-full cursor-pointer" />
+                }
+                
                 <div className="hidden group-hover:block absolute top-10 -right-[14px] md:-right-[32px] lg:right-0 min-w-[280px]">
-                    <UserBar />
-                  </div>
+                    <UserBar handleLogOut={handleLogOut} />
+                </div>
               </div>
             ) : (
               <Link
@@ -153,7 +190,7 @@ export default function TopBar() {
 
             <div className="flex justify-end mr-5 mt-2.5">
               {accessToken !== null ? (
-                <Link  onClick={()=> localStorage.clear()} className="flex items-center gap-2 text-orange">Log Out <MdLogout className="text-xl" /></Link>
+                <Button onClick={handleLogOut} className="flex items-center gap-2 text-orange">Log Out <MdLogout className="text-xl" /></Button>
               ) : (
                 <Link
                   to={"/login"}

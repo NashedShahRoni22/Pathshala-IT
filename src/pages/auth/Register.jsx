@@ -3,12 +3,19 @@ import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import registerimg from "../../assets/auth/register.png";
+import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
 
 export default function Register() {
   const [loader, setLoader] = useState(false);
   const navigate = useNavigate();
   const [number, setNumber] = useState("");
   const [gurdianNumber, setGurdianNumber] = useState("");
+
+  const [showPassword, setShowPassword] = useState(false);
+  const handleClickShowPassword = () => {
+    setShowPassword(!showPassword);
+  };
+
   const handleRegisteration = (e) => {
     setLoader(true);
     e.preventDefault();
@@ -37,6 +44,9 @@ export default function Register() {
       setLoader(false);
     } else if (number.length !== 11) {
       toast.error("Enter a valid BD number");
+      setLoader(false);
+    } else if (gurdianNumber.length !== 11) {
+      toast.error("Enter a valid gurdian number");
       setLoader(false);
     } else {
       const formData = new FormData();
@@ -144,29 +154,55 @@ export default function Register() {
           </div>
           <div>
             <p>Enter Password</p>
-            <input
-              className="mt-2 w-full px-4 py-2 rounded-lg border border-blue focus:outline-blue"
-              placeholder="Password"
-              type="password"
-              name="password"
-              required
-            />
+            <div className="flex items-center mt-2 rounded-lg border border-blue px-2">
+              <input
+                className="w-full px-4 py-2 focus:outline-none"
+                placeholder="Password"
+                type={showPassword ? "text" : "password"}
+                name="password"
+                required
+              />
+              {showPassword ? (
+                <AiOutlineEye
+                  className="mr-2 cursor-pointer"
+                  onClick={handleClickShowPassword}
+                />
+              ) : (
+                <AiOutlineEyeInvisible
+                  className="mr-2 cursor-pointer"
+                  onClick={handleClickShowPassword}
+                />
+              )}
+            </div>
           </div>
           <div>
             <p>Confirm Password</p>
-            <input
-              className="mt-2 w-full px-4 py-2 rounded-lg border border-blue focus:outline-blue"
-              placeholder="Confirm Password"
-              type="password"
-              name="confirm_password"
-              required
-            />
+            <div className="flex items-center mt-2 rounded-lg border border-blue px-2">
+              <input
+                className="w-full px-4 py-2 focus:outline-none"
+                placeholder="Confirm Password"
+                type={showPassword ? "text" : "password"}
+                name="confirm_password"
+                required
+              />
+              {showPassword ? (
+                <AiOutlineEye
+                  className="mr-2 cursor-pointer"
+                  onClick={handleClickShowPassword}
+                />
+              ) : (
+                <AiOutlineEyeInvisible
+                  className="mr-2 cursor-pointer"
+                  onClick={handleClickShowPassword}
+                />
+              )}
+            </div>
           </div>
           <Button
             type="submit"
             className="bg-blue flex justify-center items-center gap-2"
           >
-            Register {loader && <Spinner className="h-4 w-4"/>}
+            Register {loader && <Spinner className="h-4 w-4" />}
           </Button>
         </form>
         <div className="mt-[20px]">

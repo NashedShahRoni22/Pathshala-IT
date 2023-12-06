@@ -113,14 +113,14 @@ export default function BottomBar() {
                 href="https://www.linkedin.com/in/pathshalait/"
                 className="flex gap-2.5"
               >
-                <BsYoutube className="text-xl" /> Linkedin
+                <BsLinkedin className="text-xl" /> Linkedin
               </a>
               <a
                 target="_blank"
                 href="https://www.youtube.com/channel/UCA8XRKz0lIa_ldj6GiE_cJw"
                 className="flex gap-2.5"
               >
-                <BsLinkedin className="text-xl" />
+                <BsYoutube className="text-xl" />
                 Youtube
               </a>
               <a

@@ -3,21 +3,25 @@ import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import loginimg from "../../assets/auth/login.png";
+import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
+import { FaPhoneAlt } from "react-icons/fa";
 
 export default function Login() {
   const [loader, setLoader] = useState(false);
   const navigate = useNavigate();
+
+  const [showPassword, setShowPassword] = useState(false);
+
+  const handleClickShowPassword = () => {
+    setShowPassword(!showPassword);
+  };
+
   const handleLogin = (e) => {
     setLoader(true);
     e.preventDefault();
     const form = e.target;
     const number = form.number.value;
     const password = form.password.value;
-    const postData = {
-      number,
-      password,
-    };
-    // console.log(postData);
 
     const formData = new FormData();
     formData.append("phone_number", number);
@@ -37,6 +41,7 @@ export default function Login() {
           localStorage.setItem("access_token", data?.data?.access_token);
           localStorage.setItem("User_Info", JSON.stringify(data?.data));
           toast.success("Sign in successfully!");
+          window.location.reload();
         } else {
           setLoader(false);
           toast.error(
@@ -58,23 +63,41 @@ export default function Login() {
           className="lg:w-2/3 flex flex-col gap-2 mt-[36px]"
         >
           <p className="">Phone Number</p>
-          <input
-            className="px-4 py-2 rounded-lg border border-blue focus:outline-blue"
-            placeholder="Enter Phone Number"
-            type="number"
-            name="number"
-            required
-          />
+          <div className="flex items-center border border-blue px-2 rounded-lg">
+            <input
+              className="px-4 py-2 focus:outline-none flex-1"
+              placeholder="Enter Phone Number"
+              type="number"
+              name="number"
+              required
+            />
+            <FaPhoneAlt className="mr-2" />
+          </div>
           <p className="mt-[20px]">Password</p>
-          <input
-            className="px-4 py-2 rounded-lg border border-blue focus:outline-blue"
-            placeholder="Enter Password"
-            type="password"
-            name="password"
-            required
-          />
+          <div className="flex items-center border border-blue px-2 rounded-lg">
+            <input
+              className="px-4 py-2 focus:outline-none flex-1"
+              placeholder="Enter Password"
+              type={showPassword ? "text" : "password"}
+              name="password"
+              required
+            />
+            {showPassword ? (
+              <AiOutlineEye
+                className="mr-2 cursor-pointer"
+                onClick={handleClickShowPassword}
+              />
+            ) : (
+              <AiOutlineEyeInvisible
+                className="mr-2 cursor-pointer"
+                onClick={handleClickShowPassword}
+              />
+            )}
+          </div>
           <div className="flex justify-end">
-            <Link to="/forget_password" className="text-blue">Forgot Password?</Link>
+            <Link to="/forget_password" className="text-blue">
+              Forgot Password?
+            </Link>
           </div>
           <Button
             type="submit"
