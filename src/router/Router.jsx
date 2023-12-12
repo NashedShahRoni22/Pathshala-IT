@@ -15,6 +15,8 @@ import ForgetPassword from "../pages/auth/ForgetPassword";
 import Profile from "../pages/profile/Profile";
 import DiscountForm from "../shared/discount/DiscountForm";
 import Dashboard from "../pages/profile/Dashboard";
+import Invoices from "../pages/profile/Invoices";
+import InvoicesDetails from "../pages/profile/InvoicesDetails";
 
 export const router = createBrowserRouter([
   {
@@ -86,6 +88,22 @@ export const router = createBrowserRouter([
         element: (
           <PrivateRoute>
             <Dashboard />
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "/invoices",
+        element: (
+          <PrivateRoute>
+            <Invoices />
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "/invoices/:id",
+        element: (
+          <PrivateRoute>
+            <InvoicesDetails />
           </PrivateRoute>
         ),
       },

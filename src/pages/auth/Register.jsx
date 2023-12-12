@@ -27,17 +27,16 @@ export default function Register() {
     const password = form.password.value;
     const confirmpassword = form.confirm_password.value;
 
-    const postData = {
-      name,
-      email,
-      number,
-      dob,
-      gurdianName,
-      gurdianNumber,
-      password,
-      confirmpassword,
-    };
-    console.log(postData);
+    // const postData = {
+    //   name,
+    //   email,
+    //   number,
+    //   dob,
+    //   gurdianName,
+    //   gurdianNumber,
+    //   password,
+    //   confirmpassword,
+    // };
 
     if (password !== confirmpassword) {
       toast.error("Password & Confirm Password didn't match!");
@@ -67,10 +66,15 @@ export default function Register() {
       fetch("https://api.pathshalait.com/api/v1/students", requestOptions)
         .then((response) => response.json())
         .then((data) => {
+          console.log(data);
           if (data.status === true) {
             setLoader(false);
             navigate("/verification");
+            localStorage.setItem("phone_number", number);
             toast.success("Verification code sent!");
+          } else if (data?.status_code === 403) {
+            navigate("/verification");
+            toast.error(data?.message);
           } else {
             setLoader(false);
             toast.error(data.message);
@@ -115,7 +119,7 @@ export default function Register() {
             <p>Number</p>
             <input
               className="mt-2 w-full px-4 py-2 rounded-lg border border-blue focus:outline-blue"
-              placeholder="+880"
+              placeholder="01"
               type="number"
               name="number"
               onChange={(e) => setNumber(e.target.value)}
@@ -148,7 +152,7 @@ export default function Register() {
               type="number"
               onChange={(e) => setGurdianNumber(e.target.value)}
               className="mt-2 w-full px-4 py-2 rounded-lg border border-blue focus:outline-blue"
-              placeholder="+880"
+              placeholder="01"
               required
             />
           </div>

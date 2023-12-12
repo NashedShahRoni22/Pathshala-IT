@@ -33,7 +33,7 @@ export default function UserBar({ handleLogOut }) {
         <Link className="border-b border-b-[#2222221A] py-1" to="/dashboard">
           Dashboard
         </Link>
-        <Link className="border-b border-b-[#2222221A] py-1">Invoices</Link>
+        <Link to='/invoices' className="border-b border-b-[#2222221A] py-1">Invoices</Link>
         <Link className="border-b border-b-[#2222221A] py-1">Exams</Link>
         <Link
           onClick={handleLogOut}

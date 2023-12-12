@@ -60,12 +60,12 @@ export default function PaymentPage() {
 
   //handle make payment
   const handleMakePayment = async () => {
-    console.log(
-      paymentMethod,
-      courseDetails.amount,
-      transectionid,
-      transectionnumber
-    );
+    // console.log(
+    //   paymentMethod,
+    //   courseDetails.amount,
+    //   transectionid,
+    //   transectionnumber
+    // );
     const formData = new FormData();
     formData.append("item_id", courseDetails.id);
     formData.append("amount", courseDetails.amount);
@@ -90,7 +90,6 @@ export default function PaymentPage() {
       );
 
       const responseData = await response.json();
-      console.log(responseData);
       if (responseData.status === true) {
         toast.success(responseData.message);
         localStorage.removeItem("item_type");

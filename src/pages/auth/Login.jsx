@@ -35,18 +35,20 @@ export default function Login() {
     fetch("https://api.pathshalait.com/api/v1/login", requestOptions)
       .then((response) => response.json())
       .then((data) => {
+        console.log(data);
         if (data.status) {
           navigate("/");
           setLoader(false);
           localStorage.setItem("access_token", data?.data?.access_token);
           localStorage.setItem("User_Info", JSON.stringify(data?.data));
-          toast.success("Sign in successfully!");
+          toast.success(data?.message);
           window.location.reload();
+        } else if (data?.status_code === 403) {
+          navigate("/verification");
+          toast.error(data?.message);
         } else {
           setLoader(false);
-          toast.error(
-            "Phone number or Password does not match with our record."
-          );
+          toast.error(data?.message);
         }
       });
   };

@@ -103,7 +103,7 @@ export default function About() {
       icon: LightBulbIcon,
       title: "Our Value",
       caption:
-        "Many people from different backgrounds work in our organization. Creative IT has a diverse culture that appreciates the labor and talent of all the members. Anyone irrespective of their gender, class, and education would find a great work environment where everyone works in harmony with love and respect.",
+        "Many people from different backgrounds work in our organization. Pathshala IT has a diverse culture that appreciates the labor and talent of all the members. Anyone irrespective of their gender, class, and education would find a great work environment where everyone works in harmony with love and respect.",
       coverImg: cover,
     },
     {
@@ -197,9 +197,9 @@ export default function About() {
                 {d.factData && (
                   <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-[24px] mt-[50px] mb-[120px]">
                     {d.factData.map((df, i) => (
-                      <div key={i} className="p-[20px] rounded-[8px] bg-lightOrange">
-                        <h1 className="text-[40px] text-black text-center">{df.number} +</h1>
-                        <p className="text-[20px] text-center">{df.name}</p>
+                      <div key={i} className="p-[20px] rounded-[8px] bg-lightBlue">
+                        <h1 className="text-[40px] text-blue text-center">{df.number} +</h1>
+                        <p className="text-[20px] text-center text-black font-semibold">{df.name}</p>
                       </div>
                     ))}
                   </div>

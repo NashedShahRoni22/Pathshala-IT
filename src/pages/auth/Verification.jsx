@@ -9,16 +9,34 @@ export default function Verification() {
   const [loader, setLoader] = useState(false);
   const [code, setCode] = useState("");
   const navigate = useNavigate();
-
-  // console.log(code);
+  const number = localStorage.getItem("phone_number");
+  //verify otp
   const verifyOtp = () => {
     setLoader(true);
     fetch(`https://api.pathshalait.com/api/v1/otp/${code}`)
       .then((res) => res.json())
       .then((data) => {
+        console.log(data);
         if (data.status === true) {
           toast.success("Please Login!");
           navigate("/login");
+          setLoader(false);
+          localStorage.removeItem("phone_number");
+        } else {
+          console.log(data);
+          setLoader(false);
+        }
+      });
+  };
+  //verify otp
+  const resentCode = () => {
+    setCode("")
+    setLoader(true);
+    fetch(`https://api.pathshalait.com/api/v1/resent/otp/${number}`)
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.status === true) {
+          toast.success("OTP sent!");
           setLoader(false);
         } else {
           console.log(data);
@@ -43,7 +61,7 @@ export default function Verification() {
 
         <p className="text-[16px]">
           Didn't get the code?{" "}
-          <span className="underline text-blue">Click to resend</span>{" "}
+          <span className="underline text-blue cursor-pointer" onClick={resentCode}>Click to resend</span>{" "}
         </p>
         <div className="flex items-center gap-2.5">
           <Button
