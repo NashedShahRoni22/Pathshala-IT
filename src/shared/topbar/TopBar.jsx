@@ -190,7 +190,7 @@ export default function TopBar() {
 
             <div className="flex justify-end mr-5 mt-2.5">
               {accessToken !== null ? (
-                <Button onClick={handleLogOut} className="flex items-center gap-2 text-orange">Log Out <MdLogout className="text-xl" /></Button>
+                <Button onClick={handleLogOut} className="flex items-center gap-2 text-white bg-blue" size="sm">Log Out <MdLogout className="text-xl" /></Button>
               ) : (
                 <Link
                   to={"/login"}

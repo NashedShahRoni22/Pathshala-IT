@@ -17,6 +17,7 @@ import DiscountForm from "../shared/discount/DiscountForm";
 import Dashboard from "../pages/profile/Dashboard";
 import Invoices from "../pages/profile/Invoices";
 import InvoicesDetails from "../pages/profile/InvoicesDetails";
+import HomeSeminar from "../pages/home/HomeSeminar";
 
 export const router = createBrowserRouter([
   {
@@ -66,6 +67,10 @@ export const router = createBrowserRouter([
       {
         path: "/discount_form",
         element: <DiscountForm />,
+      },
+      {
+        path: "/join_seminar",
+        element: <HomeSeminar />,
       },
       {
         path: "/payment",

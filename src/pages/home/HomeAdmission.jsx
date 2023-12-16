@@ -8,7 +8,7 @@ import { BsBook } from "react-icons/bs";
 
 export default function HomeAdmission() {
   const [admissionData, setAdmissionData] = useState(null);
-
+  // console.log(admissionData);
   const fetchData = async () => {
     try {
       const response = await fetch(
@@ -123,7 +123,7 @@ export default function HomeAdmission() {
             <div className="flex gap-4">
               <img className="h-[24px] w-[24px]" src={book} alt="" />
               <p className="text-[16px] lg:text-[20px]">
-                Class Starts: December 01, 2023
+                Class Starts: {admissionData?.class_start_date}
               </p>
             </div>
             <div className="flex gap-4 mt-2.5">

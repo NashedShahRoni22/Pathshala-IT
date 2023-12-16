@@ -14,7 +14,7 @@ export default function Home() {
     <section>
         <HomeLanding/>
         <HomeCourseBar/>
-        <HomeAdmission/>
+        {/* <HomeAdmission/> */}
         <HomeCourses/>
         <HomeServices/>
         <HomeSeminar/>

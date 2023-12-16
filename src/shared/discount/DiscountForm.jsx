@@ -2,6 +2,7 @@ import { Button, Option, Select, Spinner } from "@material-tailwind/react";
 import React from "react";
 import { useState } from "react";
 import { useEffect } from "react";
+import { Input } from "@material-tailwind/react";;
 
 export default function DiscountForm({ open, setOpen }) {
   const [loader, setLoader] = useState(false);
@@ -86,23 +87,20 @@ export default function DiscountForm({ open, setOpen }) {
         )}
 
         <div className="grid md:grid-cols-2 my-4 gap-5">
-          <input
-            className="px-4 py-1.5 rounded-lg border border-blue focus:outline-blue"
-            placeholder="Enter Name"
+          <Input
+            label="Enter Name"
             type="text"
             name="name"
             required
           />
-          <input
-            className="px-4 py-1.5 rounded-lg border border-blue focus:outline-blue"
-            placeholder="Enter Phone Number"
+          <Input
+            label="Enter Phone Number"
             type="number"
             name="number"
             required
           />
-          <input
-            className="px-4 py-1.5 rounded-lg border border-blue focus:outline-blue"
-            placeholder="Enter Location"
+          <Input
+            label="Enter Location"
             type="text"
             name="location"
             required
