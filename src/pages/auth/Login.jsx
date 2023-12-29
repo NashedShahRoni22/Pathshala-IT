@@ -36,15 +36,15 @@ export default function Login() {
       .then((response) => response.json())
       .then((data) => {
         console.log(data);
-        if (data.status) {
+        if (data.status === true) {
           navigate("/");
           setLoader(false);
           localStorage.setItem("access_token", data?.data?.access_token);
           localStorage.setItem("User_Info", JSON.stringify(data?.data));
           toast.success(data?.message);
           window.location.reload();
-        } else if (data?.status_code === 403) {
-          navigate("/verification");
+        } else if (data.status === false) {
+          // navigate("/verification");
           toast.error(data?.message);
         } else {
           setLoader(false);

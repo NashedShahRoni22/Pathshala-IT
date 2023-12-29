@@ -3,6 +3,7 @@ import userImg from "../../assets/about/user.png";
 import { RxUpdate } from "react-icons/rx";
 import { AuthContext } from "../../context/AuthProvider";
 import { toast } from "react-toastify";
+import { Link } from "react-router-dom";
 
 export default function Profile() {
   const { user } = useContext(AuthContext);
@@ -47,11 +48,13 @@ export default function Profile() {
     } finally {
     }
   };
+  
   return (
     <section className="mx-5 md:container md:mx-auto my-10 md:flex items-center justify-center">
       <div className="shadow rounded p-8">
         <div className="flex justify-between">
           <h1 className="text-[20px] md:text-[24px]">My Profile</h1>
+          <Link className="px-4 py-2 bg-blue text-white rounded-full">Change Password</Link>
         </div>
 
         <div className="flex flex-col gap-5 md:flex-row md:justify-between md:gap-8 mt-8">
@@ -72,21 +75,21 @@ export default function Profile() {
               />
               <div className="flex gap-1">
                 <button
-                  className="px-2 py-1 bg-blue text-white"
+                  className="px-2 py-1 bg-blue text-white rounded-full"
                   onClick={() => inputRef.current.click()}
                 >
                   Upload
                 </button>
                 {file === null ? (
                   <button
-                    className="px-2 py-1 bg-orange text-white"
+                    className="px-2 py-1 bg-orange text-white rounded-full"
                     onClick={() => setEdit(false)}
                   >
                     Cancel
                   </button>
                 ) : (
                   <button
-                    className="px-2 py-1 bg-orange text-white"
+                    className="px-2 py-1 bg-orange text-white rounded-full"
                     onClick={() => handleUpdateProfile(user?.student_id)}
                   >
                     Save
@@ -112,7 +115,7 @@ export default function Profile() {
 
               <button
                 onClick={() => setEdit(true)}
-                className="flex items-center gap-1.5 px-2 py-1 bg-blue text-white rounded"
+                className="flex items-center gap-1.5 px-2 py-1 bg-blue text-white rounded-full"
               >
                 {" "}
                 <RxUpdate /> Change{" "}

@@ -17,6 +17,7 @@ import {
 
 import teamPerson from "../../assets/about/member.png";
 import cover from "../../assets/about/image.png";
+import CountUp from 'react-countup';
 
 export default function About() {
   const data = [
@@ -197,9 +198,16 @@ export default function About() {
                 {d.factData && (
                   <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-[24px] mt-[50px] mb-[120px]">
                     {d.factData.map((df, i) => (
-                      <div key={i} className="p-[20px] rounded-[8px] bg-lightBlue">
-                        <h1 className="text-[40px] text-blue text-center">{df.number} +</h1>
-                        <p className="text-[20px] text-center text-black font-semibold">{df.name}</p>
+                      <div
+                        key={i}
+                        className="p-[20px] rounded-[8px] bg-lightBlue"
+                      >
+                        <p className="text-[40px] font-semibold text-blue text-center">
+                          <CountUp end={df.number} duration={5} />
+                        </p>
+                        <p className="text-[20px] text-center text-black font-semibold">
+                          {df.name}
+                        </p>
                       </div>
                     ))}
                   </div>

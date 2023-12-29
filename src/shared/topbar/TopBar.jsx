@@ -41,14 +41,14 @@ export default function TopBar() {
     },
     {
       name: "Success Stories",
-      link: "/",
+      link: "/success_stories",
     },
     {
       name: "Courses",
       child: [
         {
           name: "Free Courses",
-          link: "/",
+          link: "/free_course_video",
         },
         {
           name: "Paid Courses",

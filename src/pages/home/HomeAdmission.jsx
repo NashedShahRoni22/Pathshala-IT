@@ -5,6 +5,7 @@ import frame from "../../assets/admissionTimeIcons/Frame.png";
 import hour from "../../assets/admissionTimeIcons/hour-glass.png";
 import cube from "../../assets/admissionTimeIcons/Cube.png";
 import { BsBook } from "react-icons/bs";
+import { Link } from "react-router-dom";
 
 export default function HomeAdmission() {
   const [admissionData, setAdmissionData] = useState(null);
@@ -48,6 +49,16 @@ export default function HomeAdmission() {
         Math.floor((admissionEndDate - now) / 1000)
       );
     } else {
+      const timeDifferenceInSeconds = Math.floor(
+        (admissionEndDate - now) / 1000
+      );
+      const days = Math.floor(timeDifferenceInSeconds / (24 * 60 * 60));
+      const hours = Math.floor(
+        (timeDifferenceInSeconds % (24 * 60 * 60)) / (60 * 60)
+      );
+      const minutes = Math.floor((timeDifferenceInSeconds % (60 * 60)) / 60);
+      const seconds = timeDifferenceInSeconds % 60;
+
       remainingTimeInSeconds =
         days * 24 * 60 * 60 + hours * 60 * 60 + minutes * 60 + seconds;
     }
@@ -59,7 +70,7 @@ export default function HomeAdmission() {
     const days = Math.floor(timeInSeconds / (60 * 60 * 24));
     const hours = Math.floor((timeInSeconds % (60 * 60 * 24)) / (60 * 60));
     const minutes = Math.floor((timeInSeconds % (60 * 60)) / 60);
-    const seconds = (timeInSeconds % 60);
+    const seconds = timeInSeconds % 60;
 
     return (
       <div className="grid grid-cols-4 gap-2.5 lg:gap-5 my-5 lg:my-10">
@@ -100,9 +111,9 @@ export default function HomeAdmission() {
         <h1 className="text-[40px] lg:text-[60px] text-center">
           Admission Time Left
         </h1>
-        
+
         {formatTime(calculateRemainingTime())}
-        
+
         <div className="flex flex-col gap-2.5 md:flex-row md:justify-between">
           <div>
             <div className="flex gap-4">
@@ -129,7 +140,9 @@ export default function HomeAdmission() {
             <div className="flex gap-4 mt-2.5">
               <img className="h-[24px] w-[24px]" src={frame} alt="" />
               <p className="text-[16px] lg:text-[20px]">
-                Batch Timing: {admissionData?.weekly_days} ({admissionData?.class_start_time} PM to {admissionData?.class_end_time})
+                Batch Timing: {admissionData?.weekly_days} (
+                {admissionData?.class_start_time} PM to{" "}
+                {admissionData?.class_end_time})
               </p>
             </div>
           </div>
@@ -138,14 +151,14 @@ export default function HomeAdmission() {
           <p className="text-[16px] lg:text-[20px] text-white">
             If interested to take admission in {admissionData?.course?.name}
           </p>
-          <button className="py-2 px-4 bg-white rounded flex items-center gap-2.5">
+          <Link to={`/course_details/${admissionData?.course?.course_slug}`} className="py-2 px-4 bg-white rounded flex items-center gap-2.5">
             Enroll Now <BsBook className="text-xl" />
-          </button>
+          </Link>
         </div>
         <div className="mt-5 lg:hidden flex justify-center">
-          <button className="py-2 px-4 bg-white rounded flex items-center gap-2.5">
+          <Link to={`/course_details/${admissionData?.course?.course_slug}`} className="py-2 px-4 bg-white rounded flex items-center gap-2.5">
             Enroll Now <BsBook className="text-xl" />
-          </button>
+          </Link>
         </div>
       </div>
       <img

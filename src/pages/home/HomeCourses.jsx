@@ -16,9 +16,7 @@ import {
   BsFillArrowLeftCircleFill,
 } from "react-icons/bs";
 
-import { PiStudentFill } from "react-icons/pi";
 import Loader from "../../shared/loader/Loader";
-import { Link } from "react-router-dom";
 import { BeatLoader } from "react-spinners";
 import CourseCard from "../courses/CourseCard";
 

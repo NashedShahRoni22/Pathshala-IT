@@ -2,8 +2,8 @@ import { Button, Option, Select, Spinner } from "@material-tailwind/react";
 import React from "react";
 import { useState } from "react";
 import { useEffect } from "react";
-import { Input } from "@material-tailwind/react";;
-
+import { Input } from "@material-tailwind/react";
+import { toast } from "react-toastify";
 export default function DiscountForm({ open, setOpen }) {
   const [loader, setLoader] = useState(false);
   const [courses, setCourses] = useState([]);
@@ -30,7 +30,12 @@ export default function DiscountForm({ open, setOpen }) {
     const name = form.name.value;
     const number = form.number.value;
     const location = form.location.value;
-    console.log(courseId, name, number, location);
+    // console.log(courseId, name, number, location);
+
+    if (number.length !== 11) {
+      alert("Enter a 11 digit Bangladesh number!");
+      return;
+    }
 
     const formData = new FormData();
     formData.append("name", name);
@@ -87,29 +92,19 @@ export default function DiscountForm({ open, setOpen }) {
         )}
 
         <div className="grid md:grid-cols-2 my-4 gap-5">
-          <Input
-            label="Enter Name"
-            type="text"
-            name="name"
-            required
-          />
+          <Input label="Enter Name" type="text" name="name" required />
           <Input
             label="Enter Phone Number"
             type="number"
             name="number"
             required
           />
-          <Input
-            label="Enter Location"
-            type="text"
-            name="location"
-            required
-          />
+          <Input label="Enter Location" type="text" name="location" required />
         </div>
       </div>
       <p className="text-blue text-center font-semibold">
-        If you are a registered user! Please enter your account phone
-        number for discount.
+        If you are a registered user! Please enter your account phone number for
+        discount.
       </p>
       <Button
         disabled={courseId === ""}

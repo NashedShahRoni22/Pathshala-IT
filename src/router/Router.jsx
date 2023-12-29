@@ -18,6 +18,9 @@ import Dashboard from "../pages/profile/Dashboard";
 import Invoices from "../pages/profile/Invoices";
 import InvoicesDetails from "../pages/profile/InvoicesDetails";
 import HomeSeminar from "../pages/home/HomeSeminar";
+import CourseVideos from "../pages/auth/CourseVideos";
+import HomeStories from "../pages/home/HomeStories";
+import FreeCourseVideo from "../pages/auth/FreeCourseVideo";
 
 export const router = createBrowserRouter([
   {
@@ -73,6 +76,14 @@ export const router = createBrowserRouter([
         element: <HomeSeminar />,
       },
       {
+        path: "/success_stories",
+        element: <HomeStories />,
+      },
+      {
+        path: "/free_course_video",
+        element: <FreeCourseVideo />,
+      },
+      {
         path: "/payment",
         element: (
           <PrivateRoute>
@@ -109,6 +120,14 @@ export const router = createBrowserRouter([
         element: (
           <PrivateRoute>
             <InvoicesDetails />
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "/course_videos/:id",
+        element: (
+          <PrivateRoute>
+            <CourseVideos />
           </PrivateRoute>
         ),
       },

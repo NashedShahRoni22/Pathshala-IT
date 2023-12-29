@@ -15,6 +15,10 @@ export default function Register() {
   const handleClickShowPassword = () => {
     setShowPassword(!showPassword);
   };
+  const [showPassword2, setShowPassword2] = useState(false);
+  const handleClickShowPassword2 = () => {
+    setShowPassword2(!showPassword2);
+  };
 
   const handleRegisteration = (e) => {
     setLoader(true);
@@ -42,12 +46,16 @@ export default function Register() {
       toast.error("Password & Confirm Password didn't match!");
       setLoader(false);
     } else if (number.length !== 11) {
-      toast.error("Enter a valid BD number");
+      toast.error("Enter a valid BD number!");
       setLoader(false);
     } else if (gurdianNumber.length !== 11) {
-      toast.error("Enter a valid gurdian number");
+      toast.error("Enter a valid gurdian number!");
       setLoader(false);
-    } else {
+    } else if(number === gurdianNumber){
+      toast.error("Student and gurdian number can't be same!");
+      setLoader(false);
+    }
+    else {
       const formData = new FormData();
       formData.append("name", name);
       formData.append("email", email);
@@ -68,17 +76,16 @@ export default function Register() {
         .then((data) => {
           console.log(data);
           if (data.status === true) {
-            setLoader(false);
             navigate("/verification");
             localStorage.setItem("phone_number", number);
             toast.success("Verification code sent!");
-          } else if (data?.status_code === 403) {
-            navigate("/verification");
+          } else if (data.status === false) {
+            // navigate("/verification");
             toast.error(data?.message);
           } else {
             setLoader(false);
             toast.error(data.message);
-            console.log(data);
+            setLoader(false);
           }
         });
     }
@@ -168,12 +175,12 @@ export default function Register() {
               />
               {showPassword ? (
                 <AiOutlineEye
-                  className="mr-2 cursor-pointer"
+                  className="mr-2 cursor-pointer text-xl"
                   onClick={handleClickShowPassword}
                 />
               ) : (
                 <AiOutlineEyeInvisible
-                  className="mr-2 cursor-pointer"
+                  className="mr-2 cursor-pointer text-xl"
                   onClick={handleClickShowPassword}
                 />
               )}
@@ -185,19 +192,19 @@ export default function Register() {
               <input
                 className="w-full px-4 py-2 focus:outline-none"
                 placeholder="Confirm Password"
-                type={showPassword ? "text" : "password"}
+                type={showPassword2 ? "text" : "password"}
                 name="confirm_password"
                 required
               />
-              {showPassword ? (
+              {showPassword2 ? (
                 <AiOutlineEye
-                  className="mr-2 cursor-pointer"
-                  onClick={handleClickShowPassword}
+                  className="mr-2 cursor-pointer text-xl"
+                  onClick={handleClickShowPassword2}
                 />
               ) : (
                 <AiOutlineEyeInvisible
-                  className="mr-2 cursor-pointer"
-                  onClick={handleClickShowPassword}
+                  className="mr-2 cursor-pointer text-xl"
+                  onClick={handleClickShowPassword2}
                 />
               )}
             </div>
