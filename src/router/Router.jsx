@@ -21,6 +21,8 @@ import HomeSeminar from "../pages/home/HomeSeminar";
 import CourseVideos from "../pages/auth/CourseVideos";
 import HomeStories from "../pages/home/HomeStories";
 import FreeCourseVideo from "../pages/auth/FreeCourseVideo";
+import Privacy from "../pages/privacy/Privacy";
+import ChangePassword from "../pages/profile/ChangePassword";
 
 export const router = createBrowserRouter([
   {
@@ -54,6 +56,10 @@ export const router = createBrowserRouter([
       {
         path: "/courses",
         element: <HomeCourses />,
+      },
+      {
+        path: "/privacy_policy",
+        element: <Privacy />,
       },
       {
         path: "/features",
@@ -128,6 +134,14 @@ export const router = createBrowserRouter([
         element: (
           <PrivateRoute>
             <CourseVideos />
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "/change_password",
+        element: (
+          <PrivateRoute>
+            <ChangePassword />
           </PrivateRoute>
         ),
       },

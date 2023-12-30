@@ -12,13 +12,9 @@ export default function Register() {
   const [gurdianNumber, setGurdianNumber] = useState("");
 
   const [showPassword, setShowPassword] = useState(false);
-  const handleClickShowPassword = () => {
-    setShowPassword(!showPassword);
-  };
   const [showPassword2, setShowPassword2] = useState(false);
-  const handleClickShowPassword2 = () => {
-    setShowPassword2(!showPassword2);
-  };
+
+  const [showSentOtp, setShowSentOtp] = useState(false);
 
   const handleRegisteration = (e) => {
     setLoader(true);
@@ -31,17 +27,6 @@ export default function Register() {
     const password = form.password.value;
     const confirmpassword = form.confirm_password.value;
 
-    // const postData = {
-    //   name,
-    //   email,
-    //   number,
-    //   dob,
-    //   gurdianName,
-    //   gurdianNumber,
-    //   password,
-    //   confirmpassword,
-    // };
-
     if (password !== confirmpassword) {
       toast.error("Password & Confirm Password didn't match!");
       setLoader(false);
@@ -51,11 +36,10 @@ export default function Register() {
     } else if (gurdianNumber.length !== 11) {
       toast.error("Enter a valid gurdian number!");
       setLoader(false);
-    } else if(number === gurdianNumber){
+    } else if (number === gurdianNumber) {
       toast.error("Student and gurdian number can't be same!");
       setLoader(false);
-    }
-    else {
+    } else {
       const formData = new FormData();
       formData.append("name", name);
       formData.append("email", email);
@@ -80,7 +64,9 @@ export default function Register() {
             localStorage.setItem("phone_number", number);
             toast.success("Verification code sent!");
           } else if (data.status === false) {
-            // navigate("/verification");
+            setShowSentOtp(true);
+            localStorage.setItem("phone_number", number);
+            setLoader(false);
             toast.error(data?.message);
           } else {
             setLoader(false);
@@ -90,13 +76,42 @@ export default function Register() {
         });
     }
   };
+
+  //resent otp
+  const resentCode = () => {
+    // setLoader(true);
+    fetch(
+      `https://api.pathshalait.com/api/v1/resent/otp/${localStorage.getItem(
+        "phone_number"
+      )}`
+    )
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.status === true) {
+          toast.success("OTP sent!");
+          // setLoader(false);
+          // navigate("/verification");
+        } else {
+          console.log(data);
+          // setLoader(false);
+        }
+      });
+  };
+
   return (
     <section className="mx-5 md:container md:mx-auto my-10 lg:my-20 flex justify-center lg:gap-8  lg:items-center">
       <div className="lg:w-1/2 shadow lg:shadow-none px-5 py-10 rounded">
         <h1 className="text-[40px]">Register</h1>
-        <p className="text-[16px] mt-[8px]">
-          Please fill your detail to create your account.
-        </p>
+
+        {showSentOtp ? (
+          <button onClick={resentCode} className="text-blue">
+            Please verify your account!
+          </button>
+        ) : (
+          <p className="text-[16px] mt-[8px]">
+            Please fill your detail to create your account.
+          </p>
+        )}
         <form
           onSubmit={handleRegisteration}
           action=""
@@ -176,12 +191,12 @@ export default function Register() {
               {showPassword ? (
                 <AiOutlineEye
                   className="mr-2 cursor-pointer text-xl"
-                  onClick={handleClickShowPassword}
+                  onClick={() => setShowPassword(!showPassword)}
                 />
               ) : (
                 <AiOutlineEyeInvisible
                   className="mr-2 cursor-pointer text-xl"
-                  onClick={handleClickShowPassword}
+                  onClick={() => setShowPassword(!showPassword)}
                 />
               )}
             </div>
@@ -199,12 +214,12 @@ export default function Register() {
               {showPassword2 ? (
                 <AiOutlineEye
                   className="mr-2 cursor-pointer text-xl"
-                  onClick={handleClickShowPassword2}
+                  onClick={() => setShowPassword2(!showPassword2)}
                 />
               ) : (
                 <AiOutlineEyeInvisible
                   className="mr-2 cursor-pointer text-xl"
-                  onClick={handleClickShowPassword2}
+                  onClick={() => setShowPassword2(!showPassword2)}
                 />
               )}
             </div>

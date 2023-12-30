@@ -47,21 +47,42 @@ export default function BottomBar() {
           </div>
           <div className="md:w-1/2 grid grid-cols-2">
             <ul>
-              <h1>Explore</h1>
-              <li className="mt-2.5">About Us</li>
-              <li>Courses</li>
-              <li>Services</li>
+              <h1 className="mb-2.5">Explore</h1>
+              <li>
+                {" "}
+                <Link to="/about">About Us</Link>{" "}
+              </li>
+              <li>
+                {" "}
+                <Link to="/courses">Courses</Link>{" "}
+              </li>
+              <li>
+                {" "}
+                <Link to="/free_course_video">Free Courses</Link>{" "}
+              </li>
+              <li>
+                {" "}
+                <Link>Services</Link>{" "}
+              </li>
             </ul>
             <ul>
-              <h1>Links</h1>
-              <li className="mt-2.5">Seminars</li>
-              <li>Success Stories</li>
+              <h1 className="mb-2.5">Links</h1>
+              <li>
+                {" "}
+                <Link to="/join_seminar">Seminars</Link>
+              </li>
+              <li>
+                {" "}
+                <Link to="/success_stories">Success Stories</Link>{" "}
+              </li>
               <li>
                 {" "}
                 <Link to="/features">Features</Link>{" "}
               </li>
               <li>
-                {" "}
+                <Link to="/privacy_policy">Privacy Policy</Link>{" "}
+              </li>
+              <li>
                 <Link to="/contact_us">Contact Us</Link>
               </li>
             </ul>

@@ -1,13 +1,9 @@
 import React, { useContext, useEffect, useState } from "react";
-import { FaBars, FaUserCircle } from "react-icons/fa";
-import {
-  AiOutlineClose,
-  AiOutlineLogin,
-  AiOutlineLogout,
-} from "react-icons/ai";
+import { FaBars } from "react-icons/fa";
+import { AiOutlineClose, AiOutlineLogin } from "react-icons/ai";
 import logo from "../../assets/logo/pathshala-IT.png";
-import { Link } from "react-router-dom";
-import userImg from "../../assets/about/user.png"
+import { Link, NavLink } from "react-router-dom";
+import userImg from "../../assets/about/user.png";
 import UserBar from "./UserBar";
 import { MdLogout } from "react-icons/md";
 import { Button } from "@material-tailwind/react";
@@ -16,7 +12,7 @@ import { AuthContext } from "../../context/AuthProvider";
 
 export default function TopBar() {
   const accessToken = localStorage.getItem("access_token");
-  const {user} = useContext(AuthContext);
+  const { user } = useContext(AuthContext);
   const [open, setOpen] = useState(false);
   // Function to handle scroll event
   const handleScroll = () => {
@@ -45,6 +41,7 @@ export default function TopBar() {
     },
     {
       name: "Courses",
+      link:"/courses",
       child: [
         {
           name: "Free Courses",
@@ -80,7 +77,7 @@ export default function TopBar() {
       if (responseData.status === true) {
         localStorage.clear();
         window.location.reload();
-        toast.error(responseData?.message)
+        toast.error(responseData?.message);
       } else {
         console.log("Error making GET request. Status code: " + responseData);
       }
@@ -89,6 +86,14 @@ export default function TopBar() {
     } finally {
     }
   };
+
+  //active navlink style
+  const navLinkStyle = ({isActive}) =>{
+    return{
+      color : isActive ? "blue" : "black",
+      borderBottom: isActive ? "2px solid blue" : "none"
+    }
+  }
   return (
     <nav className="sticky top-0 bg-lightBlue z-50">
       <section className="mx-5 md:container md:mx-auto">
@@ -100,14 +105,12 @@ export default function TopBar() {
           <ul className="hidden lg:flex gap-6 font-semibold">
             {menuItems.map((mi, i) => (
               <div key={i} className="relative group">
-                <Link to={mi.link} className="relative">
-                  <li className="text-[18px] text-[#222222] border-b-2 border-transparent hover:border-blue">
-                    {mi.name}
-                  </li>
+                <NavLink style={navLinkStyle} to={mi.link} className="relative text-[18px]">
+                  {mi.name}
                   {mi.child && (
                     <div className="h-2.5 w-2.5 bg-blue rounded-full absolute -top-1 -right-1"></div>
                   )}
-                </Link>
+                </NavLink>
                 {mi.child && (
                   <ul className="absolute hidden group-hover:block top-6 left-4 min-w-max bg-white rounded shadow">
                     {mi.child.map((mc, i) => (
@@ -125,15 +128,22 @@ export default function TopBar() {
           <div className="flex items-center gap-2.5">
             {accessToken !== null ? (
               <div className="relative group">
-                {
-                  user?.profile_image === null ?
-                  <img src={userImg} alt="" className="h-[40px] w-[40px] rounded-full cursor-pointer" /> 
-                  :
-                  <img src={user?.profile_image} alt="" className="h-[40px] w-[40px] rounded-full cursor-pointer" />
-                }
-                
+                {user?.profile_image === null ? (
+                  <img
+                    src={userImg}
+                    alt=""
+                    className="h-[40px] w-[40px] rounded-full cursor-pointer"
+                  />
+                ) : (
+                  <img
+                    src={user?.profile_image}
+                    alt=""
+                    className="h-[40px] w-[40px] rounded-full cursor-pointer"
+                  />
+                )}
+
                 <div className="hidden group-hover:block absolute top-10 -right-[14px] md:-right-[32px] lg:right-0 min-w-[280px]">
-                    <UserBar handleLogOut={handleLogOut} />
+                  <UserBar handleLogOut={handleLogOut} />
                 </div>
               </div>
             ) : (
@@ -190,7 +200,13 @@ export default function TopBar() {
 
             <div className="flex justify-end mr-5 mt-2.5">
               {accessToken !== null ? (
-                <Button onClick={handleLogOut} className="flex items-center gap-2 text-white bg-blue" size="sm">Log Out <MdLogout className="text-xl" /></Button>
+                <Button
+                  onClick={handleLogOut}
+                  className="flex items-center gap-2 text-white bg-blue"
+                  size="sm"
+                >
+                  Log Out <MdLogout className="text-xl" />
+                </Button>
               ) : (
                 <Link
                   to={"/login"}

@@ -9,6 +9,7 @@ import { FaPhoneAlt } from "react-icons/fa";
 export default function Login() {
   const [loader, setLoader] = useState(false);
   const navigate = useNavigate();
+  const [showSentOtp, setShowSentOtp] = useState(false);
 
   const [showPassword, setShowPassword] = useState(false);
 
@@ -44,7 +45,9 @@ export default function Login() {
           toast.success(data?.message);
           window.location.reload();
         } else if (data.status === false) {
-          // navigate("/verification");
+          setShowSentOtp(true);
+          setLoader(false);
+          localStorage.setItem("phone_number", number);
           toast.error(data?.message);
         } else {
           setLoader(false);
@@ -52,13 +55,46 @@ export default function Login() {
         }
       });
   };
+
+  //resent otp
+  const resentCode = () => {
+    // setLoader(true);
+    fetch(
+      `https://api.pathshalait.com/api/v1/resent/otp/${localStorage.getItem(
+        "phone_number"
+      )}`
+    )
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        if (data.status === true) {
+          toast.success("OTP sent!");
+          // setLoader(false);
+          // navigate("/verification");
+        } else {
+          // setLoader(false);
+        }
+      });
+  };
+
+
   return (
     <section className="mx-5 md:container md:mx-auto my-10 lg:my-20 flex justify-center lg:items-center">
       <div className="lg:w-1/2 shadow lg:shadow-none px-10 py-5 rounded">
         <h1 className="text-[40px]">Login</h1>
-        <p className="text-[16px]">
-          Please fill your detail to access your account.
-        </p>
+        {showSentOtp ? (
+          <button
+            onClick={resentCode}
+            className="text-blue"
+          >
+            Please verify your account!
+          </button>
+        ) : (
+          <p className="text-[16px]">
+            Please fill your detail to access your account.
+          </p>
+        )}
+
         <form
           onSubmit={handleLogin}
           action=""

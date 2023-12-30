@@ -54,7 +54,7 @@ export default function Profile() {
       <div className="shadow rounded p-8">
         <div className="flex justify-between">
           <h1 className="text-[20px] md:text-[24px]">My Profile</h1>
-          <Link className="px-4 py-2 bg-blue text-white rounded-full">Change Password</Link>
+          <Link to='/change_password' className="px-4 py-2 bg-blue text-white rounded-full">Change Password</Link>
         </div>
 
         <div className="flex flex-col gap-5 md:flex-row md:justify-between md:gap-8 mt-8">

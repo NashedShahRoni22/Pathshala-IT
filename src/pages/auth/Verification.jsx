@@ -16,7 +16,6 @@ export default function Verification() {
     fetch(`https://api.pathshalait.com/api/v1/otp/${code}`)
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
         if (data.status === true) {
           toast.success("Please Login!");
           navigate("/login");
@@ -28,7 +27,8 @@ export default function Verification() {
         }
       });
   };
-  //verify otp
+  
+  //resent otp
   const resentCode = () => {
     setCode("")
     setLoader(true);
