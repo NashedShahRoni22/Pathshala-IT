@@ -79,7 +79,6 @@ export default function Register() {
 
   //resent otp
   const resentCode = () => {
-    // setLoader(true);
     fetch(
       `https://api.pathshalait.com/api/v1/resent/otp/${localStorage.getItem(
         "phone_number"
@@ -89,11 +88,9 @@ export default function Register() {
       .then((data) => {
         if (data.status === true) {
           toast.success("OTP sent!");
-          // setLoader(false);
-          // navigate("/verification");
+          navigate("/verification");
         } else {
           console.log(data);
-          // setLoader(false);
         }
       });
   };

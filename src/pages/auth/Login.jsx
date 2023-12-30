@@ -36,7 +36,6 @@ export default function Login() {
     fetch("https://api.pathshalait.com/api/v1/login", requestOptions)
       .then((response) => response.json())
       .then((data) => {
-        console.log(data);
         if (data.status === true) {
           navigate("/");
           setLoader(false);
@@ -58,7 +57,6 @@ export default function Login() {
 
   //resent otp
   const resentCode = () => {
-    // setLoader(true);
     fetch(
       `https://api.pathshalait.com/api/v1/resent/otp/${localStorage.getItem(
         "phone_number"
@@ -66,13 +64,11 @@ export default function Login() {
     )
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
         if (data.status === true) {
           toast.success("OTP sent!");
-          // setLoader(false);
-          // navigate("/verification");
+          navigate("/verification");
         } else {
-          // setLoader(false);
+          console.log(data);
         }
       });
   };

@@ -2,28 +2,12 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import logo from "../../assets/logo/pathshala-IT.png";
 import { Avatar, Card, Typography } from "@material-tailwind/react";
-import html2canvas from "html2canvas";
-import jsPDF from "jspdf";
 import Loader from "../../shared/loader/Loader";
 
 export default function InvoicesDetails() {
   const { id } = useParams();
   const [invoice, setInvoice] = useState({});
   const [loader, setLoader] = useState(false);
-
-  const downloadPDF = () => {
-    const capture = document.querySelector(".receipt");
-    setLoader(true);
-    html2canvas(capture).then((canvas) => {
-      const imgData = canvas.toDataURL("img/png");
-      const doc = new jsPDF("p", "mm", "a4");
-      const componentWidth = doc.internal.pageSize.getWidth();
-      const componentHeight = doc.internal.pageSize.getHeight();
-      doc.addImage(imgData, "PNG", 0, 0, componentWidth, componentHeight);
-      setLoader(false);
-      doc.save("invoice.pdf");
-    });
-  };
 
   //get invoices details
   useEffect(() => {
@@ -56,12 +40,24 @@ export default function InvoicesDetails() {
     fetchData();
   }, []);
 
+  //print pdf
+  function printDiv(divId) {
+    var printContents = document.getElementById(divId).innerHTML;
+    var originalContents = document.body.innerHTML;
+
+    document.body.innerHTML = printContents;
+
+    window.print();
+
+    document.body.innerHTML = originalContents;
+}
+
   return (
-    <section className="mx-5 md:container md:mx-auto my-10 shadow rounded p-5 max-w-[595px] min-h-[80vh] relative receipt bg-white">
+    <section  className="mx-5 md:container md:mx-auto my-10 shadow rounded p-5 max-w-[595px] min-h-[80vh] relative receipt bg-white">
       {loader ? (
         <Loader />
       ) : (
-        <>
+        <div id="invoice-details" >
           <div className="flex justify-between items-center">
             <h2 className="text-3xl font-semibold text-blue">Invoice</h2>
             <img src={logo} alt="" className="w-[150px]" />
@@ -267,14 +263,14 @@ export default function InvoicesDetails() {
           </p>
 
           <button
-            onClick={downloadPDF}
+            onClick={()=>printDiv("invoice-details")}
             className="px-4 py-2 bg-blue text-white absolute right-5 bottom-5 shadow rounded"
           >
             {loader ? "Downloading ..." : "Download"}
           </button>
 
           <div className="h-20 w-20 rounded-full bg-blue absolute bottom-0 left-0"></div>
-        </>
+        </div>
       )}
     </section>
   );
