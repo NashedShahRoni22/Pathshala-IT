@@ -98,17 +98,19 @@ export default function Register() {
   return (
     <section className="mx-5 md:container md:mx-auto my-10 lg:my-20 flex justify-center lg:gap-8  lg:items-center">
       <div className="lg:w-1/2 shadow lg:shadow-none px-5 py-10 rounded">
-        <h1 className="text-[40px]">Register</h1>
+        <div className="flex justify-between items-center">
+          <h1 className="text-[40px]">Register</h1>
 
-        {showSentOtp ? (
-          <button onClick={resentCode} className="text-blue">
-            Please verify your account!
-          </button>
-        ) : (
-          <p className="text-[16px] mt-[8px]">
-            Please fill your detail to create your account.
-          </p>
-        )}
+          {showSentOtp && (
+            <button onClick={resentCode} className="bg-blue h-fit px-4 py-2 text-white rounded-full shadow" size="sm">
+              Verify Now
+            </button>
+          )}
+        </div>
+
+        <p className="text-[16px] mt-[8px]">
+          Please fill your detail to create your account.
+        </p>
         <form
           onSubmit={handleRegisteration}
           action=""

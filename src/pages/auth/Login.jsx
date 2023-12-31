@@ -73,23 +73,26 @@ export default function Login() {
       });
   };
 
-
   return (
     <section className="mx-5 md:container md:mx-auto my-10 lg:my-20 flex justify-center lg:items-center">
       <div className="lg:w-1/2 shadow lg:shadow-none px-10 py-5 rounded">
-        <h1 className="text-[40px]">Login</h1>
-        {showSentOtp ? (
-          <button
-            onClick={resentCode}
-            className="text-blue"
-          >
-            Please verify your account!
-          </button>
-        ) : (
-          <p className="text-[16px]">
-            Please fill your detail to access your account.
-          </p>
-        )}
+        <div className="flex justify-between items-center">
+          <h1 className="text-[40px]">Login</h1>
+
+          {showSentOtp && (
+            <button
+              onClick={resentCode}
+              className="bg-blue h-fit px-4 py-2 text-white rounded-full shadow"
+              size="sm"
+            >
+              Verify Now
+            </button>
+          )}
+        </div>
+
+        <p className="text-[16px]">
+          Please fill your detail to access your account.
+        </p>
 
         <form
           onSubmit={handleLogin}
@@ -137,7 +140,7 @@ export default function Login() {
             type="submit"
             className="flex justify-center items-center gap-2 bg-blue"
           >
-            Sign In {loader && <Spinner className="h-4 w-4" />}
+            Login {loader && <Spinner className="h-4 w-4" />}
           </Button>
         </form>
         <div className="mt-[20px]">

@@ -7,6 +7,7 @@ import Loader from "../../shared/loader/Loader";
 export default function InvoicesDetails() {
   const { id } = useParams();
   const [invoice, setInvoice] = useState({});
+  console.log(invoice);
   const [loader, setLoader] = useState(false);
 
   //get invoices details
@@ -266,7 +267,7 @@ export default function InvoicesDetails() {
             onClick={()=>printDiv("invoice-details")}
             className="px-4 py-2 bg-blue text-white absolute right-5 bottom-5 shadow rounded"
           >
-            {loader ? "Downloading ..." : "Download"}
+             Download
           </button>
 
           <div className="h-20 w-20 rounded-full bg-blue absolute bottom-0 left-0"></div>

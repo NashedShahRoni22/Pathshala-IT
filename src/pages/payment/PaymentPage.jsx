@@ -8,6 +8,9 @@ import {
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
+import bkash from "../../assets/footer/bKash logo.png";
+import nagad from "../../assets/footer/g1438.png";
+import rocket from "../../assets/footer/Rocket Logo.png";
 
 export default function PaymentPage() {
   const [loader, setLoader] = useState(false);
@@ -109,78 +112,99 @@ export default function PaymentPage() {
   };
 
   return (
-    <section className="mx-5 md:container lg:w-1/3 md:mx-auto my-10 lg:my-20 shadow p-8 rounded-xl">
-      <div className="mt-5 rounded-xl">
-        <p className="capitalize text-[20px] mt-2.5">
-          {" "}
-          <span className="font-semibold">selected course:</span>{" "}
-          {courseDetails.name}
-        </p>
-        
+    <section className="mx-5 md:container md:mx-auto my-10 lg:my-20 grid gap-5 md:gap-10 lg:grid-cols-2">
+      <div className="shadow rounded-xl p-5">
+        <div className="">
+          <p className="capitalize text-[20px] mt-2.5">
+            {" "}
+            <span className="font-semibold">selected course:</span>{" "}
+            {courseDetails.name}
+          </p>
 
-        <p className="capitalize text-[20px] my-2.5 flex gap-4">
-          {" "}
-          <span className="font-semibold">course fee:</span>{" "}
-          {discount ? discount_amount : amount} BDT
-          {discount && <span className="line text-orange">{amount} BDT</span>} 
-        </p>
-        <div className="grid grid-cols-3 gap-x-[15px] md:gap-x-[30px]">
-          <div className="bg-lightBlue py-[12px] px-[16px] flex flex-col items-center justify-center rounded-xl">
-            <h1 className="text-[24px] md:text-[32px] flex">
-              {courseDetails.duration}
-            </h1>
-            <p className="text-[20px]">Month</p>
+          <p className="capitalize text-[20px] my-2.5 flex gap-4">
+            {" "}
+            <span className="font-semibold">course fee:</span>{" "}
+            {discount ? discount_amount : amount} BDT
+            {discount && <span className="line text-orange">{amount} BDT</span>}
+          </p>
+          <div className="grid grid-cols-3 gap-x-[15px] md:gap-x-[30px]">
+            <div className="bg-lightBlue py-[12px] px-[16px] flex flex-col items-center justify-center rounded-xl">
+              <h1 className="text-[24px] md:text-[32px] flex">
+                {courseDetails.duration}
+              </h1>
+              <p className="text-[20px]">Month</p>
+            </div>
+            <div className="bg-lightBlue py-[12px] px-[16px] flex flex-col items-center justify-center rounded-xl">
+              <h1 className="text-[24px] md:text-[32px]">
+                {courseDetails.total_lecture}
+              </h1>
+              <p className="text-[20px]">Lectures</p>
+            </div>
+            <div className="bg-lightBlue py-[12px] px-[16px] flex flex-col items-center justify-center rounded-xl">
+              <h1 className="text-[24px] md:text-[32px]">
+                {courseDetails.total_project}
+              </h1>
+              <p className="text-[20px]">Projects</p>
+            </div>
           </div>
-          <div className="bg-lightBlue py-[12px] px-[16px] flex flex-col items-center justify-center rounded-xl">
-            <h1 className="text-[24px] md:text-[32px]">
-              {courseDetails.total_lecture}
-            </h1>
-            <p className="text-[20px]">Lectures</p>
+        </div>
+        <div className="mt-5">
+          <h5 className="font-semibold text-[24px] capitalize">
+            payment information
+          </h5>
+          <div className="grid md:grid-cols-2 gap-4 mt-5">
+            <Select
+              label="Select Payment Method"
+              color="blue"
+              onChange={(value) => setPaymentMethod(value)}
+            >
+              <Option value="bkash">Bkash (01303110347)</Option>
+              <Option value="nagod">Nagad (01303110347)</Option>
+              <Option value="roket">Rocket (01303110347)</Option>
+            </Select>
+            <Input
+              type="text"
+              onChange={(e) => settransectionid(e.target.value)}
+              label="Enter Transection Number"
+            />
+            <Input
+              type="text"
+              onChange={(e) => settransectionnumber(e.target.value)}
+              label="Enter Transection ID"
+            />
           </div>
-          <div className="bg-lightBlue py-[12px] px-[16px] flex flex-col items-center justify-center rounded-xl">
-            <h1 className="text-[24px] md:text-[32px]">
-              {courseDetails.total_project}
-            </h1>
-            <p className="text-[20px]">Projects</p>
-          </div>
+          <Button
+            onClick={handleMakePayment}
+            disabled={
+              paymentMethod === "" ||
+              transectionnumber === "" ||
+              transectionid === ""
+            }
+            className="mt-4 bg-blue flex items-center gap-2"
+          >
+            Done {loader && <Spinner className="h-4 w-4" />}
+          </Button>
         </div>
       </div>
-      <div className="mt-5 rounded-xl">
-        <h5 className="font-semibold text-[24px] capitalize">
-          payment information
-        </h5>
-        <div className="grid md:grid-cols-2 gap-4 mt-5">
-          <Select
-            label="Select Payment Method"
-            color="blue"
-            onChange={(value) => setPaymentMethod(value)}
-          >
-            <Option value="bkash">Bkash</Option>
-            <Option value="nagod">Nagad</Option>
-            <Option value="roket">Rocket</Option>
-          </Select>
-          <Input
-            type="text"
-            onChange={(e) => settransectionid(e.target.value)}
-            label="Enter Transection Number"
-          />
-          <Input
-            type="text"
-            onChange={(e) => settransectionnumber(e.target.value)}
-            label="Enter Transection ID"
-          />
+      <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-1 bg-lightOrange p-5">
+        <div>
+          <p className="font-semibold text-[20px]">Payment procedure</p>
+          <ul className="ml-5 mt-2.5 list-decimal">
+            <li>Take a look at details</li>
+            <li>Select payment method</li>
+            <li>Enter transection number</li>
+            <li>Enter transection ID</li>
+            <li>Our payment number:01303110347</li>
+          </ul>
         </div>
-        <Button
-          onClick={handleMakePayment}
-          disabled={
-            paymentMethod === "" ||
-            transectionnumber === "" ||
-            transectionid === ""
-          }
-          className="mt-4 bg-blue flex items-center gap-2"
-        >
-          Done {loader && <Spinner className="h-4 w-4" />}
-        </Button>
+        <div className="">
+          <p className="font-semibold text-[20px] text-center">We accept</p>
+          <div className="grid grid-cols-2 mt-5 md:grid-cols-3 gap-2 place-items-center">
+            <img src={bkash} alt="" />
+            <img src={nagad} alt="" />
+            <img src={rocket} alt="" />
+          </div>
+        </div>
       </div>
     </section>
   );
