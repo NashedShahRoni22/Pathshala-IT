@@ -17,8 +17,8 @@ import {
 } from "react-icons/bs";
 
 import Loader from "../../shared/loader/Loader";
-import { BeatLoader } from "react-spinners";
 import CourseCard from "../courses/CourseCard";
+import SmallLoader from "../../shared/loader/SmallLoader";
 
 export default function HomeCourses() {
   const [loader, setLoader] = useState(false);
@@ -81,14 +81,7 @@ export default function HomeCourses() {
           <BsFillArrowLeftCircleFill className="text-3xl text-blue" />
         </button>
         {catLoader ? (
-          <div className="min-w-full flex justify-center">
-            <BeatLoader
-              color={"#1573FF"}
-              size={15}
-              aria-label="Loading Spinner"
-              data-testid="loader"
-            />
-          </div>
+          <SmallLoader />
         ) : (
           <Swiper
             id="categorySwiper"
@@ -184,7 +177,7 @@ export default function HomeCourses() {
               >
                 {courses?.map((c, i) => (
                   <SwiperSlide key={i}>
-                    <CourseCard c={c}/>
+                    <CourseCard c={c} />
                   </SwiperSlide>
                 ))}
               </Swiper>

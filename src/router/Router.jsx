@@ -23,6 +23,8 @@ import HomeStories from "../pages/home/HomeStories";
 import FreeCourseVideo from "../pages/auth/FreeCourseVideo";
 import Privacy from "../pages/privacy/Privacy";
 import ChangePassword from "../pages/profile/ChangePassword";
+import AddNewPassword from "../pages/auth/AddNewPassword";
+import Blog from "../pages/blog/Blog";
 
 export const router = createBrowserRouter([
   {
@@ -54,12 +56,20 @@ export const router = createBrowserRouter([
         element: <ForgetPassword/>,
       },
       {
+        path: "/add_new_passsword",
+        element: <AddNewPassword/>,
+      },
+      {
         path: "/courses",
         element: <HomeCourses />,
       },
       {
         path: "/privacy_policy",
         element: <Privacy />,
+      },
+      {
+        path: "/blogs",
+        element: <Blog />,
       },
       {
         path: "/features",

@@ -7,31 +7,17 @@ import loginimg from "../../assets/auth/login.png";
 export default function ForgetPassword() {
   const [loader, setLoader] = useState(false);
   const navigate = useNavigate();
-  const handleLogin = (e) => {
+  const handleSendOtp = (e) => {
+    e.preventDefault()
     setLoader(true);
-    e.preventDefault();
-    const form = e.target;
-    const number = form.number.value;
-    const postData = {
-      number,
-    };
-    // console.log(postData);
+    const number = e.target.number.value;
 
-    const formData = new FormData();
-    formData.append("phone_number", number);
-
-    const requestOptions = {
-      method: "POST",
-      body: formData,
-    };
-
-    fetch("https://api.pathshalait.com/api/v1/login", requestOptions)
+    fetch(`https://api.pathshalait.com/api/v1/forget/password/${number}`)
       .then((response) => response.json())
       .then((data) => {
         if (data.status) {
-          // navigate("/");
+          navigate("/verification");
           setLoader(false);
-          // toast.success("Sign in successfully!");
         } else {
           setLoader(false);
           toast.error(
@@ -45,11 +31,11 @@ export default function ForgetPassword() {
       <div className="lg:w-1/2 shadow lg:shadow-none p-5 rounded">
         <h1 className="text-[24px]">Forget Password?</h1>
         <form
-          onSubmit={handleLogin}
+          onSubmit={handleSendOtp}
           action=""
           className="lg:w-2/3 flex flex-col gap-2.5 my-5"
         >
-          <p className="">Phone number which you have used to create account</p>
+          <p>Phone number which you have used to create account</p>
           <input
             className="px-4 py-2 rounded-lg border border-blue focus:outline-blue"
             placeholder="01"
@@ -65,7 +51,7 @@ export default function ForgetPassword() {
           </Button>
         </form>
         <Link to="/login" className="">
-          I have remember my password. <span className="text-blue">Login</span>{" "}
+          I have remember my password | <span className="text-blue">Login</span>{" "}
         </Link>
       </div>
       <div className="hidden lg:block lg:w-1/2 bg-lightBlue rounded-xl">

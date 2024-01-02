@@ -40,6 +40,14 @@ export default function TopBar() {
       link: "/success_stories",
     },
     {
+      name: "Contact Us",
+      link: "/contact_us",
+    },
+    {
+      name: "Blogs",
+      link: "/blogs",
+    },
+    {
       name: "Courses",
       link:"/courses",
       child: [
@@ -52,10 +60,6 @@ export default function TopBar() {
           link: "/courses",
         },
       ],
-    },
-    {
-      name: "Contact Us",
-      link: "/contact_us",
     },
   ];
   //log out user
@@ -151,7 +155,7 @@ export default function TopBar() {
                 to={"/login"}
                 className="py-2 px-4 bg-blue text-white rounded hidden md:flex items-center gap-2.5"
               >
-                Login <AiOutlineLogin className="text-xl" />
+                Login/Register <AiOutlineLogin className="text-xl" />
               </Link>
             )}
 
@@ -212,7 +216,7 @@ export default function TopBar() {
                   to={"/login"}
                   className="py-2 px-4 w-fit bg-blue text-white rounded md:hidden flex items-center gap-2.5"
                 >
-                  Login <AiOutlineLogin className="text-xl" />
+                  Login/Register <AiOutlineLogin className="text-xl" />
                 </Link>
               )}
             </div>

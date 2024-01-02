@@ -1,13 +1,14 @@
 import React, { useEffect, useState } from "react";
 import videoIcon from "../../assets/logo/video-icon.png";
-import svg from "../../assets/choseUsIcons/Compass.png";
 import Loader from "../../shared/loader/Loader";
-import { Button, Dialog, Option, Select } from "@material-tailwind/react";
+import { Dialog, Option, Select } from "@material-tailwind/react";
 import ReactPlayer from "react-player";
+import SmallLoader from "../../shared/loader/SmallLoader";
 
 export default function HomeStories() {
   const [stories, setStories] = useState([]);
   const [loader, setLoader] = useState(false);
+  const [categoreyLoader, setCategoreyLoader] = useState(false);
   const [categories, setCategories] = useState([]);
   const [categoreyId, setCategoreyId] = useState("");
 
@@ -21,13 +22,13 @@ export default function HomeStories() {
 
   //get categories
   useEffect(() => {
+    setCategoreyLoader(true);
     fetch("https://api.pathshalait.com/api/v1/category/list")
       .then((res) => res.json())
       .then((data) => {
         if (data.status_code === 200) {
           setCategories(data?.data);
-        } else {
-          console.log(data);
+          setCategoreyLoader(false);
         }
       });
   }, []);
@@ -50,30 +51,48 @@ export default function HomeStories() {
   return (
     <div className="relative">
       <div className="mx-5 md:container md:mx-auto mt-10">
-        <h1 className="text-[40px] lg:text-[60px] text-center">
+        <h1 className="text-[40px] lg:text-[60px] text-center mb-5">
           Success Stories
         </h1>
-        <div className="flex flex-wrap gap-5 justify-center mt-5 backdrop-blur-sm bg-white/30 lg:bg-transparent p-5 rounded-full">
-          <button
-            onClick={() => setCategoreyId("")}
-            className={`px-4 py-2 rounded-full ${
-              categoreyId === "" && "bg-blue text-white"
-            }`}
+        <div className="md:hidden">
+          <Select
+            label="Select Categorey"
+            onChange={(value) => setCategoreyId(value)}
           >
-            All
-          </button>
-          {categories.map((c, i) => (
-            <button
-              onClick={() => setCategoreyId(c?.id)}
-              className={`px-4 py-2 rounded-full ${
-                categoreyId === c?.id && "bg-blue text-white"
-              }`}
-              value={c?.id}
-              key={i}
-            >
-              {c?.name}
-            </button>
-          ))}
+            {categories.map((c, i) => (
+              <Option value={c?.id} key={i}>
+                {c?.name}
+              </Option>
+            ))}
+          </Select>
+        </div>
+        <div className="hidden md:block">
+          {categoreyLoader ? (
+            <SmallLoader />
+          ) : (
+            <div className="flex flex-wrap gap-5 justify-center mt-5">
+              <button
+                onClick={() => setCategoreyId("")}
+                className={`px-4 py-2 rounded-full ${
+                  categoreyId === "" && "bg-blue text-white"
+                }`}
+              >
+                All
+              </button>
+              {categories.map((c, i) => (
+                <button
+                  onClick={() => setCategoreyId(c?.id)}
+                  className={`px-4 py-2 rounded-full ${
+                    categoreyId === c?.id && "bg-blue text-white"
+                  }`}
+                  value={c?.id}
+                  key={i}
+                >
+                  {c?.name}
+                </button>
+              ))}
+            </div>
+          )}
         </div>
       </div>
       {loader ? (
@@ -105,12 +124,6 @@ export default function HomeStories() {
           )}
         </div>
       )}
-
-      <img
-        src={svg}
-        alt=""
-        className="hidden md:block absolute left-0 top-0 -z-10"
-      />
 
       <Dialog open={open} handler={handleOpen} className="flex justify-center">
         <ReactPlayer controls url={url} />

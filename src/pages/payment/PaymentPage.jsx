@@ -15,8 +15,6 @@ import rocket from "../../assets/footer/Rocket Logo.png";
 export default function PaymentPage() {
   const [loader, setLoader] = useState(false);
   const navigate = useNavigate();
-  //   const [courses, setCourses] = useState([]);
-  //   console.log(courses);
 
   const courseDetails = JSON.parse(localStorage.getItem("courseDetails"));
   const itemType = localStorage.getItem("item_type");
@@ -63,15 +61,17 @@ export default function PaymentPage() {
 
   //handle make payment
   const handleMakePayment = async () => {
-    // console.log(
-    //   paymentMethod,
-    //   courseDetails.amount,
-    //   transectionid,
-    //   transectionnumber
-    // );
     const formData = new FormData();
     formData.append("item_id", courseDetails.id);
-    formData.append("amount", courseDetails.amount);
+    if (discount) {
+      formData.append(
+        "amount",
+        courseDetails.amount - courseDetails.discount_amount
+      );
+    } else {
+      formData.append("amount", courseDetails.amount);
+    }
+
     formData.append("transaction_id", transectionid);
     formData.append("transaction_number", transectionnumber);
     formData.append("payment_method", paymentMethod);
@@ -124,7 +124,7 @@ export default function PaymentPage() {
           <p className="capitalize text-[20px] my-2.5 flex gap-4">
             {" "}
             <span className="font-semibold">course fee:</span>{" "}
-            {discount ? discount_amount : amount} BDT
+            {discount ? amount - discount_amount : amount} BDT
             {discount && <span className="line text-orange">{amount} BDT</span>}
           </p>
           <div className="grid grid-cols-3 gap-x-[15px] md:gap-x-[30px]">
