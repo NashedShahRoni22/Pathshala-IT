@@ -21,46 +21,6 @@ export default function HomeSeminar() {
   };
 
   const [seminars, setSeminars] = useState([]);
-  // console.log(seminars);
-
-  const data = [
-    {
-      day: "06",
-      month: "Nov",
-      year: "23",
-      title: "Digital Marketting",
-      platform: "Online",
-      time: "08:08 PM",
-      link: "/",
-    },
-    {
-      day: "06",
-      month: "Nov",
-      year: "23",
-      title: "Digital Marketting",
-      platform: "Online",
-      time: "08:08 PM",
-      link: "/",
-    },
-    {
-      day: "06",
-      month: "Nov",
-      year: "23",
-      title: "Digital Marketting",
-      platform: "Online",
-      time: "08:08 PM",
-      link: "/",
-    },
-    {
-      day: "06",
-      month: "Nov",
-      year: "23",
-      title: "Digital Marketting",
-      platform: "Online",
-      time: "08:08 PM",
-      link: "/",
-    },
-  ];
 
   //get seminar
   useEffect(() => {
@@ -115,7 +75,7 @@ export default function HomeSeminar() {
     }
   };
   return (
-    <div className="mx-5 md:container md:mx-auto my-10 py-10">
+    <div className="mx-5 md:container md:mx-auto my-5 lg:my-10">
       <h1 className="text-[40px] lg:text-[60px] text-center">
         Join free Seminars
       </h1>

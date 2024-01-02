@@ -26,7 +26,7 @@ export default function HomeChoseUs() {
   return (
     <section className="relative lg:min-h-[80vh] flex justify-center items-center">
       <div className="z-10">
-        <div className="mx-5 md:container md:mx-auto my-5 lg:my-10 py-5 lg:py-10">
+        <div className="mx-5 md:container md:mx-auto my-5 lg:my-10">
           <h1 className="text-[40px] lg:text-[60px] text-center">Why Chose Us</h1>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-8 my-5 lg:my-10 py-5 lg:py-10">
             {data.map((d, i) => (

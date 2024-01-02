@@ -4,6 +4,7 @@ import Loader from "../../shared/loader/Loader";
 import { Dialog, Option, Select } from "@material-tailwind/react";
 import ReactPlayer from "react-player";
 import SmallLoader from "../../shared/loader/SmallLoader";
+import { useLocation } from "react-router-dom";
 
 export default function HomeStories() {
   const [stories, setStories] = useState([]);
@@ -11,6 +12,8 @@ export default function HomeStories() {
   const [categoreyLoader, setCategoreyLoader] = useState(false);
   const [categories, setCategories] = useState([]);
   const [categoreyId, setCategoreyId] = useState("");
+  const { pathname } = useLocation();
+  console.log(pathname);
 
   const [open, setOpen] = React.useState(false);
   const [url, setUrl] = useState("");
@@ -50,50 +53,54 @@ export default function HomeStories() {
 
   return (
     <div className="relative">
-      <div className="mx-5 md:container md:mx-auto mt-10">
+      <div className="mx-5 md:container md:mx-auto my-10 lg:my-20">
         <h1 className="text-[40px] lg:text-[60px] text-center mb-5">
           Success Stories
         </h1>
-        <div className="md:hidden">
-          <Select
-            label="Select Categorey"
-            onChange={(value) => setCategoreyId(value)}
-          >
-            {categories.map((c, i) => (
-              <Option value={c?.id} key={i}>
-                {c?.name}
-              </Option>
-            ))}
-          </Select>
-        </div>
-        <div className="hidden md:block">
-          {categoreyLoader ? (
-            <SmallLoader />
-          ) : (
-            <div className="flex flex-wrap gap-5 justify-center mt-5">
-              <button
-                onClick={() => setCategoreyId("")}
-                className={`px-4 py-2 rounded-full ${
-                  categoreyId === "" && "bg-blue text-white"
-                }`}
+        {pathname === "/success_stories" && (
+          <>
+            <div className="md:hidden">
+              <Select
+                label="Select Categorey"
+                onChange={(value) => setCategoreyId(value)}
               >
-                All
-              </button>
-              {categories.map((c, i) => (
-                <button
-                  onClick={() => setCategoreyId(c?.id)}
-                  className={`px-4 py-2 rounded-full ${
-                    categoreyId === c?.id && "bg-blue text-white"
-                  }`}
-                  value={c?.id}
-                  key={i}
-                >
-                  {c?.name}
-                </button>
-              ))}
+                {categories.map((c, i) => (
+                  <Option value={c?.id} key={i}>
+                    {c?.name}
+                  </Option>
+                ))}
+              </Select>
             </div>
-          )}
-        </div>
+            <div className="hidden md:block">
+              {categoreyLoader ? (
+                <SmallLoader />
+              ) : (
+                <div className="flex flex-wrap gap-5 justify-center mt-5">
+                  <button
+                    onClick={() => setCategoreyId("")}
+                    className={`px-4 py-2 rounded-full ${
+                      categoreyId === "" && "bg-blue text-white"
+                    }`}
+                  >
+                    All
+                  </button>
+                  {categories.map((c, i) => (
+                    <button
+                      onClick={() => setCategoreyId(c?.id)}
+                      className={`px-4 py-2 rounded-full ${
+                        categoreyId === c?.id && "bg-blue text-white"
+                      }`}
+                      value={c?.id}
+                      key={i}
+                    >
+                      {c?.name}
+                    </button>
+                  ))}
+                </div>
+              )}
+            </div>
+          </>
+        )}
       </div>
       {loader ? (
         <Loader />

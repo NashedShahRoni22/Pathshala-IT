@@ -73,7 +73,7 @@ export default function ChangePassword() {
           <div className="flex items-center mt-2 rounded-lg border border-blue px-2">
             <input
               className="w-full px-4 py-2 focus:outline-none"
-              placeholder="Password"
+              placeholder="Current password"
               name="current_password"
               required
             />
@@ -89,7 +89,7 @@ export default function ChangePassword() {
           <div className="flex items-center mt-2 rounded-lg border border-blue px-2">
             <input
               className="w-full px-4 py-2 focus:outline-none"
-              placeholder="Confirm Password"
+              placeholder="New password"
               type={showPassword ? "text" : "password"}
               name="new_password"
               required
@@ -113,7 +113,7 @@ export default function ChangePassword() {
           <div className="flex items-center mt-2 rounded-lg border border-blue px-2">
             <input
               className="w-full px-4 py-2 focus:outline-none"
-              placeholder="Confirm Password"
+              placeholder="Confirm password"
               type={showPassword2 ? "text" : "password"}
               name="confirm_new_password"
               required

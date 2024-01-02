@@ -78,7 +78,7 @@ export default function HomeCourses() {
       <div className="mt-5 md:container md:mx-auto relative flex items-center gap-2">
         {/* Custom prev Buttons */}
         <button id="categorySwiper-prev">
-          <BsFillArrowLeftCircleFill className="text-3xl text-blue" />
+          <BsFillArrowLeftCircleFill className="text-3xl text-blue bg-white lg:bg-none rounded-full p-0.5" />
         </button>
         {catLoader ? (
           <SmallLoader />
@@ -140,7 +140,7 @@ export default function HomeCourses() {
 
         {/* Custom next Buttons */}
         <button id="categorySwiper-next">
-          <BsFillArrowRightCircleFill className="text-3xl text-blue" />
+          <BsFillArrowRightCircleFill className="text-3xl text-blue bg-white lg:bg-none rounded-full p-0.5" />
         </button>
       </div>
 
@@ -148,11 +148,11 @@ export default function HomeCourses() {
       <div className='md:container md:mx-auto relative'>
         {/* Custom prev Buttons */}
         <button id="courseSwiper-prev" className="absolute -left-0 lg:-left-10 top-1/3 z-50">
-          <BsFillArrowLeftCircleFill className="text-3xl md:text-4xl lg:text-5xl text-blue" />
+          <BsFillArrowLeftCircleFill className="text-3xl md:text-4xl text-blue bg-white lg:bg-none rounded-full p-0.5" />
         </button>
         {/* Custom next Buttons */}
         <button id="courseSwiper-next" className="absolute -right-0 lg:-right-10 top-1/3 z-50">
-          <BsFillArrowRightCircleFill className="text-3xl md:text-4xl lg:text-5xl text-blue" />
+          <BsFillArrowRightCircleFill className="text-3xl md:text-4xl text-blue bg-white lg:bg-none rounded-full p-0.5" />
         </button>
         {loader ? (
           <Loader />

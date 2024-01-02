@@ -36,9 +36,9 @@ export default function BottomBar() {
           <h1 className="text-[40px] lg:text-[60px] text-center">
             Ready to Begin <br /> Your Journey With Us?
           </h1>
-          <button className="py-2 px-4 bg-blue text-white rounded flex items-center gap-2.5">
-            Enroll Now <BsBook className="text-xl" />
-          </button>
+          <Link to="/courses" className="py-2 px-4 bg-blue text-white rounded flex items-center gap-2.5">
+            Explore Now <BsBook className="text-xl" />
+          </Link>
         </div>
 
         <div className="text-[16px] mt-20 flex flex-col gap-5 md:flex-row">

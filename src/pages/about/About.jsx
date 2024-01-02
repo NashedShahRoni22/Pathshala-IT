@@ -202,8 +202,8 @@ export default function About() {
                         key={i}
                         className="p-[20px] rounded-[8px] bg-lightBlue"
                       >
-                        <p className="text-[40px] font-semibold text-blue text-center">
-                          <CountUp end={df.number} duration={5} />
+                        <p className="text-[40px] text-blue text-center">
+                          <CountUp end={df.number} duration={5} style={{ fontWeight: '600' }} />
                         </p>
                         <p className="text-[20px] text-center text-black font-semibold">
                           {df.name}

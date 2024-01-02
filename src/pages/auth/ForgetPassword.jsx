@@ -7,17 +7,19 @@ import loginimg from "../../assets/auth/login.png";
 export default function ForgetPassword() {
   const [loader, setLoader] = useState(false);
   const navigate = useNavigate();
+  //handle otp send
   const handleSendOtp = (e) => {
     e.preventDefault()
     setLoader(true);
     const number = e.target.number.value;
-
     fetch(`https://api.pathshalait.com/api/v1/forget/password/${number}`)
       .then((response) => response.json())
       .then((data) => {
-        if (data.status) {
-          navigate("/verification");
+        console.log(data);
+        if (data.status === true) {
+          navigate("/reset_verification");
           setLoader(false);
+          localStorage.setItem("phone_number", number);
         } else {
           setLoader(false);
           toast.error(

@@ -28,7 +28,7 @@ export default function HomeGallery() {
     },
   ];
   return (
-    <div className="mx-5 md:container md:mx-auto my-5 lg:my-10 py-5 lg:py-10">
+    <div className="mx-5 md:container md:mx-auto my-10 lg:my-20">
       <h1 className="text-[40px] lg:text-[60px] text-center">Our Gallery</h1>
       <div className="mt-10">
         <ImageGallery items={images} />

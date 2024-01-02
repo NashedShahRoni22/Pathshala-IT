@@ -25,6 +25,8 @@ import Privacy from "../pages/privacy/Privacy";
 import ChangePassword from "../pages/profile/ChangePassword";
 import AddNewPassword from "../pages/auth/AddNewPassword";
 import Blog from "../pages/blog/Blog";
+import ResetVerification from "../pages/auth/ResetVerification";
+import ResetPassword from "../pages/auth/ResetPassword";
 
 export const router = createBrowserRouter([
   {
@@ -46,6 +48,14 @@ export const router = createBrowserRouter([
       {
         path: "/verification",
         element: <Verification />,
+      },
+      {
+        path: "/reset_verification",
+        element: <ResetVerification />,
+      },
+      {
+        path: "/reset_password",
+        element: <ResetPassword />,
       },
       {
         path: "/login",
