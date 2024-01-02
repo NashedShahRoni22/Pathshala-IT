@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import HomeLanding from "./HomeLanding";
 import HomeCourseBar from "./HomeCourseBar";
 import HomeSeminar from "./HomeSeminar";
@@ -18,7 +18,18 @@ import {
 } from "@material-tailwind/react";
 
 export default function Home() {
-  const [open, setOpen] = React.useState(true);
+  const [open, setOpen] = React.useState(false);
+  //handle modal time
+  useEffect(() => {
+    const handleDelayedOpen = () => {
+      setTimeout(() => {
+        setOpen(true);
+      }, 3000);
+    };
+
+    // Initiate the delayed opening only once
+    handleDelayedOpen();
+  }, []);
 
   const handleOpen = () => setOpen(!open);
 
@@ -38,8 +49,8 @@ export default function Home() {
       <Dialog open={open} handler={handleOpen}>
         <DialogHeader>Join our free class</DialogHeader>
         <DialogBody className="flex flex-col gap-2.5">
-          <Input label="Enter email" />
           <Input label="Enter name" />
+          <Input label="Enter email" />
           <Input label="Enter phone number" />
         </DialogBody>
         <DialogFooter>
@@ -52,10 +63,7 @@ export default function Home() {
           >
             <span>Cancel</span>
           </Button>
-          <Button
-            size="sm"
-            className="bg-blue"
-          >
+          <Button size="sm" className="bg-blue">
             <span>Join</span>
           </Button>
         </DialogFooter>

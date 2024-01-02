@@ -10,7 +10,7 @@ export default function CourseCard({ c }) {
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(!open);
   return (
-    <section className="bg-white shadow-xl rounded-xl">
+    <section className="bg-white shadow-xl rounded-xl min-w-fit">
       <Link to={`/course_details/${c?.course_slug}`}>
         <img
           src={c?.course_image}

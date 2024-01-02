@@ -5,6 +5,7 @@ import BottomBar from "../shared/bottombar/BottomBar";
 import MiddleBar from "../shared/fixedbar/MiddleBar";
 import JoinSeminar from "../shared/fixedbar/JoinSeminar";
 import GetDiscount from "../shared/fixedbar/GetDiscount";
+import TopSocialBar from "../shared/topbar/TopSocialBar";
 
 export default function Main() {
   const location = useLocation();
@@ -13,6 +14,9 @@ export default function Main() {
   }, [location]);
   return (
     <main>
+      <div className="hidden lg:block">
+      <TopSocialBar/>
+      </div>
       <TopBar />
       <Outlet />
       <BottomBar />

@@ -87,6 +87,8 @@ export default function HomeCourses() {
             id="categorySwiper"
             slidesPerView={1}
             spaceBetween={10}
+            modules={[Navigation]}
+            className="mySwiper py-5 md:py-10"
             navigation={{
               nextEl: "#categorySwiper-next",
               prevEl: "#categorySwiper-prev",
@@ -105,8 +107,7 @@ export default function HomeCourses() {
                 spaceBetween: 30,
               },
             }}
-            modules={[Navigation]}
-            className="mySwiper py-5 md:py-10"
+            
           >
             <SwiperSlide>
               <div className="flex justify-center items-center">
@@ -144,7 +145,15 @@ export default function HomeCourses() {
       </div>
 
       {/* courses cards  */}
-      <div className={`md:container md:mx-auto relative`}>
+      <div className='md:container md:mx-auto relative'>
+        {/* Custom prev Buttons */}
+        <button id="courseSwiper-prev" className="absolute -left-0 lg:-left-10 top-1/3 z-50">
+          <BsFillArrowLeftCircleFill className="text-3xl md:text-4xl lg:text-5xl text-blue" />
+        </button>
+        {/* Custom next Buttons */}
+        <button id="courseSwiper-next" className="absolute -right-0 lg:-right-10 top-1/3 z-50">
+          <BsFillArrowRightCircleFill className="text-3xl md:text-4xl lg:text-5xl text-blue" />
+        </button>
         {loader ? (
           <Loader />
         ) : (
@@ -158,6 +167,12 @@ export default function HomeCourses() {
                   clickable: true,
                 }}
                 grabCursor={true}
+                modules={[Pagination, Navigation]}
+                className="mySwiper pb-20"
+                navigation={{
+                  nextEl: "#courseSwiper-next",
+                  prevEl: "#courseSwiper-prev",
+                }}
                 breakpoints={{
                   640: {
                     slidesPerView: 1,
@@ -172,8 +187,7 @@ export default function HomeCourses() {
                     spaceBetween: 20,
                   },
                 }}
-                modules={[Pagination]}
-                className="mySwiper pb-20"
+                
               >
                 {courses?.map((c, i) => (
                   <SwiperSlide key={i}>
