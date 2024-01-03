@@ -69,10 +69,10 @@ export default function TopSocialBar() {
             <BsTwitter className="text-xl text-lightBlue" />
           </a>
 
-          <div className="border-2 border-lightBlue rounded-full">
+          <div className="shadow-xl border-2 border-lightBlue rounded-full">
             <button
               onClick={() => setLang("BN")}
-              className={`px-2 py-1 text-lightBlue rounded-full border-0 ${
+              className={`shadow-xl px-2 py-1 text-lightBlue rounded-full border-0 ${
                 lang === "BN" && "bg-orange"
               }`}
             >
@@ -80,7 +80,7 @@ export default function TopSocialBar() {
             </button>
             <button
               onClick={() => setLang("EN")}
-              className={`px-2 py-1 text-lightBlue rounded-full border-0 ${
+              className={`shadow-xl px-2 py-1 text-lightBlue rounded-full border-0 ${
                 lang === "EN" && "bg-orange"
               }`}
             >

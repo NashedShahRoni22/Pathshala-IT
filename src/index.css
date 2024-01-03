@@ -24,3 +24,9 @@ h1 {
 .line {
   text-decoration: line-through;
 }
+.freeClass{
+  background-image: url(../src//assets/freeclass/free_class.jpeg);
+  background-position:  center;
+  background-size: cover;
+  border-radius: 16px;
+}

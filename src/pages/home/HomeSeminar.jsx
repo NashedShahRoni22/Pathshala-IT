@@ -9,24 +9,30 @@ import {
   Input,
   Spinner,
 } from "@material-tailwind/react";
+import Loader from "../../shared/loader/Loader";
 
 export default function HomeSeminar() {
   const [open, setOpen] = React.useState(false);
   const [loader, setLoader] = React.useState(false);
+  const [getLoader, setGetLoader] = React.useState(false);
   const [seminarDetails, setSeminarDetails] = useState({});
 
   const handleOpen = (data) => {
-    setOpen(!open)
-    setSeminarDetails(data)
+    setOpen(!open);
+    setSeminarDetails(data);
   };
 
   const [seminars, setSeminars] = useState([]);
 
   //get seminar
   useEffect(() => {
+    setGetLoader(true);
     fetch("https://api.pathshalait.com/api/v1/public/seminars")
       .then((res) => res.json())
-      .then((data) => setSeminars(data?.data));
+      .then((data) => {
+        setSeminars(data?.data);
+        setGetLoader(false);
+      });
   }, []);
 
   // join seminar
@@ -37,8 +43,6 @@ export default function HomeSeminar() {
     const email = form.email.value;
     const phone = form.phone.value;
     const location = form.location.value;
-
-    console.log(name, email, phone, location);
 
     const formData = new FormData();
     formData.append("name", name);
@@ -81,39 +85,45 @@ export default function HomeSeminar() {
       </h1>
       <div className="py-10 flex flex-col gap-8 lg:gap-16 items-center lg:flex-row">
         <div className="lg:w-1/2">
-          {seminars.map((d, i) => (
-            <div
-              key={i}
-              className={`grid grid-cols-3 md:grid-cols-4 my-2.5 py-2.5 place-items-center border-b-2 hover:border-blue hover:shadow-xl duration-300 ease-linear`}
-            >
-              <div>
-                <h1 className="text-[24px] lg:text-[32px]">
-                  {d.start_date.slice(0, 2)}
-                </h1>
-                <p className="text-[16px] lg:text-[20px]">
-                  {d.start_date.slice(2, 12)}
-                </p>
-              </div>
-
-              <p className="hidden md:block text-[24px]">{d.subject}</p>
-
-              <div>
-                <p className="md:hidden text-[20px]">{d.subject}</p>
-                <p className="text-[16px] lg:text-[20px]">Online</p>
-                <p className="text-[16px] lg:text-[20px]">
-                  {d.seminar_start_time}
-                </p>
-              </div>
-              <div>
-                <button
-                  onClick={()=>handleOpen(d)}
-                  className="py-2 px-4 text-white bg-blue rounded flex items-center gap-2.5"
+          {getLoader ? (
+            <Loader />
+          ) : (
+            <>
+              {seminars.map((d, i) => (
+                <div
+                  key={i}
+                  className={`grid grid-cols-3 md:grid-cols-4 my-2.5 py-2.5 place-items-center border-b-2 hover:border-blue hover:shadow-xl duration-300 ease-linear`}
                 >
-                  Join Now
-                </button>
-              </div>
-            </div>
-          ))}
+                  <div>
+                    <h1 className="text-[24px] lg:text-[32px]">
+                      {d.start_date.slice(0, 2)}
+                    </h1>
+                    <p className="text-[16px] lg:text-[20px]">
+                      {d.start_date.slice(2, 12)}
+                    </p>
+                  </div>
+
+                  <p className="hidden md:block text-[24px]">{d.subject}</p>
+
+                  <div>
+                    <p className="md:hidden text-[20px]">{d.subject}</p>
+                    <p className="text-[16px] lg:text-[20px]">Online</p>
+                    <p className="text-[16px] lg:text-[20px]">
+                      {d.seminar_start_time}
+                    </p>
+                  </div>
+                  <div>
+                    <button
+                      onClick={() => handleOpen(d)}
+                      className="py-2 px-4 text-white bg-blue rounded flex items-center gap-2.5"
+                    >
+                      Join Now
+                    </button>
+                  </div>
+                </div>
+              ))}
+            </>
+          )}
         </div>
         <div className="lg:w-1/2">
           <img src={img} alt="" />
@@ -158,11 +168,13 @@ export default function HomeSeminar() {
             >
               <span>Cancel</span>
             </Button>
-            <Button type="submit" className="bg-blue flex gap-2 items-center" size="sm">
+            <Button
+              type="submit"
+              className="bg-blue flex gap-2 items-center"
+              size="sm"
+            >
               <span>Join Now</span>
-              {
-                loader && <Spinner className="h-4 w-4" />
-              }
+              {loader && <Spinner className="h-4 w-4" />}
             </Button>
           </DialogFooter>
         </form>

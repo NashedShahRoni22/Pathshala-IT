@@ -1,8 +1,9 @@
 import React from "react";
-import img from "../../assets/coursesBarIcons/noun-megaphone-5060368 1.png";
-import img2 from "../../assets/coursesBarIcons/noun-graphic-design-3867413 1.png";
-import img3 from "../../assets/coursesBarIcons/noun-seo-2894617 1.png";
-import img4 from "../../assets/coursesBarIcons/noun-social-media-6163564 1.png";
+import img from "../../assets/coursesBarIcons/Digital Marketing.png";
+import img2 from "../../assets/coursesBarIcons/Graphic  & Multimedia.png";
+import img3 from "../../assets/coursesBarIcons/SEO.png";
+import img4 from "../../assets/coursesBarIcons/soft skill.png";
+import img5 from "../../assets/coursesBarIcons/Web & Soft.png";
 
 // Import Swiper React components
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -22,7 +23,7 @@ export default function HomeCourseBar() {
     },
     {
       img: img2,
-      name: "Graphic Design",
+      name: "Graphic & Multimedia",
     },
     {
       img: img3,
@@ -30,7 +31,11 @@ export default function HomeCourseBar() {
     },
     {
       img: img4,
-      name: "Social Media Management",
+      name: "Soft Skill",
+    },
+    {
+      img: img5,
+      name: "Web & Software",
     },
   ];
   return (

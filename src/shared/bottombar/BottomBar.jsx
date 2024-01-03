@@ -31,7 +31,7 @@ export default function BottomBar() {
   ];
   return (
     <footer className="bg-blue text-white">
-      <section className="mx-5 md:container md:mx-auto py-10 lg:py-20">
+      <section className="mx-5 md:container md:mx-auto py-5 lg:py-10">
         <div className="text-black flex flex-col justify-center items-center p-8 lg:p-16 gap-5 bg-white rounded-xl">
           <h1 className="text-[40px] lg:text-[60px] text-center">
             Ready to Begin <br /> Your Journey With Us?
@@ -98,7 +98,7 @@ export default function BottomBar() {
             <p>pathshalait365@gmail.com</p>
             <form className="flex mt-5">
               <input
-                className="px-4 py-2 rounded-l-xl focus:outline-none"
+                className="px-4 py-2 rounded-l-xl focus:outline-none text-black"
                 placeholder="Subscribe our newsletter"
                 type="email"
               />
@@ -184,7 +184,7 @@ export default function BottomBar() {
         <img src={line} className="my-10 w-full" alt="" />
 
         <div>
-          <p className="text-center pb-[20px] md:pb-0">
+          <p className="text-center pb-[40px] md:pb-0">
             © Copyright reserved by Pathshala IT 2023
           </p>
         </div>

@@ -30,7 +30,7 @@ export default function HomeChoseUs() {
           <h1 className="text-[40px] lg:text-[60px] text-center">Why Chose Us</h1>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-8 my-5 lg:my-10 py-5 lg:py-10">
             {data.map((d, i) => (
-              <div className="bg-lightOrange p-4 rounded-xl" key={i}>
+              <div className="bg-lightBlue shadow p-4 rounded-xl" key={i}>
                 <img src={d.img} alt="" />
                 <h1 className="text-[24px] my-2.5">{d.title}</h1>
                 <p className="text-[16px]">{d.content}</p>

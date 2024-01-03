@@ -8,13 +8,9 @@ import HomeServices from "./HomeServices";
 import HomeChoseUs from "./HomeChoseUs";
 import HomeStories from "./HomeStories";
 import HomeGallery from "./HomeGallery";
-import {
-  Button,
-  Dialog,
-  DialogBody,
-  Input,
-} from "@material-tailwind/react";
+import { Button, Dialog, DialogBody, Input } from "@material-tailwind/react";
 import HomeFacts from "./HomeFacts";
+import { IoMdCloseCircle } from "react-icons/io";
 
 export default function Home() {
   const [open, setOpen] = React.useState(false);
@@ -40,7 +36,6 @@ export default function Home() {
     const name = form.name.value;
     const email = form.email.value;
     const number = form.number.value;
-    
 
     if (number.length !== 11) {
       alert("Enter a 11 digit Bangladesh number!");
@@ -88,34 +83,46 @@ export default function Home() {
       <HomeSeminar />
       <HomeChoseUs />
       <HomeGallery />
-      <HomeFacts/>
+      <HomeFacts />
       <HomeStories />
 
       {/* free class dialogue */}
       <Dialog open={open} handler={handleOpen}>
-        <DialogBody>
-          <form onSubmit={handleJoinFreeClass} className="flex flex-col gap-2.5">
-          <h1 className="text-[20px] text-center text-black">Join free class!</h1>
-          <Input required name="name" type="text" label="Enter name" />
-          <Input required name="email" type="email" label="Enter email" />
-          <Input required name="number" type="number" label="Enter phone number" />
-          <div>
-            <Button
-              size="sm"
-              variant="text"
-              color="red"
-              onClick={handleOpen}
-              className="mr-1"
-            >
-              <span>Close</span>
-            </Button>
-            <Button type="submit" size="sm" className="bg-blue">
-              <span></span>
-              {
-                loader ? "Joining ..." : "Join Now"
-              }
-            </Button>
-          </div>
+        <DialogBody className="freeClass min-h-[80vh] flex items-end justify-center">
+          <form
+            onSubmit={handleJoinFreeClass}
+            className="flex flex-col w-3/4 p-5 gap-2.5"
+          >
+            <input
+              className="px-4 py-2 focus:outline-blue rounded-xl"
+              required
+              name="name"
+              type="text"
+              placeholder="Enter name"
+            />
+            <input
+              className="px-4 py-2 focus:outline-blue rounded-xl"
+              required
+              name="email"
+              type="email"
+              placeholder="Enter email"
+            />
+            <input
+              className="px-4 py-2 focus:outline-blue rounded-xl"
+              required
+              name="number"
+              type="number"
+              placeholder="Enter phone number"
+            />
+            <div>
+              <button onClick={handleOpen} className="absolute top-0 right-0">
+                <IoMdCloseCircle className="text-red-500 text-3xl" />
+              </button>
+              <Button type="submit" size="sm" className="bg-blue px-4 py-2 w-full">
+                <span></span>
+                {loader ? "Joining ..." : "Join Now"}
+              </Button>
+            </div>
           </form>
         </DialogBody>
       </Dialog>

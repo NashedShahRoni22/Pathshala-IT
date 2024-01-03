@@ -141,7 +141,7 @@ export default function HomeAdmission() {
               <img className="h-[24px] w-[24px]" src={frame} alt="" />
               <p className="text-[16px] lg:text-[20px]">
                 Batch Timing: {admissionData?.weekly_days} (
-                {admissionData?.class_start_time} PM to{" "}
+                {admissionData?.class_start_time} to{" "}
                 {admissionData?.class_end_time})
               </p>
             </div>

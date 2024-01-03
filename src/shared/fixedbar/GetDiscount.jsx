@@ -10,7 +10,7 @@ export default function GetDiscount() {
     <>
       <button
         onClick={handleOpen}
-        className="px-2 md:px-4 py-1 md:py-2 bg-blue text-white rounded rounded-bl-xl rounded-br-xl"
+        className="px-2 md:px-4 py-1 md:py-2 bg-blue border-2 text-white rounded rounded-bl-xl rounded-br-xl"
       >
         Get Discount
       </button>

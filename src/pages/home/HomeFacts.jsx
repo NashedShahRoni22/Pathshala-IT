@@ -1,7 +1,9 @@
 import React from "react";
 import CountUp from "react-countup";
 
-export default function HomeFacts() {
+export default function 
+
+HomeFacts() {
   const data =[
       {
         number: 5000,
@@ -33,7 +35,7 @@ export default function HomeFacts() {
       <h1 className="text-[40px] lg:text-[60px] text-center">Our Achivements</h1>
       <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-[24px] mt-[50px] mb-[120px]">
         {data.map((df, i) => (
-          <div key={i} className="p-[20px] rounded-[8px] bg-lightBlue">
+          <div key={i} className="p-[20px] shadow rounded-[8px] bg-lightBlue">
             <p className="text-[40px] text-blue text-center">
               <CountUp
                 end={df.number}

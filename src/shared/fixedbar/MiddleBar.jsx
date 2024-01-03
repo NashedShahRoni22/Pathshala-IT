@@ -8,7 +8,7 @@ export default function MiddleBar() {
   return (
     <div className="flex justify-center bg-white/90 rounded-[16px]">
       <Link
-        to="/"
+        to="/join_seminar"
         className="px-3 py-3 hover:bg-blue hover:text-white rounded-l-full flex items-center gap-1"
       >
         <GiVideoConference className="text-xl" /> Seminar
