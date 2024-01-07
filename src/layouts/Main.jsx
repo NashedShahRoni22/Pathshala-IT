@@ -8,6 +8,7 @@ import GetDiscount from "../shared/fixedbar/GetDiscount";
 import TopSocialBar from "../shared/topbar/TopSocialBar";
 import MessengerCustomerChat from "react-messenger-customer-chat";
 import { FaArrowUp } from "react-icons/fa";
+import whatsLogo from "../assets/whatsapp.png";
 
 export default function Main() {
   const location = useLocation();
@@ -64,14 +65,24 @@ export default function Main() {
           htmlRef="<REF_STRING>"
         />
       </div>
-      <div className="scroll-to-top-button hidden">
+      {/* Scroll to top  */}
+      <div className="scroll-to-top-button">
         <button
-          className="z-50 fixed bottom-16 bg-white md:bottom-3 flex justify-center items-center left-5 md:right-1/2 md:left-1/2  h-10 md:h-12 w-10 md:w-12 border-2 rounded-xl"
+          className="z-50 fixed bg-white bottom-3  hidden md:flex justify-center items-center md:right-1/2 md:left-1/2 md:h-12 md:w-12 border-2 rounded-xl"
           onClick={handleScrollToTop}
         >
-          <FaArrowUp className="text-xl md:text-3xl text-blue"/>
+          <FaArrowUp className="text-xl md:text-3xl text-blue" />
         </button>
       </div>
+
+      {/* whatsapp button */}
+      <a
+        href="https://wa.me/01716561273?text=Hi! I need help!"
+        className="hidden md:block fixed left-2.5 bottom-3 z-50"
+        target="_blank"
+      >
+        <img alt="Whatsapp_logo" className="h-[50px]" src={whatsLogo} />
+      </a>
     </main>
   );
 }

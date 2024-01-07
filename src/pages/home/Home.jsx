@@ -91,7 +91,7 @@ export default function Home() {
         <DialogBody className="freeClass min-h-[80vh] flex items-end justify-center">
           <form
             onSubmit={handleJoinFreeClass}
-            className="flex flex-col w-3/4 p-5 gap-2.5"
+            className="flex flex-col w-full lg:w-3/4 p-5 gap-2.5"
           >
             <input
               className="px-4 py-2 focus:outline-blue rounded-xl"

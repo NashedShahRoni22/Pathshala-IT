@@ -9,6 +9,7 @@ import { MdLogout } from "react-icons/md";
 import { Button } from "@material-tailwind/react";
 import { toast } from "react-toastify";
 import { AuthContext } from "../../context/AuthProvider";
+import whatsLogo from "../../assets/whatsapp.png";
 
 export default function TopBar() {
   const accessToken = localStorage.getItem("access_token");
@@ -49,7 +50,7 @@ export default function TopBar() {
     },
     {
       name: "Courses",
-      link:"/courses",
+      link: "/courses",
       child: [
         {
           name: "Free Courses",
@@ -92,12 +93,12 @@ export default function TopBar() {
   };
 
   //active navlink style
-  const navLinkStyle = ({isActive}) =>{
-    return{
-      color : isActive ? "blue" : "black",
-      borderBottom: isActive ? "2px solid blue" : "none"
-    }
-  }
+  const navLinkStyle = ({ isActive }) => {
+    return {
+      color: isActive ? "blue" : "black",
+      borderBottom: isActive ? "2px solid blue" : "none",
+    };
+  };
   return (
     <nav className="sticky top-0 bg-lightBlue z-50">
       <section className="mx-5 md:container md:mx-auto">
@@ -109,7 +110,11 @@ export default function TopBar() {
           <ul className="hidden lg:flex gap-6 font-semibold">
             {menuItems.map((mi, i) => (
               <div key={i} className="relative group">
-                <NavLink style={navLinkStyle} to={mi.link} className="relative text-[18px]">
+                <NavLink
+                  style={navLinkStyle}
+                  to={mi.link}
+                  className="relative text-[18px]"
+                >
                   {mi.name}
                   {mi.child && (
                     <div className="h-2.5 w-2.5 bg-blue rounded-full absolute -top-1 -right-1"></div>
@@ -130,6 +135,13 @@ export default function TopBar() {
             ))}
           </ul>
           <div className="flex items-center gap-2.5">
+            <a
+              href="https://wa.me/01716561273?text=Hi! I need help!"
+              className="md:hidden"
+              target="_blank"
+            >
+              <img alt="Whatsapp_logo" className="h-[40px]" src={whatsLogo} />
+            </a>
             {accessToken !== null ? (
               <div className="relative group">
                 {user?.profile_image === null ? (
